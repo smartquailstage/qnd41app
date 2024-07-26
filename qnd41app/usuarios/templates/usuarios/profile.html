@@ -1,0 +1,129 @@
+{% extends "base_dash.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load widget_tweaks %}
+{% load static %}
+{% load menu_tags %}
+
+
+
+
+
+{% block content %}
+
+<div class="page-content-wrapper">
+    <!-- start page content-->
+   <div class="page-content">
+    <div class="row">
+        <div class="col-12 col-lg-8 col-xl-9">
+          <div class="card overflow-hidden radius-10">
+            <div class="profile-cover bg-dark position-relative mb-4">
+                <div class="user-profile-avatar shadow position-absolute top-50 start-0 translate-middle-x">
+                    {% if profile.photo %}
+                        <img src="{{ profile.photo.url }}" alt="User Photo">
+                    {% else %}
+                        <img src="{% static 'img/user.png' %}" alt="Default Photo">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-body">
+              <div class="mt-5 d-flex align-items-start justify-content-between">
+                <div class="">
+                  <h3 class="mb-2">{{ user.get_full_name }}</h3>
+                  <p class="mb-1"><strong>Fecha de nacimiento:</strong>{{ profile.date_of_birth }}</p>
+                  <p  class="mb-1"><strong>Nacionalidad:</strong>  {{ profile.nacionalidad }} </p>
+                  <p class="mb-1"> <stronG>Genero:</stronG> {{ profile.genero }} </p>
+                  <p  class="mb-1"> ¿Me autoidentifico perteneciente a pertenece a un pueblo o nacionalidad indígena, montubio o afro-ecuatoriano ? {{ profile.autoidentificacion }} </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="mb-2">Acerca de mi:</h4>
+              <p class="">Me desempeño en actividades culturales en {{ activity.disciplina_artistica }} Y tengo la siguiente experiencia en dicho ambito:
+                {{ activity.experiencia_ambito_cultural | richtext }}
+              </p>
+             
+            </div>
+          </div> 
+          <div class="card">
+            <div class="card-body">
+              <h4 class="mb-2">DECLARATORIA</h4>
+              Yo, <strong>{{ profile.user.get_full_name }}</strong>, reconozco y declaro que toda la información proporcionada por mí a la plataforma de gestión cultural, incluyendo pero no limitado a mi perfil de usuario y cualquier formulario de solicitud para convocatorias de fomento cultural de la Secretaría de Cultura del Municipio del Distrito Metropolitano de Quito, es verídica, completa y precisa en todos los aspectos.
+
+              <p>Entiendo y acepto que cualquier falsedad, omisión o inexactitud en la información proporcionada puede resultar en la anulación inmediata de mi participación en cualquier actividad dentro de la plataforma, incluyendo la postulación a convocatorias para líneas de fomento de la Secretaría de Cultura.</p>
+              
+              <p>Asimismo, al aceptar esta declaración, reconozco que automáticamente estoy habilitado para participar en todas las actividades difundidas en esta plataforma de fomento de la Secretaría de Cultura del Municipio del Distrito Metropolitano de Quito.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-xl-3">
+          <div class="card radius-10">
+            <div class="card-body">
+              <h5 class="mb-3">  <ion-icon name="map-outline"></ion-icon> Información de Domicilio</h5>
+              <p class="mb-0">
+               
+               <strong>País de residencia:</strong>  {{ contact.pais_residencia }}
+              </p>
+              <p class="mb-0">
+                
+                <strong>Ciudad en ecuador:</strong> {{ contact.provincia_cantones_ecuador  }}
+              </p>
+              <p class="mb-0">
+               
+                <strong>Parroquia en Quito:</strong>  {{ contact.parroquia_quito }}
+              </p>
+               <p class="mb-0">
+        
+                <strong>Dirección: </strong> {{ contact.direccion }}, {{ contact.georeferenciacion }}
+              </p>
+            </div>
+          </div>
+    
+          <div class="card radius-10">
+           
+            <div class="card-body">
+              <h5 class="mb-3"><ion-icon name="paper-plane-outline"></ion-icon> Información de Contacto </h5>
+              <p class="mb-0">
+               
+                <strong>telefono:</strong>  {{ contact.telefono }}
+               </p>
+               <p class="mb-0">
+                 
+                 <strong>Correo electrónico:</strong> {{ profile.user.email }}
+               </p>
+               <p class="mb-0">
+                
+                 <strong>Perfil de redes sociales:</strong>  <a href="{{ contact.perfil_redes_sociales.url }}"> {{ contact.perfil_redes_sociales }}</a>
+               </p>
+
+            </div>
+          </div>
+
+          <div class="card radius-10">
+
+            <div class="card-body">
+              <h5 class="mb-3"> <ion-icon name="newspaper-outline"></ion-icon> Información de Personería </h5>
+              <p class="mb-0">
+               <strong>Registro único de contribuyente (R.U.C):</strong>   {{ legal.ruc }}
+              </p>
+              <p class="mb-0">
+                
+                <strong>Personería Jurídica:</strong> {{ legal.tipo_personeria  }}
+              </p>
+            
+            </div>
+
+    
+    
+        </div>
+
+ 
+      </div>
+    </div>
+</div>
+
+{% endblock %}

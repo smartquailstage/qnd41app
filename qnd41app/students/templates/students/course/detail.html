@@ -1,0 +1,93 @@
+{% extends "base_dash.html" %}
+{% load cache %}
+
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="page-content-wrapper">
+    <!-- start page content-->
+   <div class="page-content">
+
+    <div class="card radius-10">
+        <div class="card-header py-3">
+             <div class="row align-items-center g-3">
+               <div class="col-12 col-lg-6">
+                 <h5 class="mb-0">Bases Técnicas</h5>
+               </div>
+
+             </div>
+        </div>
+
+
+       <div class="card-body">
+         <div class="table-responsive">
+           <table class="table table-invoice">
+              <thead>
+                 <tr>
+                    <th>{{ module.title }} </th>
+                 </tr>
+              </thead>
+              <tbody>
+               {% for m in object.modules.all %}
+                 <tr>
+                    <td>
+                       <span class="text-inverse"></span>{{ m.title }}<br>
+                       <small>
+                        <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
+                           <a href="{% url "students:student_course_detail_module" object.id m.id %}">
+                               <span>
+                                  Número de Base Técnica: <span class="order">{{ m.order|add:1 }}</span>
+                               </span>
+                               <br>
+                              <p>{{ m.description }}</p> 
+                           </a>
+                       </li>
+                       </small>
+                    </td>
+                 </tr>
+                 {% empty %}
+                 <li>No modules yet.</li>
+             {% endfor %}
+
+              </tbody>
+           </table>
+        </div>
+
+
+       </div>
+      </div>
+{% cache 600 module_contents module %}
+            {% for content in module.contents.all %}
+                {% with item=content.item %}
+      <div class="card radius-10">
+         <div class="card-body">
+            
+                    <h4>{{ item.title }}</h4>
+                    <p>{{ item.body }}</p>
+                    {{ item.render }}
+           
+         </div>
+       </div>
+     {% endwith %}
+            {% endfor %}
+        {% endcache %}
+         
+        <div class="card radius-10">
+         <div class="card-body">
+            
+                    <button href="{% url 'proyectos:create' %}">Crear Proyecto para esta convocatoria</button>
+                   
+           
+         </div>
+       </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

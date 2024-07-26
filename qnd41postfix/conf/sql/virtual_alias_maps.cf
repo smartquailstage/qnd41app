@@ -1,0 +1,5 @@
+user=sqadmindb
+password=smartquaildev1719pass
+dbname=POSFIXDB
+hosts=smartquaildb
+query = SELECT destination FROM virtual_aliases WHERE source='%s'

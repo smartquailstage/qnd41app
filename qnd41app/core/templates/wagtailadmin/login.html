@@ -1,0 +1,11 @@
+{% extends "wagtailadmin/login.html" %}
+{% load static %}
+
+{% block branding_login %}<img src="{% static 'img/SBM-Blogo.png'%}" /> {% endblock %}
+{% block above_login %} Sistema de Administración de Contenidos Multimedia CMS {% endblock %}
+
+{% block branding_logo %}
+<div class="login-logo">
+    <img src="{% static 'assets/images/secretaria.png' %}" alt="Custom Project" width="200" />
+</div>
+{% endblock %}

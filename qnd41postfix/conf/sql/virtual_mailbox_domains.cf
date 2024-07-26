@@ -1,0 +1,8 @@
+# virtual_mailbox_domains.cf
+
+user=sqadmindb
+password=smartquaildev1719pass
+dbname=POSFIXDB
+hosts=smartquaildb
+
+query = SELECT domain FROM virtual_mailbox_domains WHERE domain='%s'

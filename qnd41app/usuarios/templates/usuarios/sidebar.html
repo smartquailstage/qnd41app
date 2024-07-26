@@ -1,0 +1,172 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load widget_tweaks %}
+{% load static %}
+{% load menu_tags %}
+
+<aside class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+        <div>
+            <img src="{% static 'assets/images/escudo.png' %}" class="logo-icon" alt="logo icon">
+        </div>
+        <div>
+            <h4 class="logo-text">
+                <div>
+                    <img src="{% static 'assets/images/secretaria.png' %}" width="100px" alt="logo icon">
+                </div>
+            </h4>
+        </div>
+    </div>
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
+        <li>
+            <a href="{% url 'usuarios:dashboard' %}">
+                <div class="parent-icon">
+                    <ion-icon name="home-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Inicio</div>
+            </a>
+        </li>
+ 
+           
+
+        {% if is_tecnicos_group %}
+        <li class="menu-label">Convocatorias Editorial & Literaria</li>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                    </div>
+                    <div class="menu-title">Crear Convocatoria</div>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{% url 'usuarios:inicio_crear_convocatoria' %}">
+                            <ion-icon name="ellipse-outline"></ion-icon>Editorial & Literaria
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    
+            <li>
+                <a class="has-arrow" href="javascript:;">
+                    <div class="parent-icon">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                    <div class="menu-title">Editar convocatorias</div>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{% url 'usuarios:inicio_editar_convocatoria' %}">
+                            <ion-icon name="ellipse-outline"></ion-icon>Editorial & Literaria
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        
+       
+
+        {% endif %}
+
+        {% if acepta_terminos_condiciones and actividad == 'POSTULANTE' %}
+        <li class="menu-label">Actividades en la secretaría</li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon">
+                    <ion-icon name="megaphone-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Postular a convocatorias</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{% url 'course_list' %}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Editorial y literaria
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon">
+                    <ion-icon name="share-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Mis Postulaciones</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{% url 'proyectos:manage_project_list' %}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Editorial y literaria
+                    </a>
+                </li>
+            </ul>
+        </li>
+    {% elif actividad == 'PROPONIENTE' %}
+        <li>
+            <a href="{% url 'actividades_espacio_publico:listar_categorias' %}">
+                <div class="parent-icon">
+                    <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Proponer actividad cultural en espacios públicos</div>
+            </a>
+        </li>
+    {% else %}
+        <li class="menu-label">Inscripción al sistema de convocatorias</li>
+        <li>
+            <a href="{% url 'usuarios:inicio_inscripcion' %}">
+                <div class="parent-icon">
+                    <ion-icon name="card-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Inscripción</div>
+            </a>
+        </li>
+    {% endif %}
+    
+
+
+
+       
+        
+   
+
+
+            
+
+        
+        <li class="menu-label">Configuraciones </li>
+        {% if acepta_terminos_condiciones %}
+        <li>
+            <a href="{% url 'usuarios:perfil' %}">
+                <div class="parent-icon">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Perfil de usuario</div>
+            </a>
+        </li>
+        {% else %}
+            
+        {% endif %}
+
+    
+        <li>
+            <a class="nav-link dark-mode-icon" href="javascript:;">
+                <div class="mode-icon">
+                    <ion-icon name="moon-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Contraste</div>
+            </a>
+        </li>
+    
+        <li>
+            <a href="{% url 'logout' %}">
+                <div class="parent-icon">
+                    <ion-icon name="exit-outline"></ion-icon>
+                </div>
+                <div class="menu-title">Salir</div>
+            </a>
+        </li>
+    </ul>
+    <!--end navigation-->
+
+
+</aside>
