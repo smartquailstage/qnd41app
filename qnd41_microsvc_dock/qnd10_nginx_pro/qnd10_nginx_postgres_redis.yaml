@@ -18,6 +18,8 @@ services:
       - static-data-qnd41:/qnd41app/qnd41app/qnd41app/staticfiles
       - static-data-qnd41:/qnd41app/qnd41app/qnd41app/media
       - static-data-qnd41:/qnd41app/qnd41app/qnd41app/static
+    networks: 
+      - lansmartquail
 
 
   redis:
@@ -28,6 +30,8 @@ services:
     volumes:
       - redis_data:/data
     restart: always
+    networks: 
+      - lansmartquail
 
   redisinsight:
     image: redislabs/redisinsight:latest
@@ -35,6 +39,8 @@ services:
     ports:
       - "8001:80"
     restart: always
+    networks: 
+      - lansmartquail
 
 
 
@@ -48,6 +54,8 @@ services:
      - 5432
     volumes:
       - smartquaildb_data-qnd41:/var/lib/postgresql/data/
+    networks: 
+      - lansmartquail
 
 
   nginx:
@@ -69,6 +77,8 @@ services:
       - certbot-web_2:/vol/www
       - proxy-dhparams_2:/vol/proxy
       - letsencrypt_certs:/etc/letsencrypt/
+    networks: 
+      - lansmartquail
 
 
 volumes:
@@ -78,4 +88,9 @@ volumes:
   letsencrypt_certs:
   static-data-qnd41:
   smartquaildb_data-qnd41:
+
+networks:
+   lansmartquail:
+       driver: bridge
+                     
 
