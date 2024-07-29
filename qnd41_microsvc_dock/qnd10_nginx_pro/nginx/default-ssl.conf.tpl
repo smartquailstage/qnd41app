@@ -37,7 +37,7 @@ server {
         proxy_set_header X-Forwarded-Proto https;
 
         include /etc/nginx/uwsgi_params;
-        client_max_body_size 1000M;
+        client_max_body_size 100M;
     }
 }
 
@@ -78,6 +78,6 @@ server {
         add_header Access-Control-Allow-Credentials "true";
         proxy_set_header X-Forwarded-Proto https;
         include /etc/nginx/uwsgi_params;
-        client_max_body_size 1000M;
+        client_max_body_size 100M;
     }
 }
