@@ -9,11 +9,11 @@ load_dotenv(str(ENV_FILE_PATH))
 DEBUG="1"
 
 
-CSRF_COOKIE_DOMAIN=".quitocultura.smartquail.io"
+CSRF_COOKIE_DOMAIN=".www.smartquail.io"
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://quitocultura.smartquail.io','https://164.90.153.177']
+CSRF_TRUSTED_ORIGINS = ['https://www.smartquail.io','https://146.190.164.22']
 CORS_ALLOWED_ORIGINS = [
-    'https://quitocultura.smartquail.io','https://164.90.153.177'
+    'https://www.smartquail.io','https://146.190.164.22'
     # Otros orígenes permitidos si los hay
 ]
 
