@@ -1,8 +1,8 @@
 version: "3.3"
 
 services:
-  qnd10app:
-    image: smartquail/qnd10app:latest
+  qnd41app:
+    image: smartquail/qnd41app:latest
     restart: unless-stopped
     environment:
       - PORT=9000
@@ -15,9 +15,9 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - static-data-qnd10:/qnd10app/qnd10app/qnd10app/staticfiles
-      - static-data-qnd10:/qnd10app/qnd10app/qnd10app/media
-      - static-data-qnd10:/qnd10app/qnd10app/qnd10app/static
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/staticfiles
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/media
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/static
 
 
   redis:
@@ -47,7 +47,7 @@ services:
     expose:
      - 5432
     volumes:
-      - smartquaildb_data-qnode10:/var/lib/postgresql/data/
+      - smartquaildb_data-qnd41:/var/lib/postgresql/data/
 
 
   nginx:
@@ -58,20 +58,20 @@ services:
     environment:
       - PORT=80
     depends_on:
-      - qnd10app
+      - qnd41app
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - static-data-qnd10:/qnd10app/qnd10app/qnd10app/staticfiles
-      - static-data-qnd10:/qnd10app/qnd10app/qnd10app/media
-      - static-data-qnd10:/qnd10app/qnd10app/qnd10app/static
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/staticfiles
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/media
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/static
       - certbot-web_2:/vol/www
       - proxy-dhparams_2:/vol/proxy
       - letsencrypt_certs:/etc/letsencrypt/
 
   postfix:
-    image: smartquail/qnd10postfix:prod
+    image: smartquail/qnd41postfix:prod
     restart: always
     env_file:
       - .env
@@ -100,7 +100,7 @@ services:
       - postfix-logs:/var/log
 
   dovecot:
-    image: smartquail/qnd10dovecot:prod
+    image: smartquail/qnd41dovecot:prod
     container_name: dovecot
     restart: always
     volumes:
@@ -139,8 +139,8 @@ volumes:
   certbot-web_2:
   proxy-dhparams_2:
   letsencrypt_certs:
-  static-data-qnd10:
-  smartquaildb_data-qnode10:
+  static-data-qnd41:
+  smartquaildb_data-qnd41:
   postfix-spools:
   postfix-mail:
   postfix-logs:

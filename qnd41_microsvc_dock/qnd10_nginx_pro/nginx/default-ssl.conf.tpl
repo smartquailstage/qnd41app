@@ -1,6 +1,6 @@
 upstream django {
     # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
-    server qnd10app:9000; # for a web port socket (we'll use this first)
+    server qnd41app:9000; # for a web port socket (we'll use this first)
 }
 
 server {
@@ -17,22 +17,22 @@ server {
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
     location /staticfiles {
-        alias /qnd10app/qnd10app/qnd10app/staticfiles;
+        alias /qnd41app/qnd41app/qnd41app/staticfiles;
         client_max_body_size    1000M;
     }
 
     location /media {
-        alias /qnd10app/qnd10app/qnd10app/media;
+        alias /qnd41app/qnd41app/qnd41app/media;
         client_max_body_size    1000M;
     }
 
     location /static {
-        alias /qnd10app/qnd10app/qnd10app/static;
+        alias /qnd41app/qnd41app/qnd41app/static;
         client_max_body_size 1000M;
     }
 
     location / {
-        uwsgi_pass qnd10app:9000;
+        uwsgi_pass qnd41app:9000;
 
         proxy_set_header X-Forwarded-Proto https;
 
@@ -43,7 +43,7 @@ server {
 
 server {
     listen         443 ssl;
-    server_name    quitocultura.${DOMAIN};
+    server_name    www.${DOMAIN};
 
     ssl_certificate     /etc/letsencrypt/live/quitocultura.${DOMAIN}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/quitocultura.${DOMAIN}/privkey.pem;
@@ -56,23 +56,23 @@ server {
 
 
     location /staticfiles {
-        alias /qnd10app/qnd10app/qnd10app/staticfiles;
+        alias /qnd41app/qnd41app/qnd41app/staticfiles;
         client_max_body_size    1000M;
     }
 
     location /static {
-        alias /qnd10app/qnd10app/qnd10app/static;
+        alias /qnd41app/qnd41app/qnd41app/static;
         client_max_body_size    1000M;
     }
 
     location /media {
-        alias /qnd10app/qnd10app/qnd10app/media;
+        alias /qnd41app/qnd41app/qnd41app/media;
         client_max_body_size    1000M;
     }
 
     location / {
-        uwsgi_pass qnd10app:9000;
-        add_header 'Access-Control-Allow-Origin' 'https://quitoc.smartquail.io';
+        uwsgi_pass qnd41app:9000;
+        add_header 'Access-Control-Allow-Origin' 'https://www.smartquail.io';
         add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
         add_header Access-Control-Allow-Headers "Authorization, Content-Type, Accept";
         add_header Access-Control-Allow-Credentials "true";
