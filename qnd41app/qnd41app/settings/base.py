@@ -5,41 +5,18 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from the .env_local file.
+ENV_FILE_PATH = BASE_DIR / ".env_local"
+load_dotenv(dotenv_path=ENV_FILE_PATH)
 
-ENV_FILE_PATH = BASE_DIR / ".env_stage"
-load_dotenv(str(ENV_FILE_PATH))
-
-DJANGO_SECRET_KEY= os.environ.get('DJANGO_SECRET_KEY')
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-
-
-#Email setups
-EMAIL_HOST          = os.environ.get('EMAIL_HOST')
-EMAIL_PORT          =  os.environ.get('EMAIL_PORT')
-EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
-EMAIL_BACKEND       = os.environ.get('EMAIL_BACKEND')
-EMAIL_USE_TLS       = True
-EMAIL_USE_SSL       = False
-
+# Retrieve the Django secret key from environment variables.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-
-#DEBUG = str(os.environ.get('DEBUG')) == "1"
-#ENV_ALLOWED_HOST = os.environ.get("ENV_ALLOWED_HOST")
-ALLOWED_HOSTS = ['*']
-#if ENV_ALLOWED_HOST:
-#     ALLOWED_HOSTS = [ ENV_ALLOWED_HOST ]
+# Optionally, you can add a default value or raise an exception if SECRET_KEY is not set
+if SECRET_KEY is None:
+    raise ValueError("DJANGO_SECRET_KEY is not set in the environment variables.")
 
 
 
@@ -47,9 +24,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'usuarios',
+    #'usuarios',
     'baton',
-    'editorial_literaria',
+    #'editorial_literaria',
     #'account',
     #'courses',
     #'courses_exams',
@@ -92,11 +69,11 @@ INSTALLED_APPS = [
     'django_social_share',
    
     'taggit',
-    'proyectos',
-    'students',
-    'webapp_0',
-    'actividades_espacio_publico',
-    'streams',
+    #'proyectos',
+   # 'students',
+  #  'webapp_0',
+   # 'actividades_espacio_publico',
+  #  'streams',
     'widget_tweaks',
     'django_forms_bootstrap',
 
@@ -153,8 +130,8 @@ MIDDLEWARE = [
     #'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
-ROOT_URLCONF = 'qnd10app.urls'
-WAGTAILADMIN_BASE_URL ='app.smartquail.io'
+ROOT_URLCONF = 'qnd41app.urls'
+WAGTAILADMIN_BASE_URL ='www.smartquail.io'
 
 #WAGTAIL SETUPS
 WAGTAILSEARCH_BACKENDS = {
@@ -267,7 +244,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'qnd10app.wsgi.application'
+WSGI_APPLICATION = 'qnd41app.wsgi.application'
 
 WAGTAILADMIN_BASE_URL =  os.environ.get('DOMAINS')
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 5 * 1024 * 1024 * 1024  # 5 GB en bytes

@@ -5,7 +5,7 @@ neofetch --ascii qnode_art.txt --ascii_colors 2 222 3 2 2 -L, --logo && \
 #go get github.com/mailhog/mhsendmail && \
 #cp /root/go/bin/mhsendmail /usr/bin/mhsendmail && \
 #echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mailhog:1025' > /usr/local/etc/php/php.ini
-NODE_NAME="qnd10app"
+NODE_NAME="qnd41app"
 APP_PORT=${PORT:-9000}
 SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL:-"smartquail.info@gmail.com"}
 
@@ -19,7 +19,7 @@ python manage.py collectstatic --settings=$NODE_NAME.settings.stage --noinput
 #python django-admin makemessages --all
 #python django-admin compilemessages 
 
-uwsgi --socket :9000 --workers 9 --master --enable-threads --module $NODE_NAME.wsgi  --ini uwsgi_stage.ini --static-map /static=/qnd10app/qnd10app/qnd10app/static/
+uwsgi --socket :9000 --workers 9 --master --enable-threads --module $NODE_NAME.wsgi  --ini uwsgi_stage.ini --static-map /static=/qnd41app/qnd41app/qnd41app/static/
 
 #python manage.py listen_port25 --noinput
 

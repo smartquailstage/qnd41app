@@ -24,8 +24,8 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail import urls as wagtaildocs_urls
 from django.contrib.auth import views as auth_views
-from editorial_literaria.views import CourseListView
-from usuarios.views import user_login
+#from editorial_literaria.views import CourseListView
+#from usuarios.views import user_login
 
 urlpatterns = [
 
@@ -33,21 +33,21 @@ urlpatterns = [
     path('baton/', include('baton.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('rosetta/', include('rosetta.urls')),
-    path('QuitoCultura/', include('usuarios.urls', namespace='usuarios')),
-    path('editorial_literaria/', include('editorial_literaria.urls')),
-    path('proponer_actividades_espacio_publico/', include('actividades_espacio_publico.urls', namespace='actividades')),
-    path('proyectos/', include('proyectos.urls')),
-    path('convocatorias_disponibles/', CourseListView.as_view(), name='course_list'),
-    path('postularse/', include('students.urls')),
+   # path('QuitoCultura/', include('usuarios.urls', namespace='usuarios')),
+  #  path('editorial_literaria/', include('editorial_literaria.urls')),
+  #  path('proponer_actividades_espacio_publico/', include('actividades_espacio_publico.urls', namespace='actividades')),
+  #  path('proyectos/', include('proyectos.urls')),
+  #  path('convocatorias_disponibles/', CourseListView.as_view(), name='course_list'),
+  #  path('postularse/', include('students.urls')),
    # path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
-    path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+  #  path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+  #  path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+  #  path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     # reset password urls
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+  #  path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+  #  path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+  #  path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+ #   path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     re_path(r'^businessmedia/', include(wagtailadmin_urls),name='wagtail'),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'', include(wagtail_urls)),

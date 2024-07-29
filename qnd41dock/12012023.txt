@@ -2,7 +2,7 @@ Django
 #django>=3.2,<4.0
 django-baton==2.6.2
 #Wagtail
-wagtail==6.0.1
+wagtail==5.0.1
 
 django-social-share
 wagtailgmaps
@@ -52,7 +52,7 @@ djangorestframework
 django-debug-toolbar 
 django-seed 
 pymemcache
-
+psycopg
 boto3
 #System HOST
 PyOpenSSL

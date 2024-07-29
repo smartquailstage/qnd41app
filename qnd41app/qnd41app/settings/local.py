@@ -13,6 +13,32 @@ DATABASES = {
 }
 
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+
+
+#Email setups
+EMAIL_HOST          = os.environ.get('EMAIL_HOST')
+EMAIL_PORT          =  os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
+EMAIL_BACKEND       = os.environ.get('EMAIL_BACKEND')
+EMAIL_USE_TLS       = True
+EMAIL_USE_SSL       = False
+
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+
+#DEBUG = str(os.environ.get('DEBUG')) == "1"
+#ENV_ALLOWED_HOST = os.environ.get("ENV_ALLOWED_HOST")
+ALLOWED_HOSTS = ['*']
+#if ENV_ALLOWED_HOST:
+#     ALLOWED_HOSTS = [ ENV_ALLOWED_HOST ]
+
 
 BATON = {
     'SITE_HEADER': '<a href="#"><img src="/static/img/m2.png" height="26px"></a>',
