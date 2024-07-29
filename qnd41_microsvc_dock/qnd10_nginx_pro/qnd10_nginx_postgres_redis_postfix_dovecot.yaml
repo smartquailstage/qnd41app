@@ -51,7 +51,7 @@ services:
 
 
   nginx:
-    image: smartquail/qnd10_nginx:prod
+    image: smartquail/qnd41_nginx:prod
     restart: unless-stopped
     env_file:
       - .env
