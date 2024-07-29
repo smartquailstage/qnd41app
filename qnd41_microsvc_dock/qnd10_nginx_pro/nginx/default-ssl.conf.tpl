@@ -5,7 +5,7 @@ upstream django {
 
 server {
     listen         443 ssl;
-    server_name    www.${DOMAIN} 146.190.164.22  127.0.0.1;
+    server_name    ${DOMAIN} 146.190.164.22  127.0.0.1;
 
     ssl_certificate     /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
@@ -45,8 +45,8 @@ server {
     listen         443 ssl;
     server_name    www.${DOMAIN};
 
-    ssl_certificate     /etc/letsencrypt/live/quitocultura.${DOMAIN}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/quitocultura.${DOMAIN}/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/www.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.${DOMAIN}/privkey.pem;
 
     include     /etc/nginx/options-ssl-nginx.conf;
 
