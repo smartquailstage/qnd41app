@@ -6,7 +6,7 @@ upstream django {
 
 server {
     listen       ${LISTEN_PORT};
-    server_name  www.${DOMAIN} 164.90.153.177;
+    server_name  www.${DOMAIN} 146.190.164.22;
 
     location /.well-known/acme-challenge/ {
         root /vol/www/;
