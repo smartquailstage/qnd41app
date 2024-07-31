@@ -37,7 +37,7 @@ server {
 
     # Configuración para manejar solicitudes al backend de Django
     location / {
-        uwsgi_pass django;
+        uwsgi_pass qnd41app:9000;
         include /etc/nginx/uwsgi_params;
         client_max_body_size 1000M;
 
