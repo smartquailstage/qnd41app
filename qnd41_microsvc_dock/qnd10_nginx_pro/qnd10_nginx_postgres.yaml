@@ -51,7 +51,7 @@ services:
       - static-data-qnd10:/qnd10app/qnd10app/qnd10app/static
       - certbot-web_2:/vol/www
       - proxy-dhparams_2:/vol/proxy
-      - letsencrypt_certs:/etc/letsencrypt/
+      - letsencrypt_certs:/etc/letsencrypt/live/www.smartquail.io/
 
 
 volumes:
