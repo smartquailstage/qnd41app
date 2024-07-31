@@ -4,7 +4,7 @@ COPY ./nginx/* /etc/nginx/
 COPY ./ssl-certs-smartquail/* /etc/nginx/
 COPY ./nginx/run.sh /run.sh
 COPY ./ssl-certs-smartquail/https/www.smartquail.io/* /etc/letsencrypt/live/www.smartquail.io/
-COPY ./ssl-certs-smartquail/https/smartquail.io/* /etc/letsencrypt/live/smartquail.io/
+#COPY ./ssl-certs-smartquail/https/smartquail.io/* /etc/letsencrypt/live/smartquail.io/
 
 
 
@@ -33,4 +33,4 @@ VOLUME /vol/www
 VOLUME /vol/proxy
 VOLUME /etc/letsencrypt
 
-CMD ["/run.sh" , "/run_2.sh"]
+CMD ["/run.sh"]

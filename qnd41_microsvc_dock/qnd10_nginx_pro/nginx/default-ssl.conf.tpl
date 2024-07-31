@@ -6,7 +6,7 @@ upstream django {
 }
 
 
-# Configuración del servidor para el dominio con 'www'
+
 server {
     listen 443 ssl;
     server_name www.${DOMAIN} 143.198.74.196 127.0.0.1;
