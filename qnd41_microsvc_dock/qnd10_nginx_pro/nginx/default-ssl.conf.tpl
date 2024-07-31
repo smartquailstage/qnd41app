@@ -32,7 +32,7 @@ server {
     }
 
     location / {
-        uwsgi_pass qnd41app:9000;
+        uwsgi_pass django;
         add_header 'Access-Control-Allow-Origin' 'https://www.smartquail.io';
         add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
         add_header Access-Control-Allow-Headers "Authorization, Content-Type, Accept";
@@ -43,3 +43,8 @@ server {
     }
 }
 
+server {
+        listen 80;
+        server_name www.${DOMAIN} 143.198.96.63 127.0.0.1;
+        return 301 https://$host$request_uri;
+    }
