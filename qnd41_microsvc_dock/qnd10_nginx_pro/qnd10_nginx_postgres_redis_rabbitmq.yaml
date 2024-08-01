@@ -10,8 +10,6 @@ services:
       - .env
     depends_on:
       - smartquaildb
-    #  - redis
-    #  - "worker"
     expose:
       - 9000
     ports:
@@ -19,7 +17,6 @@ services:
     volumes:
       - static-data-qnd41:/qnd41app/qnd41app/staticfiles
       - static-data-qnd41:/qnd41app/qnd41app/media
-   # command: sh -c "chmod +x /scripts/migrations.sh && sh /scripts/migrations.sh && sh /scripts/run.sh"
     networks:
       - lansmartquail
 
@@ -32,13 +29,13 @@ services:
     ports:
       - "5432:5432"
     expose:
-     - 5432
+      - 5432
     volumes:
-      - smartquaildb_data-qnode41:/var/lib/postgresql/data/
+      - smartquaildb_data-qnd41:/var/lib/postgresql/data/
     networks:
       - lansmartquail
 
-   nginx:
+  nginx:
     image: smartquail/qnd41_nginx:prod
     restart: unless-stopped
     env_file:
@@ -48,14 +45,14 @@ services:
     depends_on:
       - qnd41app
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     volumes:
       - static-data-qnd41:/qnd41app/qnd41app/staticfiles
       - static-data-qnd41:/qnd41app/qnd41app/media
       - certbot-web_2:/vol/www
       - proxy-dhparams_2:/vol/proxy
-      - letsencrypt_certs:/etc/letsencrypt/
+      - letsencrypt_certs:/etc/letsencrypt
     networks:
       - lansmartquail
 
@@ -67,5 +64,5 @@ volumes:
   smartquaildb_data-qnd41:
 
 networks:
-   lansmartquail:
-       driver: bridge
+  lansmartquail:
+    driver: bridge
