@@ -10,7 +10,7 @@ upstream django {
 
 server {
     listen 443 ssl http2;
-    server_name www.${DOMAIN} 143.198.74.196 127.0.0.1;
+    server_name www.${DOMAIN} 64.23.178.103 127.0.0.1;
 
     ssl_certificate     /etc/letsencrypt/live/www.${DOMAIN}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/www.${DOMAIN}/privkey.pem;
