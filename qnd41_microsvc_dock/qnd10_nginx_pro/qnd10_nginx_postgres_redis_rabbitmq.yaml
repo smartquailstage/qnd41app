@@ -15,8 +15,8 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - static-data-qnd41:/qnd41app/qnd41app/staticfiles
-      - static-data-qnd41:/qnd41app/qnd41app/media
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/staticfiles
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/media
     networks:
       - lansmartquail
 
@@ -48,8 +48,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - static-data-qnd41:/qnd41app/qnd41app/staticfiles
-      - static-data-qnd41:/qnd41app/qnd41app/media
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/staticfiles
+      - static-data-qnd41:/qnd41app/qnd41app/qnd41app/media
       - certbot-web_2:/vol/www
       - proxy-dhparams_2:/vol/proxy
       - letsencrypt_certs:/etc/letsencrypt
