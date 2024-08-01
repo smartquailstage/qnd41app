@@ -6,9 +6,9 @@ from .base import *
 ENV_FILE_PATH = BASE_DIR / ".env_stage"
 load_dotenv(str(ENV_FILE_PATH))
 
-DEBUG="1"
+DEBUG=True
 
-ALLOWED_HOSTS = [os.environ.get("ENV_ALLOWED_HOST")]
+ALLOWED_HOSTS = ['ENV_ALLOWED_HOST']
 
 
 CSRF_COOKIE_DOMAIN=".www.smartquail.io"
