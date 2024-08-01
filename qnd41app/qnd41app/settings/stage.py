@@ -8,6 +8,8 @@ load_dotenv(str(ENV_FILE_PATH))
 
 DEBUG="1"
 
+ALLOWED_HOSTS = [os.environ.get("ENV_ALLOWED_HOST")]
+
 
 CSRF_COOKIE_DOMAIN=".www.smartquail.io"
 CSRF_COOKIE_SECURE = True
