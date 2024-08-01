@@ -13,12 +13,12 @@ server {
     }
 
     location /static {
-    alias /qnd41app/qnd41app/qnd41app/static;
+    alias /qnd41app/qnd41app/static;
     client_max_body_size    1000M;
      }
 
     location /media {
-    alias /qnd41app/qnd41app/qnd41app/media;
+    alias /qnd41app/qnd41app/media;
     client_max_body_size    1000M;
      }
 
