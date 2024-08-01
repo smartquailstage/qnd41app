@@ -8,7 +8,7 @@ load_dotenv(str(ENV_FILE_PATH))
 
 DEBUG=True
 
-ALLOWED_HOSTS = ['ENV_ALLOWED_HOST']
+ALLOWED_HOSTS = ['*']
 
 
 CSRF_COOKIE_DOMAIN=".www.smartquail.io"
