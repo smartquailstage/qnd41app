@@ -32,7 +32,7 @@ RUN apk add --no-cache openssl bash && \
     chmod 755 /qnd41app/qnd41app/qnd41app/static && \
     # Ajustar permisos de certificados
     chmod -R 600 /etc/letsencrypt/live && \
-    chmod -R 700 /etc/letsencrypt/ && \
+    chmod -R 700 /etc/letsencrypt && \
     chown -R nginx:nginx /etc/letsencrypt/live && \
     chown -R nginx:nginx /etc/letsencrypt
 
