@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'wagtailmedia',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'django.contrib.humanize',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
