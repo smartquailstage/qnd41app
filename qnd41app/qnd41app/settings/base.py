@@ -313,13 +313,25 @@ LANGUAGE_CODE = 'es-Ec'
 
 TIME_ZONE = 'America/Guayaquil'
 
+
+
+
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+    ('en', 'English'),
+    ('fr', 'French'),
+    ('es', 'Spanish'),
+]
+
+
+WAGTAIL_I18N_ENABLED = True
+
+
+
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
-WAGTAIL_I18N_ENABLED = True
 
 
 # Static files (CSS, JavaScript, Images)
