@@ -21,8 +21,8 @@ CORS_ALLOWED_ORIGINS = [
 
 BATON = {
     'SITE_HEADER': '<a href="#"><img src="/static/img/m2.png" height="26px"></a>',
-    'SITE_TITLE': '',
-    'INDEX_TITLE': 'Secretaría de Cultura- Distrito Metropolitano de Quito. ',
+    'SITE_TITLE': 'The Smartest IT Business Analytics',
+    'INDEX_TITLE': 'SmartBusinessAnalytics by SmartQuail',
     'SUPPORT_HREF': '#',
     'COPYRIGHT': '<a href="#"><img src="/static/img/m2.png" height="18px"></a>&nbsp;&nbsp; copyright © 2024', # noqa
     'POWERED_BY': '<a href="#"><img src="/static/img/logo_smartquailgray.png" height="13px"</a>',

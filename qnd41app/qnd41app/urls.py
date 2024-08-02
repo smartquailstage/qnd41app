@@ -34,6 +34,28 @@ urlpatterns = i18n_patterns(
     path('baton/', include('baton.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('rosetta/', include('rosetta.urls')),
+    
+    path('sblshop/', include('sblshop.urls', namespace='sblshop')),
+    path('sblcart/', include('sblcart.urls', namespace='sblcart')),
+    path('Sblorders/', include('sblorders.urls', namespace='sblorders')),
+  
+    #path('orders/', include('orders.urls', namespace='orders')),
+    #path('payment/', include('payment.urls', namespace='payment')),
+    path('shop/', include('shop.urls', namespace='shop')),
+    path('cart/', include('cart.urls', namespace='cart')),
+   
+
+    path('sbashop/', include('sbashop.urls', namespace='sbashop')),
+    path('sbacart/', include('sbacart.urls', namespace='sbacart')),
+    path('sbaorders/', include('sbaorders.urls', namespace='sbaorders')),
+
+    path('sbtshop/', include('sbtshop.urls', namespace='sbtshop')),
+    path('sbtcart/', include('sbtcart.urls', namespace='sbtcart')),
+    path('Sbtorders/', include('sbtorders.urls', namespace='sbtorders')),
+
+    path('sbmshop/', include('sbmshop.urls', namespace='sbmshop')),
+    path('sbmcart/', include('sbmcart.urls', namespace='sbmcart')),
+    path('Sbmorders/', include('sbmorders.urls', namespace='sbmorders')),
    # path('QuitoCultura/', include('usuarios.urls', namespace='usuarios')),
   #  path('editorial_literaria/', include('editorial_literaria.urls')),
   #  path('proponer_actividades_espacio_publico/', include('actividades_espacio_publico.urls', namespace='actividades')),

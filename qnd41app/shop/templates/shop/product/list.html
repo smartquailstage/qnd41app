@@ -1,0 +1,291 @@
+{% extends "shop/base.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% load static %}
+
+
+{% block title %}
+  {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+{% for product in products %}
+<style>
+ 
+  .blog-cover-bg {
+  background-image: url("{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}");
+}
+
+</style>
+{% endfor%}
+
+{% include 'shop/header.html' %}
+{% if category.slug in categories == 'smart-business-law' %}
+
+<section class="title-hero-bg blog-cover-bg" data-stellar-background-ratio="0.2">
+  <div class="container">
+    <div class="page-title text-center">
+      
+      {% for c in categories %}
+      
+      <img src="{% if c.logo %}{{ c.logo.url }}{% else %}{% endif %}">
+     
+      {% endfor %}
+     
+    
+      <h4 class="text-uppercase mt-30 white-color">Checkout Our Latest Posts</h4>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 section-heading">
+        <h2 class="text-uppercase wow fadeTop" data-wow-delay="0.1s">Scoda Agency</h2>
+        <h4 class="text-uppercase text-uppercase wow fadeTop" data-wow-delay="0.2s">- Tell a Bigger Story -</h4>
+        <div class="mt-30 wow fadeTop" data-wow-delay="0.3s">
+          <p>We are a fully in-house digital agency focusing on branding, marketing, web design and development with clients ranging from start-ups, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius quam ut magna ultricies pellentesque. </p>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-50">
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.1s">
+        <div class="pull-left"><i class="icofont icofont-light-bulb font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Brand Design</h5>
+          <p>Designing a good website that accommodates a lot of content is a tricky balancing act to pull off.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.2s">
+        <div class="pull-left"><i class="icofont icofont-rocket-alt-2 font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">App Development</h5>
+          <p>We build mobile apps for the conference, integrating unique content and branding to create.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.3s">
+        <div class="pull-left"><i class="icofont icofont-paint font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Digital Marketing</h5>
+          <p>Google has made this important since 1998 when it launched. Content became, and still is king since websites.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.4s">
+        <div class="pull-left"><i class="icofont icofont-lightning-ray font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Unique Ideas</h5>
+          <p>Designing a good website that accommodates a lot of content is a tricky balancing act to pull off.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.5s">
+        <div class="pull-left"><i class="icofont icofont-gears font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Easy Customization</h5>
+          <p>We build mobile apps for the conference, integrating unique content and branding to create.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.6s">
+        <div class="pull-left"><i class="icofont icofont-responsive font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Fully Responsive</h5>
+          <p>Google has made this important since 1998 when it launched. Content became, and still is king since websites.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 section-heading">
+        
+        <h2 class="text-uppercase">{{ category.name }}</h2>
+        <h4 class="text-uppercase source-font">- Choosase Youras Plan -</h4>
+       
+      </div>
+    </div>
+    
+    <div class="row mt-50">
+      {% if category %}{{ category.name }}{% else %}Products{% endif %}
+    {% for product in products %}
+      <div class="col-md-3 pricing-table col-sm-6">
+        <div class="pricing-box border-radius-25">
+         
+          <h4>{{ product.name }}</h4>
+          <h2><sup>$</sup><span>{{ product.price }}</span></h2>
+          <ul>
+            <li>{{ product.item1 }}</li>
+            <li>{{ product.item2 }}</li>
+            <li>{{ product.item3 }}</li>
+            <li>{{ product.item4 }}</li>
+          </ul>
+          <div class="pricing-box-bottom"> <a href="{{ product.get_absolute_url }}" class="btn btn-color btn-circle"><span>{% trans 'add a cart' %}</span></a> </div>      
+         
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+   
+  </div>
+</section>
+
+{% else %}
+
+{% endif %}
+
+
+{% if category.slug == 'smart-business-media' %}
+
+<section class="title-hero-bg blog-cover-bg" data-stellar-background-ratio="0.2">
+  <div class="container">
+    <div class="page-title text-center">
+      
+      {% for c in categories %}
+      
+      <img src="{% if c.logo %}{{ c.logo.url }}{% else %}{% endif %}">
+     
+      {% endfor %}
+     
+    
+      <h4 class="text-uppercase mt-30 white-color">Checkout Our Latest Posts</h4>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 section-heading">
+        <h2 class="text-uppercase wow fadeTop" data-wow-delay="0.1s">Scoda Agency</h2>
+        <h4 class="text-uppercase text-uppercase wow fadeTop" data-wow-delay="0.2s">- Tell a Bigger Story -</h4>
+        <div class="mt-30 wow fadeTop" data-wow-delay="0.3s">
+          <p>We are a fully in-house digital agency focusing on branding, marketing, web design and development with clients ranging from start-ups, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius quam ut magna ultricies pellentesque. </p>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-50">
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.1s">
+        <div class="pull-left"><i class="icofont icofont-light-bulb font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Brand Design</h5>
+          <p>Designing a good website that accommodates a lot of content is a tricky balancing act to pull off.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.2s">
+        <div class="pull-left"><i class="icofont icofont-rocket-alt-2 font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">App Development</h5>
+          <p>We build mobile apps for the conference, integrating unique content and branding to create.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.3s">
+        <div class="pull-left"><i class="icofont icofont-paint font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Digital Marketing</h5>
+          <p>Google has made this important since 1998 when it launched. Content became, and still is king since websites.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.4s">
+        <div class="pull-left"><i class="icofont icofont-lightning-ray font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Unique Ideas</h5>
+          <p>Designing a good website that accommodates a lot of content is a tricky balancing act to pull off.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.5s">
+        <div class="pull-left"><i class="icofont icofont-gears font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Easy Customization</h5>
+          <p>We build mobile apps for the conference, integrating unique content and branding to create.</p>
+        </div>
+      </div>
+      <div class="col-md-4 feature-box text-left mb-50 col-sm-6 wow fadeTop" data-wow-delay="0.6s">
+        <div class="pull-left"><i class="icofont icofont-responsive font-50px default-icon"></i></div>
+        <div class="pull-right">
+          <h5 class="mt-0 upper-case">Fully Responsive</h5>
+          <p>Google has made this important since 1998 when it launched. Content became, and still is king since websites.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 section-heading">
+        
+        <h2 class="text-uppercase">{{ category.name }}</h2>
+        <h4 class="text-uppercase source-font">- Choosase Youras Plan -</h4>
+       
+      </div>
+    </div>
+    
+    <div class="row mt-50">
+      {% if category %}{{ category.name }}{% else %}Products{% endif %}
+    {% for product in products %}
+      <div class="col-md-3 pricing-table col-sm-6">
+        <div class="pricing-box border-radius-25">
+         
+          <h4>{{ product.name }}</h4>
+          <h2><sup>$</sup><span>{{ product.price }}</span></h2>
+          <ul>
+            <li>{{ product.item1 }}</li>
+            <li>{{ product.item2 }}</li>
+            <li>{{ product.item3 }}</li>
+            <li>{{ product.item4 }}</li>
+          </ul>
+          <div class="pricing-box-bottom"> <a href="{{ product.get_absolute_url }}" class="btn btn-color btn-circle"><span>{% trans 'add a cart' %}</span></a> </div>      
+         
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+   
+  </div>
+</section>
+
+{% else %}
+
+{% endif %}
+
+<section class="widget-btns many-btns">
+  {% for c in categories %}
+  <div class="row mt-50">
+      <div class="col-md-4 col-sm-4 col-lg-2" {% if category.slug == c.slug %}class="selected"{% endif %}> <a href="{{ c.get_absolute_url }}" class="btn btn-red btn-circle">{{ c.name }}</a> </div>       
+  {% endfor %}
+  </section>
+
+  <div id="sidebar">
+    <h3>Categories</h3>
+    <ul>
+      <li {% if not category %}class="selected"{% endif %}>
+        <a href="{% url "shop:product_list" %}">All</a>
+      </li>
+      {% for c in categories %}
+        <li {% if category.slug == c.smartbusinessmedia %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="main" class="product-list">
+    <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+    {% for product in products %}
+      <div class="item">
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        </a>
+        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+        ${{ product.price }}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
