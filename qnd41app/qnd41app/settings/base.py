@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #'django_comments',
     #Wagtail Inicials
     'core',
+     'webapp',
     #'wagtail',
     'wagtail',
     'wagtailmedia',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.search',
+    #'wagtail.contrib.settings',
     
     'wagtail.admin',
    # 'wagtail.core',
@@ -66,6 +68,7 @@ INSTALLED_APPS = [
     #'wagtailfontawesome',
     'wagtailgmaps',
     'wagtailmenus',
+    'wagtail.contrib.modeladmin',
     'django_social_share',
    
     'taggit',
@@ -99,7 +102,7 @@ INSTALLED_APPS = [
     'qr_code',
     'storages',
     #'actions',
-       
+   
     #'memcache_status',
     'rest_framework',
     'ckeditor',
@@ -107,6 +110,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
      "bootstrap4",
     "bootstrap_datepicker_plus",
+    
     'baton.autodiscover',
    
 ]
@@ -131,7 +135,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'qnd41app.urls'
-WAGTAILADMIN_BASE_URL ='www.smartquail.io'
+
 
 #WAGTAIL SETUPS
 WAGTAILSEARCH_BACKENDS = {
@@ -229,7 +233,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SEC
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [(os.path.join(BASE_DIR, 'templates')),],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -246,7 +250,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'qnd41app.wsgi.application'
 
-WAGTAILADMIN_BASE_URL =  os.environ.get('DOMAINS')
+WAGTAIL_ADMIN_BASE_URL =  os.environ.get('DOMAINS')
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 5 * 1024 * 1024 * 1024  # 5 GB en bytes
 WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 
