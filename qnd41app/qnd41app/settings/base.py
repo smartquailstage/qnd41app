@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.search',
+    'wagtail.locales',
     #'wagtail.contrib.settings',
     
     'wagtail.admin',
@@ -125,6 +126,7 @@ MIDDLEWARE = [
     #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -243,6 +245,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'wagtailmenus.context_processors.wagtailmenus',
                 'wagtail.contrib.settings.context_processors.settings',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -300,6 +303,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+WAGTAIL_I18N_ENABLED = True
 
 
 # Static files (CSS, JavaScript, Images)

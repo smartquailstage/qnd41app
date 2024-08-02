@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-01 21:21-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: core/templates/admin/login.html:23
+msgid "Please correct the error below."
+msgstr ""
+
+#: core/templates/admin/login.html:23
+msgid "Please correct the errors below."
+msgstr ""
+
+#: core/templates/admin/login.html:39
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: core/templates/admin/login.html:59
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: core/templates/admin/login.html:63
+msgid "Log in"
+msgstr ""
+
+#: core/templates/baton/admin/base_site.html:5
+msgid "Django site admin"
+msgstr ""
+
+#: core/templates/baton/admin/base_site.html:23
+msgid "Django administration"
+msgstr ""
+
+#: core/templates/baton/admin/filer/folder/directory_listing.html:4
+msgid "Folders"
+msgstr ""
+
+#: core/templates/baton/admin/filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: webapp/templates/webapp/aboutus.html:34
+msgid "About of SmartQuail"
+msgstr ""
+
+#: webapp/templates/webapp/aboutus.html:46
+#: webapp/templates/webapp/home/OurTeam_section.html:19
+msgid "Meet Our Team"
+msgstr ""
+
+#: webapp/templates/webapp/aboutus.html:47
+msgid "We Are Proud of them"
+msgstr ""
+
+#: webapp/templates/webapp/article_detail_page.html:62
+msgid "We Social:"
+msgstr ""
+
+#: webapp/templates/webapp/article_detail_page.html:93
+msgid "Post a comment"
+msgstr ""
+
+#: webapp/templates/webapp/article_detail_page.html:148
+msgid "About the author"
+msgstr ""
+
+#: webapp/templates/webapp/article_detail_page_landing.html:35
+#: webapp/templates/webapp/jobdetailopening_landing.html:35
+#: webapp/templates/webapp/resume_landing.html:35
+msgid "Be Smart, be a SmartQuail!"
+msgstr ""
+
+#: webapp/templates/webapp/article_listing_page.html:30
+msgid "Latest Aticles"
+msgstr ""
+
+#: webapp/templates/webapp/article_listing_page.html:47
+msgid "Read More"
+msgstr ""
+
+#: webapp/templates/webapp/createitbusiness/slider_section.html:13
+msgid "Choose your business project"
+msgstr ""
+
+#: webapp/templates/webapp/home/OurTeam_section.html:20
+msgid "We Are Stronger in IT Business"
+msgstr ""
+
+#: webapp/templates/webapp/home/callacction_section.html:20
+#: webapp/templates/webapp/home/footer_section.html:43
+#: webapp/templates/webapp/home/slider_section.html:78
+#: webapp/templates/webapp/home/slider_section.html:95
+msgid "Contact Us"
+msgstr ""
+
+#: webapp/templates/webapp/home/callout.html:12
+msgid "IT Solutions"
+msgstr ""
+
+#: webapp/templates/webapp/home/callout.html:22
+msgid "We improve you business"
+msgstr ""
+
+#: webapp/templates/webapp/home/callout.html:32
+msgid "IT Business Analytics"
+msgstr ""
+
+#: webapp/templates/webapp/home/callout.html:34
+#: webapp/templates/webapp/home/callout.html:38
+#: webapp/templates/webapp/home/callout.html:42
+#: webapp/templates/webapp/home/slider_section.html:25
+msgid "Learn more"
+msgstr ""
+
+#: webapp/templates/webapp/home/callout.html:37
+msgid "IT cloud Business DevOps"
+msgstr ""
+
+#: webapp/templates/webapp/home/callout.html:41
+msgid " IT Business Media envelopment"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:94
+msgid "Ingresar a su negocio  IT"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:95
+msgid "Ingresa ahora, Y obtenga reportes"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:96
+msgid "de su negocio IT en tiempo real."
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:102
+msgid "Registre su  negocio IT"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:103
+msgid "Registre ahora tu proyecto,"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:105
+msgid "Y descuentos y noticias relacionadas"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:106
+msgid " a tecnologias de información y"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:107
+msgid "comunicacion en la nube"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:131
+msgid "Products"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:177
+msgid "Solutions"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:215
+msgid "Training & Jobs"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:242
+msgid "Resources"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:288
+msgid "Partners"
+msgstr ""
+
+#: webapp/templates/webapp/home/header.html:315
+msgid "About"
+msgstr ""
+
+#: webapp/templates/webapp/home/slider_section.html:43
+msgid "Create your IT BusinessMedia"
+msgstr ""
+
+#: webapp/templates/webapp/home/slider_section.html:61
+msgid "Create your IT BusinessAnalytics"
+msgstr ""
+
+#: webapp/templates/webapp/home/slider_section.html:112
+msgid "Register, Now!"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:46
+msgid "Author Name"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:72
+msgid "Sci-Tech Exp"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:72
+msgid "years"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:73
+msgid "Updated"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:131
+msgid "Start a Project"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:164 webapp/templates/webapp/info.html:170
+#: webapp/templates/webapp/info.html:176 webapp/templates/webapp/info.html:182
+msgid "Learn More"
+msgstr ""
+
+#: webapp/templates/webapp/info.html:199
+msgid "Become Now! your business, a Smart IT Cloud Business "
+msgstr ""
+
+#: webapp/templates/webapp/info.html:200
+msgid "Lets create your Smart IT Cloud Business, together."
+msgstr ""
+
+#: webapp/templates/webapp/info.html:212
+msgid "Register Now, and create  your IT Cloud Business"
+msgstr ""
+
+#: webapp/templates/webapp/jobdetailopening.html:27
+msgid "Complete this form, for apply the job oportunity "
+msgstr ""
+
+#: webapp/templates/webapp/jobdetailopening.html:69
+msgid "Submit your aplication"
+msgstr ""
+
+#: webapp/templates/webapp/joblistingopening.html:36
+msgid "Apply Now"
+msgstr ""
+
+#: webapp/templates/webapp/joblistingopening.html:42
+msgid "Benefits"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/banner.html:21
+msgid "Order now"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:13
+msgid "Business Media Envelopment"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:22
+msgid "Business Story Telling"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:23
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:30
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:37
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:49
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:56
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:63
+msgid "See more"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:29
+msgid "SEM Strategy"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:36
+msgid "SEO Strategy"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:48
+msgid "Community Manager (RRSS)"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:55
+msgid "Web3.0 Development"
+msgstr ""
+
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:62
+msgid "Media Analytics"
+msgstr ""
+
+#: webapp/templates/webapp/resourceslisting.html:27
+msgid "Technologies Resources for Business"
+msgstr ""
+
+#: webapp/templates/webapp/resume.html:27
+msgid "View Resume"
+msgstr ""
+
+#: webapp/templates/webapp/resume.html:40
+msgid "Porfolio"
+msgstr ""
+
+#: webapp/templates/webapp/resume.html:93
+msgid "My Resume"
+msgstr ""
+
+#: webapp/templates/webapp/resume.html:118
+msgid "Education"
+msgstr ""
+
+#: webapp/templates/webapp/resume.html:143
+msgid "Contact Me"
+msgstr ""

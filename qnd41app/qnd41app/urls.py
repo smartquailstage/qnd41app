@@ -27,7 +27,8 @@ from django.contrib.auth import views as auth_views
 #from editorial_literaria.views import CourseListView
 #from usuarios.views import user_login
 
-urlpatterns = [
+
+urlpatterns = i18n_patterns(
 
     path('analytics/', admin.site.urls),
     path('baton/', include('baton.urls')),
@@ -52,7 +53,9 @@ urlpatterns = [
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'', include(wagtail_urls)),
 
-  ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+  )  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
