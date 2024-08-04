@@ -5948,6 +5948,11 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ec9e";
 }
 
+.icofont-multilingual:before
+{
+  content: "\13b6f";
+}
+
 .icofont-music-alt:before
 {
   content: "\ec9f";
