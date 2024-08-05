@@ -36,18 +36,24 @@
       <!--=== Start Atribute Navigation ===-->
       <div class="attr-nav">
         <ul>
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="icofont icofont-world"></i>  </a>
+          <li class="dropdown"> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" > 
+             
+            {% for language_code, language_name in LANGUAGES %}
+            {% get_language_info for language_code as lang %}
+          {% if language_code == LANGUAGE_CODE %}  <!-- Reemplaza LANGUAGE_CODE con la variable que contiene el idioma activo -->
+          <p> {{ lang.code }}</p>
+        {% endif %} 
+      {% endfor %} </a>
             <ul class="dropdown-menu cart-list">
               <li>
                 {% for language_code, language_name in LANGUAGES %}
-                {% get_language_info for language_code as lang %}
-                {% language language_code %}
-                <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
-                 <h5> {{ lang.name_local }}</h5>
-                 </a>
-                 {% endlanguage %}
-                 {% endfor %}
-              </li>
+                    {% get_language_info for language_code as lang %}
+                    <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
+                        <p>{{ lang.name_local }}</p>
+                    </a>
+                {% endfor %}
+            </li>
             </ul>
           </li>
 
