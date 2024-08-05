@@ -33,59 +33,28 @@
   ===-->
 
     <div class="container">
-      <!--=== Start Atribute Navigation ===-->
+      {% for language_code, language_name in LANGUAGES %}
+      {% get_language_info for language_code as lang %}
+      {% if language_code == LANGUAGE_CODE %}
       <div class="attr-nav">
         <ul>
-          {% for language_code, language_name in LANGUAGES %}
-          {% get_language_info for language_code as lang %}
-          {% if language_code == LANGUAGE_CODE %} 
           <li class="dropdown"> 
-           
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-               
-          <p> {{ lang.code }}</p>
-          
-         </a>
-        
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >  {{ lang.code }}</a>
             <ul class="dropdown-menu cart-list">
               <li>
                 {% for language_code, language_name in LANGUAGES %}
                     {% get_language_info for language_code as lang %}
                     <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
-                        <p>{{ lang.name_local }}</p>
+                        {{ lang.name_local }}
                     </a>
                 {% endfor %}
             </li>
             </ul>
           </li>
-          {% endif %}
-          {% endfor %}
-
-         
- 
-
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <i class="icofont icofont-ui-user"></i>  </a>
-            <ul class="dropdown-menu cart-list">
-              <li>
-                
-                <a href="https://api.whatsapp.com/send?phone=593963521262" target="_blank" rel="alternate" hreflang="#">
-                 <h5 ><i class="icofont icofont-login"></i> {% trans 'Ingresar' %}</h5>
-                 </a>
-              </li>
-              <li>
-                
-                <a href="#" rel="alternate" hreflang="#">
-                  <h5 ><i class="icofont icofont-users"></i> {% trans 'Registrarse' %}</h5>
-                 </a>
-              </li>
-            </ul>
-          </li>
-          
-   
-
         </ul>
-    
       </div>
+      {% endif %}
+          {% endfor %}
       <!--=== End Atribute Navigation ===-->
 
       <!--=== Start Header Navigation ===-->
