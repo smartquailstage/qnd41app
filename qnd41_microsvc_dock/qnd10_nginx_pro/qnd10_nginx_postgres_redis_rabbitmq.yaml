@@ -87,6 +87,8 @@ services:
       - postfix-spools:/var/spool/postfix
       - postfix-mail:/var/mail
       - postfix-logs:/var/log
+    networks:
+      - lansmartquail
 
   dovecot:
     image: smartquail/qnd10dovecot:prod
@@ -107,6 +109,8 @@ services:
       - DOVECOT_PASSWORD=ms95355672
     depends_on:
       - postfix
+    networks:
+      - lansmartquail
 
 volumes:
   certbot-web_2:
