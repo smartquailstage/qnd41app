@@ -265,10 +265,6 @@ li.close-full-menu{
 }
 
 
-.attr-nav > ul > li > a > p{
-    color: #ffffff;
-    font-size: 15px;
-}
 
 .attr-nav > ul > li > a span.badge{
     position: absolute;
