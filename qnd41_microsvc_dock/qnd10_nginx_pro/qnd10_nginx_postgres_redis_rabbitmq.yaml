@@ -58,6 +58,36 @@ services:
     networks:
       - lansmartquail
 
+  
+  postfix:
+    image: smartquail/qnd10postfix:prod
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - smartquaildb
+    environment:
+      - inet_interfaces= all
+      - smtp_bind_address=0.0.0.0
+      - smtpd_tls_cert_file=/etc/ssl/certs/fullchain.pem
+      - smtpd_tls_key_file=/etc/ssl/private/privkey.pem
+      - smtpd_sasl_auth_enable=yes
+      - debug_peer_list=127.0.0.1
+      - debug_peer_level=2
+      - TRANSPORT_MAPS=/etc/postfix/transport.pcre
+      - PRIVATE_TRANSPORT=/var/spool/postfix/private/transport
+      - smtp_dns_resolver_options=inet_protocols = all
+      - inet_protocols=all
+      - smtp_host_lookup=dns
+    expose:
+      - "25"
+    ports:
+      - "25:25"
+    volumes:
+      - postfix-spools:/var/spool/postfix
+      - postfix-mail:/var/mail
+      - postfix-logs:/var/log
+
 volumes:
   certbot-web_2:
   proxy-dhparams_2:
