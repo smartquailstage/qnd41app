@@ -29,7 +29,7 @@ relayhost = [smtp.mail.smartquail.io]:587
 # Restrictions
 ###############
 
-smtpd_scache_type = hash
+
 
 # Delay all rejects until all information can be logged
 smtpd_delay_reject = no

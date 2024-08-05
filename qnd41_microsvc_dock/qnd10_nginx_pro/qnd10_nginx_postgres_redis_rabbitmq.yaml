@@ -88,6 +88,24 @@ services:
       - postfix-mail:/var/mail
       - postfix-logs:/var/log
 
+  dovecot:
+    image: smartquail/qnd10dovecot:prod
+    container_name: dovecot
+    restart: always
+    volumes:
+      - dovecot:/etc/dovecot
+      - mail:/var/mail
+    ports:
+      - "143:143"   # IMAP
+      - "110:110"   # POP3
+      - "993:993"   # IMAPS (secure IMAP)
+      - "995:995"   # POP3S (secure POP3)
+    environment:
+      - DOVECOT_USER=info
+      - DOVECOT_PASSWORD=ms95355672
+    depends_on:
+      - postfix
+
 volumes:
   certbot-web_2:
   proxy-dhparams_2:
@@ -97,6 +115,8 @@ volumes:
   postfix-spools:
   postfix-mail:
   postfix-logs:
+  dovecot:
+  mail:
 
 networks:
   lansmartquail:
