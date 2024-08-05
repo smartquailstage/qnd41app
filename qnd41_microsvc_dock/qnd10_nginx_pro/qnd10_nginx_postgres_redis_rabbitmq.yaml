@@ -94,6 +94,9 @@ volumes:
   letsencrypt_certs:
   static-data-qnd41:
   smartquaildb_data-qnd41:
+  postfix-spools:
+  postfix-mail:
+  postfix-logs:
 
 networks:
   lansmartquail:
