@@ -136,6 +136,8 @@ volumes:
   postfix-spools:
   postfix-mail:
   postfix-logs:
+  dovecot:
+  mail:
 
 
 networks:
