@@ -90,27 +90,7 @@ services:
     networks:
       - lansmartquail
 
-  dovecot:
-    image: smartquail/qnd10dovecot:prod
-    container_name: dovecot
-    restart: always
-    depends_on:
-      - smartquaildb
-    volumes:
-      - dovecot:/etc/dovecot
-      - mail:/var/mail
-    ports:
-      - "143:143"   # IMAP
-      - "110:110"   # POP3
-      - "993:993"   # IMAPS (secure IMAP)
-      - "995:995"   # POP3S (secure POP3)
-    environment:
-      - DOVECOT_USER=info
-      - DOVECOT_PASSWORD=ms95355672
-    depends_on:
-      - postfix
-    networks:
-      - lansmartquail
+
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -136,8 +116,7 @@ volumes:
   postfix-spools:
   postfix-mail:
   postfix-logs:
-  dovecot:
-  mail:
+
 
 networks:
   lansmartquail:
