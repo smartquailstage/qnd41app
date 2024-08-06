@@ -88,14 +88,26 @@ smtpd_tls_ciphers = high
 # SASL Settings
 ###############
 
+# Habilitar la autenticación SASL en Postfix
 smtpd_sasl_auth_enable = yes
+
+# Especificar el tipo de SASL
 smtpd_sasl_type = dovecot
-smtpd_sasl_path = smtpd
+
+# Configurar el socket de Dovecot para SASL
+smtpd_sasl_path = private/auth
+
+# Habilitar el encabezado de autenticación en los correos
 smtpd_sasl_authenticated_header = yes
+
+# Configuración de seguridad para SASL
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_tls_security_options = noanonymous
+
+# Dominio local para SASL (opcional)
 smtpd_sasl_local_domain = $myhostname
 
+# Opcional: Permitir clientes de SASL rotos
 broken_sasl_auth_clients = yes
 
 ###############

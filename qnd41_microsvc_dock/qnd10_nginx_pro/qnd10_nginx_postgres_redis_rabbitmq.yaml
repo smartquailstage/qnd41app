@@ -91,7 +91,7 @@ services:
       - lansmartquail
 
   dovecot:
-    image: smartquail/qnd10dovecot:prod
+    image: dovecot/dovecot
     container_name: dovecot
     restart: always
     volumes:
