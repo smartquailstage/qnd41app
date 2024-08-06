@@ -38,13 +38,13 @@ RUN apt-get update && \
 # Crea los grupos y usuarios necesarios
 RUN groupadd -g 1000 vmail && \
     useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
-    passwd -l vmail && \
+    passwd -l vmail 
 
 
 # Configura los directorios y permisos
 RUN rm -rf /etc/dovecot && \
     mkdir -p /srv/mail && \
-    chown vmail:vmail /srv/mail && \
+    chown vmail:vmail /srv/mail 
 
 
 # Define el punto de entrada para el contenedor
