@@ -13,7 +13,7 @@ message_size_limit = {{ MESSAGE_SIZE_LIMIT }}
 # Relayed networks
 mynetworks = 127.0.0.1/32 [::1]/128 {{ RELAYNETS }}
 
-
+# Transport maps using PCRE
 transport_maps = pcre:/etc/postfix/transport.pcre
 
 # Empty alias list to override the configuration variable and disable NIS
@@ -29,10 +29,8 @@ relayhost = [smtp.mail.smartquail.io]:587
 # Restrictions
 ###############
 
-
-
 # Delay all rejects until all information can be logged
-smtpd_delay_reject = no
+smtpd_delay_reject = yes
 append_dot_mydomain = no
 
 # Allowed senders are: the user or one of the alias destinations
@@ -90,10 +88,6 @@ smtpd_tls_ciphers = high
 # SASL Settings
 ###############
 
-
-
-
-
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
@@ -103,10 +97,6 @@ smtpd_sasl_tls_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
 
 broken_sasl_auth_clients = yes
-smtpd_sasl_auth_enable = yes
-#smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,reject_unauth_destination
-
-
 
 ###############
 # Extra Settings
