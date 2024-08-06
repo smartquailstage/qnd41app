@@ -6,45 +6,41 @@ ENV container=docker \
     LC_ALL=C
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Copiar el archivo de clave pública y el archivo de lista de repositorios
-COPY dovecot.gpg /etc/apt/trusted.gpg.d/
-COPY dovecot.list /etc/apt/sources.list.d/
+ADD dovecot.gpg /etc/apt/trusted.gpg.d
+ADD dovecot.list /etc/apt/sources.list.d
 
-# Actualizar la lista de paquetes e instalar los necesarios
-RUN apt-get update && apt-get install -y \
-    tini \
-    dovecot-core \
-    dovecot-gssapi \
-    dovecot-imapd \
-    dovecot-ldap \
-    dovecot-lmtpd \
-    dovecot-lua \
-    dovecot-managesieved \
-    dovecot-mysql \
-    dovecot-pgsql \
-    dovecot-pop3d \
-    dovecot-sieve \
-    dovecot-solr \
-    dovecot-sqlite \
-    dovecot-submissiond \
-    ca-certificates \
-    ssl-cert && \
-    rm -rf /var/lib/apt/lists/* && \  # Corregido: * para eliminar todo el cache
-    groupadd -g 1000 vmail && \
-    useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
-    passwd -l vmail && \
-    rm -rf /etc/dovecot && \  # Asegúrate de que este directorio no sea necesario
-    mkdir -p /srv/mail && \
-    chown vmail:vmail /srv/mail && \
-    mkdir -p /etc/dovecot && \  # Asegúrate de crear el directorio antes de usarlo
-    make-ssl-cert generate-default-snakeoil && \
-    ln -sf /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
-    ln -sf /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem
+RUN apt-get -y update && apt-get -y install \
+  tini \
+  dovecot-core \
+  dovecot-gssapi \
+  dovecot-imapd \
+  dovecot-ldap \
+  dovecot-lmtpd \
+  dovecot-lua \
+  dovecot-managesieved \
+  dovecot-mysql \
+  dovecot-pgsql \
+  dovecot-pop3d \
+  dovecot-sieve \
+  dovecot-solr \
+  dovecot-sqlite \
+  dovecot-submissiond \
+  ca-certificates \
+  ssl-cert && \
+  rm -rf /var/lib/apt/lists && \
+  groupadd -g 1000 vmail && \
+  useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
+  passwd -l vmail && \
+  rm -rf /etc/dovecot && \
+  mkdir /srv/mail && \
+  chown vmail:vmail /srv/mail && \
+  make-ssl-cert generate-default-snakeoil && \
+  mkdir /etc/dovecot && \
+  ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
+  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem
 
-# Copiar el archivo de configuración de Dovecot
-COPY dovecot.conf /etc/dovecot/dovecot.conf
+ADD dovecot.conf /etc/dovecot/dovecot.conf
 
 VOLUME ["/etc/dovecot", "/srv/mail"]
-
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/usr/sbin/dovecot", "-F"]
