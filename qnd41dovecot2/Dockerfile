@@ -41,10 +41,9 @@ RUN apt-get -y update && apt-get -y install \
   make-ssl-cert generate-default-snakeoil && \
   mkdir /etc/dovecot && \
   ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
-  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem && \
+  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem 
   
-RUN mkdir -p /var/spool/postfix/private && \
-    chown postfix:postfix /var/spool/postfix/private
+
 
 ADD dovecot.conf /etc/dovecot/dovecot.conf
 
