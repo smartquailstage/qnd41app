@@ -1,53 +1,46 @@
-FROM debian:11-slim
+FROM debian:11
 
-# Copia los archivos necesarios
-COPY dovecot.gpg /etc/apt/keyrings/dovecot.gpg
-COPY dovecot.list /etc/apt/sources.list.d/dovecot.list
-COPY mail.smartquail.io/certs/fullchain.pem /etc/dovecot/fullchain.pem
-COPY mail.smartquail.io/private/privkey.pem /etc/dovecot/privkey.pem
-COPY dovecot.conf /etc/dovecot/dovecot.conf 
+LABEL org.opencontainers.image.authors="dovecot@dovecot.org"
 
-# Ajusta los permisos de los archivos de certificados
-RUN chmod 600 /etc/dovecot/fullchain.pem /etc/dovecot/privkey.pem
+ENV container=docker \
+    LC_ALL=C
+ARG DEBIAN_FRONTEND=noninteractive
 
-# Actualiza el sistema e instala los paquetes necesarios
-RUN apt-get update && \
-    apt-get install -y \
-        tini \
-        dovecot-core \
-        dovecot-gssapi \
-        dovecot-imapd \
-        dovecot-ldap \
-        dovecot-lmtpd \
-        dovecot-lua \
-        dovecot-managesieved \
-        dovecot-mysql \
-        dovecot-pgsql \
-        dovecot-pop3d \
-        dovecot-sieve \
-        dovecot-solr \
-        dovecot-sqlite \
-        dovecot-submissiond \
-        ca-certificates \
-        ssl-cert \
-        postfix \
-        postfix-ldap \
-        postfix-pgsql && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+COPY dovecot.gpg /etc/apt/trusted.gpg.d
+COPY dovecot.list /etc/apt/sources.list.d
 
-# Crea los grupos y usuarios necesarios
-RUN groupadd -g 1000 vmail && \
-    useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
-    passwd -l vmail 
+RUN apt-get -y update && apt-get -y install \
+  tini \
+  dovecot-core \
+  dovecot-gssapi \
+  dovecot-imapd \
+  dovecot-ldap \
+  dovecot-lmtpd \
+  dovecot-lua \
+  dovecot-managesieved \
+  dovecot-mysql \
+  dovecot-pgsql \
+  dovecot-pop3d \
+  dovecot-sieve \
+  dovecot-solr \
+  dovecot-sqlite \
+  dovecot-submissiond \
+  ca-certificates \
+  ssl-cert && \
+  rm -rf /var/lib/apt/lists && \
+  groupadd -g 1000 vmail && \
+  useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
+  passwd -l vmail && \
+  rm -rf /etc/dovecot && \
+  mkdir /srv/mail && \
+  chown vmail:vmail /srv/mail && \
+  make-ssl-cert generate-default-snakeoil && \
+  mkdir /etc/dovecot && \
+  ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
+  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem
 
+COPY dovecot.conf /etc/dovecot/dovecot.conf
 
-# Configura los directorios y permisos
-RUN rm -rf /etc/dovecot && \
-    mkdir -p /srv/mail && \
-    chown vmail:vmail /srv/mail 
-
-
-# Define el punto de entrada para el contenedor
+VOLUME ["/etc/dovecot", "/srv/mail"]
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["dovecot"]
+CMD ["/usr/sbin/dovecot", "-F"]
