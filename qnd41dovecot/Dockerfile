@@ -39,16 +39,13 @@ RUN apt-get update && \
 RUN groupadd -g 1000 vmail && \
     useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
     passwd -l vmail && \
-    groupadd -g 1001 postfix && \
-    useradd -u 1001 -g 1001 postfix -d /var/spool/postfix && \
-    passwd -l postfix
+
 
 # Configura los directorios y permisos
 RUN rm -rf /etc/dovecot && \
     mkdir -p /srv/mail && \
     chown vmail:vmail /srv/mail && \
-    mkdir -p /var/spool/postfix && \
-    chown postfix:postfix /var/spool/postfix
+
 
 # Define el punto de entrada para el contenedor
 ENTRYPOINT ["/usr/bin/tini", "--"]
