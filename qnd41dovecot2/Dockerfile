@@ -57,5 +57,5 @@ EXPOSE 993
 EXPOSE 4190
 
 VOLUME ["/etc/dovecot", "/srv/mail"]
-ENTRYPOINT ["/usr/bin/tini", "--", "run.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/usr/sbin/dovecot", "-F"]
