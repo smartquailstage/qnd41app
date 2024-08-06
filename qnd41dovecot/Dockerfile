@@ -5,6 +5,7 @@ COPY dovecot.gpg /etc/apt/keyrings/dovecot.gpg
 COPY dovecot.list /etc/apt/sources.list.d/dovecot.list
 COPY mail.smartquail.io/certs/fullchain.pem /etc/dovecot/fullchain.pem
 COPY mail.smartquail.io/private/privkey.pem /etc/dovecot/privkey.pem
+COPY dovecot.conf /etc/dovecot/dovecot.conf 
 
 # Ajusta los permisos de los archivos de certificados
 RUN chmod 600 /etc/dovecot/fullchain.pem /etc/dovecot/privkey.pem
