@@ -36,18 +36,30 @@ RUN apt-get -y update && apt-get -y install \
     dovecot-sqlite \
     dovecot-submissiond \
     ca-certificates \
-    ssl-cert && \
+    ssl-cert \
+    postfix \
+    postfix-ldap \
+    postfix-pgsql && \
     rm -rf /var/lib/apt/lists && \
     groupadd -g 1000 vmail && \
     useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
     passwd -l vmail && \
+    groupadd -g 1001 postfix && \
+    useradd -u 1001 -g 1001 postfix -d /var/spool/postfix && \
+    passwd -l postfix && \
     rm -rf /etc/dovecot && \
-    mkdir /srv/mail && \
-    chown vmail:vmail /srv/mail 
+    mkdir -p /srv/mail && \
+    chown vmail:vmail /srv/mail && \
+    mkdir -p /var/spool/postfix && \
+    chown postfix:postfix /var/spool/postfix
 
 # Añadir los archivos de configuración de Dovecot
 ADD dovecot.conf /etc/dovecot/dovecot.conf
 ADD dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
+
+# Añadir los archivos de configuración de Postfix
+ADD postfix/main.cf /etc/postfix/main.cf
+ADD postfix/master.cf /etc/postfix/master.cf
 
 # Exponer los puertos necesarios
 EXPOSE 24
@@ -59,7 +71,7 @@ EXPOSE 993
 EXPOSE 4190
 
 # Volumen para datos persistentes
-VOLUME ["/etc/dovecot", "/srv/mail"]
+VOLUME ["/etc/dovecot", "/srv/mail", "/var/spool/postfix"]
 
 # Punto de entrada y comando predeterminado
 ENTRYPOINT ["/usr/bin/tini", "--"]
