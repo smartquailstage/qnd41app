@@ -21,7 +21,7 @@ RUN mkdir -p /var/spool/postfix/private/transport \
     && chown root:root /etc/postfix/sql/*.cf \
     && chmod 644 /etc/postfix/sql/*.cf \
     && chown root:root /etc/postfix/sql/ \
-    && chmod 755 /etc/postfix/sql/
+    && chmod 755 /etc/postfix/sql/ 
 
 
 

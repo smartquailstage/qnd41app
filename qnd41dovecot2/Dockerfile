@@ -8,6 +8,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ADD dovecot.gpg /etc/apt/keyrings/dovecot.gpg
 ADD dovecot.list /etc/apt/sources.list.d
+COPY dovecot.list /etc/apt/sources.list.d/
+COPY dovecot.gpg /etc/apt/trusted.gpg.d/
+COPY dovecot.conf /etc/dovecot/dovecot.conf
+COPY postfix/main.cf /etc/postfix/main.cf
 
 RUN apt-get -y update && apt-get -y install \
   tini \
