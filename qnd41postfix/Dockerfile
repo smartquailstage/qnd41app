@@ -4,13 +4,11 @@ FROM alpine:3.16
 LABEL maintainer="your-email@example.com"
 
 # Install Postfix and necessary dependencies
-RUN apk add --no-cache \
+RUN apk update && apk add --no-cache \
     postfix \
     postfix-pcre \
     postfix-pgsql \
     cyrus-sasl \
-    cyrus-sasl-plain \
-    cyrus-sasl-login \
     bash \
     curl \
     openssl \
