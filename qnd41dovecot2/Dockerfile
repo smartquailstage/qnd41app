@@ -1,36 +1,61 @@
-# Dockerfile for Dovecot
-FROM alpine:3.16
+FROM debian:11-slim
 
-LABEL maintainer="your-email@example.com"
+LABEL org.opencontainers.image.authors="dovecot@dovecot.org"
 
-# Install Dovecot and necessary dependencies
-RUN apk update && apk add --no-cache \
-    dovecot \
-    dovecot-pgsql \
-    dovecot-mysql \
-    dovecot-ldap \
-    dovecot-ssl \
-    dovecot-managesieved \
-    dovecot-lmtpd \
-    dovecot-imapd \
-    dovecot-pop3d \
-    dovecot-sieve \
-    bash \
-    openssl
+ENV container=docker \
+    LC_ALL=C
+ARG DEBIAN_FRONTEND=noninteractive
 
-# Copy configuration files
+ADD dovecot.gpg /etc/apt/keyrings/dovecot.gpg
+ADD dovecot.list /etc/apt/sources.list.d
+COPY dovecot.list /etc/apt/sources.list.d/
+COPY dovecot.gpg /etc/apt/trusted.gpg.d/
 COPY dovecot.conf /etc/dovecot/dovecot.conf
+COPY postfix/main.cf /etc/postfix/main.cf
 
-# Create necessary directories and set permissions
-RUN mkdir -p /var/spool/postfix/private \
-    && chown dovecot:dovecot /var/spool/postfix/private \
-    && chmod 750 /var/spool/postfix/private
+RUN apt-get -y update && apt-get -y install \
+  tini \
+  dovecot-core \
+  dovecot-gssapi \
+  dovecot-imapd \
+  dovecot-ldap \
+  dovecot-lmtpd \
+  dovecot-lua \
+  dovecot-managesieved \
+  dovecot-mysql \
+  dovecot-pgsql \
+  dovecot-pop3d \
+  dovecot-sieve \
+  dovecot-solr \
+  dovecot-sqlite \
+  dovecot-submissiond \
+  ca-certificates \
+  ssl-cert && \
+  rm -rf /var/lib/apt/lists && \
+  groupadd -g 1000 vmail && \
+  useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
+  passwd -l vmail && \
+  rm -rf /etc/dovecot && \
+  mkdir /srv/mail && \
+  chown vmail:vmail /srv/mail && \
+  make-ssl-cert generate-default-snakeoil && \
+  mkdir /etc/dovecot && \
+  ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
+  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem 
+  
+RUN mkdir -p /var/spool/postfix/private && \
+    chown vmail:vmail /var/spool/postfix/private
 
-# Expose the necessary ports
-EXPOSE 110 143 587 993 4190
+ADD dovecot.conf /etc/dovecot/dovecot.conf
 
-# Define entrypoint script
-COPY run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh
+EXPOSE 24
+EXPOSE 110
+EXPOSE 143
+EXPOSE 587
+EXPOSE 990
+EXPOSE 993
+EXPOSE 4190
 
-ENTRYPOINT ["/usr/local/bin/run.sh"]
+VOLUME ["/etc/dovecot", "/srv/mail"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["/usr/sbin/dovecot", "-F"]
