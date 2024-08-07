@@ -19,7 +19,7 @@ RUN apk add --no-cache \
     openssl
 
 # Copy configuration files
-COPY dovecot/dovecot.conf /etc/dovecot/dovecot.conf
+COPY dovecot.conf /etc/dovecot/dovecot.conf
 #COPY dovecot/ssl/ /etc/dovecot/ssl/
 
 # Create necessary directories and set permissions
