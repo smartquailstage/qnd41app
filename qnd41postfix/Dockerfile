@@ -33,4 +33,4 @@ EXPOSE 25
 COPY postfix/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+ENTRYPOINT ["postfix/postfix-service.sh"]
