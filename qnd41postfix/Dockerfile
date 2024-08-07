@@ -30,7 +30,7 @@ RUN mkdir -p /var/spool/postfix/private \
 EXPOSE 25
 
 # Define entrypoint script
-COPY postfix/postfix-service.sh /usr/local/bin/postfix-service.sh
-RUN chmod +x /usr/local/bin/postfix-service.sh
+COPY postfix/start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
-ENTRYPOINT ["postfix/postfix-service.sh"]
+ENTRYPOINT ["/usr/local/bin/start.sh"]
