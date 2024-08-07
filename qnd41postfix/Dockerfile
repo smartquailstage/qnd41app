@@ -19,10 +19,20 @@ RUN apk update && apk add --no-cache \
 COPY postfix/main.cf /etc/postfix/main.cf
 COPY postfix/master.cf /etc/postfix/master.cf
 
+COPY postfix /etc/postfix
+
 # Create necessary directories and set permissions
 RUN mkdir -p /var/spool/postfix/private \
     && chown postfix:postfix /var/spool/postfix/private \
     && chmod 750 /var/spool/postfix/private
+
+RUN mkdir -p /var/spool/postfix/private/transport \
+    && chown postfix:postfix /var/spool/postfix/private/transport \
+    && chmod 750 /var/spool/postfix/private/transport \
+    && chown root:root /etc/postfix/sql/*.cf \
+    && chmod 644 /etc/postfix/sql/*.cf \
+    && chown root:root /etc/postfix/sql/ \
+    && chmod 755 /etc/postfix/sql/
 
 # Expose the SMTP port
 EXPOSE 25
