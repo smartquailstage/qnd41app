@@ -13,6 +13,13 @@ COPY dovecot.gpg /etc/apt/trusted.gpg.d/
 COPY dovecot.conf /etc/dovecot/dovecot.conf
 COPY postfix/main.cf /etc/postfix/main.cf
 
+
+# Create postfix user and group if they do not exist
+RUN if ! id -u postfix > /dev/null 2>&1; then \
+        addgroup -g 1001 postfix && \
+        adduser -D -u 1001 -G postfix -s /sbin/nologin postfix; \
+    fi
+
 RUN apt-get -y update && apt-get -y install \
   tini \
   dovecot-core \
