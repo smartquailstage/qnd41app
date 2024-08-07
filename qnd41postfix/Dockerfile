@@ -15,9 +15,7 @@ RUN apk update && apk add --no-cache \
     iproute2 \
     && mkdir -p /var/spool/postfix/private
 
-# Create vmail user and group
-RUN addgroup -g 1001 vmail && \
-    adduser -D -u 1001 -G vmail -s /sbin/nologin vmail
+
 
 # Copy configuration files
 COPY postfix/main.cf /etc/postfix/main.cf
