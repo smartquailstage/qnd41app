@@ -1,41 +1,36 @@
+# Dockerfile for Postfix
 FROM alpine:3.16
-LABEL MAINTAINER="Mauricio Silva <mausilva@smartquail.io.com>"
 
-# Instalar curl, tar, make y otras dependencias necesarias para compilar Postfix y PostgreSQL
-RUN apk add --no-cache bash build-base linux-pam-dev  openssl-dev dovecot iptables pcre-dev postgresql-client  postfix-pgsql postfix postfix-pcre   cyrus-sasl-dev
+LABEL maintainer="your-email@example.com"
 
-# Copiar el archivo postfix-3.8.5.tar.gz desde tu contexto local al contenedor
+# Install Postfix and necessary dependencies
+RUN apk add --no-cache \
+    postfix \
+    postfix-pcre \
+    postfix-pgsql \
+    cyrus-sasl \
+    cyrus-sasl-plain \
+    cyrus-sasl-login \
+    bash \
+    curl \
+    openssl \
+    iproute2 \
+    && mkdir -p /var/spool/postfix/private
 
-# Copiar la configuración de Postfix
-COPY conf /etc/postfix
+# Copy configuration files
+COPY postfix/main.cf /etc/postfix/main.cf
+COPY postfix/master.cf /etc/postfix/master.cf
 
+# Create necessary directories and set permissions
+RUN mkdir -p /var/spool/postfix/private \
+    && chown postfix:postfix /var/spool/postfix/private \
+    && chmod 750 /var/spool/postfix/private
 
-# Copiar certificados SSL
-COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/
-COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/
-
-# Crear el directorio y dar permisos adecuados
-RUN mkdir -p /var/spool/postfix/private/transport \
-    && chown postfix:postfix /var/spool/postfix/private/transport \
-    && chmod 750 /var/spool/postfix/private/transport \
-    && chown root:root /etc/postfix/sql/*.cf \
-    && chmod 644 /etc/postfix/sql/*.cf \
-    && chown root:root /etc/postfix/sql/ \
-    && chmod 755 /etc/postfix/sql/ 
-
-RUN mkdir -p /var/spool/postfix/private && \
-    chown vmail:vmail /var/spool/postfix/private
-    # REvisa que el directorio exista y tenga los permisos del usuaio vmail
-
-
-
-
-
-# Volumen para el directorio spool de Postfix
-VOLUME ["/var/spool/postfix"]
-
-# Entrypoint para iniciar Postfix
-ENTRYPOINT ["/etc/postfix/postfix-service.sh"]
-
-# Exponer el puerto SMTP (25)
+# Expose the SMTP port
 EXPOSE 25
+
+# Define entrypoint script
+COPY postfix/start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
+ENTRYPOINT ["/usr/local/bin/start.sh"]
