@@ -19,7 +19,7 @@ RUN apk update && apk add --no-cache \
     openssl
 
 # Copy configuration files
-COPY dovecot/dovecot.conf /etc/dovecot/dovecot.conf
+COPY dovecot.conf /etc/dovecot/dovecot.conf
 
 # Create necessary directories and set permissions
 RUN mkdir -p /var/spool/postfix/private \
@@ -30,7 +30,7 @@ RUN mkdir -p /var/spool/postfix/private \
 EXPOSE 110 143 587 993 4190
 
 # Define entrypoint script
-COPY dovecot/start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
 
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+ENTRYPOINT ["/usr/local/bin/run.sh"]
