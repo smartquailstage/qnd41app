@@ -1,61 +1,40 @@
-FROM debian:11-slim
+# Dockerfile for Dovecot
+FROM alpine:3.16
 
-LABEL org.opencontainers.image.authors="dovecot@dovecot.org"
+LABEL maintainer="your-email@example.com"
 
-ENV container=docker \
-    LC_ALL=C
-ARG DEBIAN_FRONTEND=noninteractive
+# Install Dovecot and necessary dependencies
+RUN apk add --no-cache \
+    dovecot \
+    dovecot-pgsql \
+    dovecot-mysql \
+    dovecot-ldap \
+    dovecot-ssl \
+    dovecot-managesieved \
+    dovecot-lmtpd \
+    dovecot-imapd \
+    dovecot-pop3d \
+    dovecot-sieve \
+    bash \
+    openssl
 
-ADD dovecot.gpg /etc/apt/keyrings/dovecot.gpg
-ADD dovecot.list /etc/apt/sources.list.d
-COPY dovecot.list /etc/apt/sources.list.d/
-COPY dovecot.gpg /etc/apt/trusted.gpg.d/
-COPY dovecot.conf /etc/dovecot/dovecot.conf
-COPY postfix/main.cf /etc/postfix/main.cf
+# Copy configuration files
+COPY dovecot/dovecot.conf /etc/dovecot/dovecot.conf
+#COPY dovecot/ssl/ /etc/dovecot/ssl/
 
-RUN apt-get -y update && apt-get -y install \
-  tini \
-  dovecot-core \
-  dovecot-gssapi \
-  dovecot-imapd \
-  dovecot-ldap \
-  dovecot-lmtpd \
-  dovecot-lua \
-  dovecot-managesieved \
-  dovecot-mysql \
-  dovecot-pgsql \
-  dovecot-pop3d \
-  dovecot-sieve \
-  dovecot-solr \
-  dovecot-sqlite \
-  dovecot-submissiond \
-  ca-certificates \
-  ssl-cert && \
-  rm -rf /var/lib/apt/lists && \
-  groupadd -g 1000 vmail && \
-  useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
-  passwd -l vmail && \
-  rm -rf /etc/dovecot && \
-  mkdir /srv/mail && \
-  chown vmail:vmail /srv/mail && \
-  make-ssl-cert generate-default-snakeoil && \
-  mkdir /etc/dovecot && \
-  ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
-  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem 
-  
-RUN mkdir -p /var/spool/postfix/private && \
-    chown vmail:vmail /var/spool/postfix/private
+# Create necessary directories and set permissions
+RUN mkdir -p /var/mail \
+    && chown vmail:vmail /var/mail \
+    && chmod 770 /var/mail \
+    && mkdir -p /var/spool/dovecot \
+    && chown dovecot:dovecot /var/spool/dovecot \
+    && chmod 750 /var/spool/dovecot
 
-ADD dovecot.conf /etc/dovecot/dovecot.conf
+# Expose necessary ports
+EXPOSE 110 143 993 4190
 
-EXPOSE 24
-EXPOSE 110
-EXPOSE 143
-EXPOSE 587
-EXPOSE 990
-EXPOSE 993
-EXPOSE 4190
+# Define entrypoint script
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
 
-VOLUME ["/etc/dovecot", "/srv/mail"]
-ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/usr/sbin/dovecot", "-F"]
+ENTRYPOINT ["/usr/local/bin/run.sh"]
