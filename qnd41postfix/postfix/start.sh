@@ -6,6 +6,7 @@ export PGUSER="sqadmindb"
 export POSTFIX_POSTGRES_DB="POSFIXDB"
 export POSTFIX_POSTGRES_USER="sqadmindb"
 export POSTFIX_POSTGRES_HOST="smartquaildb"
+export POSTFIX_POSTGRES_PASSWORD="smartquaildev1719pass"
 
 function log {
   echo "$(date) $ME - $@"
@@ -25,7 +26,7 @@ function createTable {
   local table_sql=$2
 
   log "Creating ${table_name} table in PostgreSQL..."
-  PGPASSWORD=$PGPASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
+  POSTFIX_POSTGRES_PASSWORDD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
   
   if [ $? -eq 0 ]; then
     log "${table_name} table created successfully."
