@@ -51,13 +51,6 @@ smtpd_sender_restrictions =
     reject_unauthenticated_sender_login_mismatch,
     permit
 
-# Recipient restrictions
-smtpd_recipient_restrictions =
-    permit_mynetworks,
-    permit_sasl_authenticated,
-    reject_unauth_destination,
-    permit
-
 # Relay restrictions
 smtpd_relay_restrictions =
     permit_mynetworks,
@@ -109,6 +102,8 @@ smtpd_sasl_local_domain = $myhostname
 
 # Opcional: Permitir clientes de SASL rotos
 broken_sasl_auth_clients = yes
+
+smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination
 
 ###############
 # Extra Settings
