@@ -67,23 +67,6 @@ services:
     depends_on:
       - smartquaildb
       - dovecot
-    environment:
-      - inet_interfaces= all
-      - smtp_bind_address=0.0.0.0
-      - smtpd_tls_cert_file=/etc/ssl/certs/fullchain.pem
-      - smtpd_tls_key_file=/etc/ssl/private/privkey.pem
-      - smtpd_sasl_auth_enable=yes
-      - debug_peer_list=127.0.0.1
-      - debug_peer_level=2
-      - TRANSPORT_MAPS=/etc/postfix/transport.pcre
-      - PRIVATE_TRANSPORT=/var/spool/postfix/private/transport
-      - smtp_dns_resolver_options=inet_protocols = all
-      - inet_protocols=all
-      - smtp_host_lookup=dns
-      - POSTFIX_POSTGRES_DB=POSFIXDB
-      - POSTFIX_POSTGRES_PASSWORD=smartquaildev1719pass 
-      - POSTFIX_POSTGRES_USER=sqadmindb
-      - POSTFIX_POSTGRES_HOST=smartquaildb
     expose:
       - "25"
     ports:
