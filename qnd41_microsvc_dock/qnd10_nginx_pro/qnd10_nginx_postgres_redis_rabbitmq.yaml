@@ -66,6 +66,7 @@ services:
       - .env
     depends_on:
       - smartquaildb
+      - dovecot
     environment:
       - inet_interfaces= all
       - smtp_bind_address=0.0.0.0
@@ -106,6 +107,7 @@ services:
     environment:
       - DOVECOT_USER=info
       - DOVECOT_PASSWORD=ms95355672
+      - DOVECOT_AUTH_SOCKET_PATH=/var/spool/postfix/private/auth
     depends_on:
       - postfix
     networks:
