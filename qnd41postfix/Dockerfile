@@ -31,11 +31,14 @@ RUN if ! getent group postfix > /dev/null; then \
 
 # Create necessary directories and set permissions
 RUN mkdir -p /var/spool/postfix/private \
-    && chown -R postfix:postfix /var/spool/postfix/private \
+    && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
-    && chown vmail:vmail /var/spool/postfix 
+    && chmod 750 /var/spool/postfix
 
-
+# Set permissions for the SSL certificates
+RUN mkdir -p /etc/ssl/certs /etc/ssl/private \
+    && chmod 700 /etc/ssl/private \
+    && chown root:root /etc/ssl/certs /etc/ssl/private
 
 # Copy configuration files
 COPY postfix/main.cf /etc/postfix/main.cf
@@ -43,6 +46,11 @@ COPY postfix/master.cf /etc/postfix/master.cf
 COPY postfix /etc/postfix
 COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/
+
+# Set correct permissions for the SSL certificates
+RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
+    && chmod 644 /etc/ssl/certs/fullchain.pem \
+    && chmod 600 /etc/ssl/private/privkey.pem
 
 # Expose the SMTP port
 EXPOSE 25
