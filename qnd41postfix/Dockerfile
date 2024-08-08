@@ -15,8 +15,11 @@ RUN apk update && apk add --no-cache \
     iproute2 \
     && mkdir -p /var/spool/postfix/private
 
-
-
+# Create postfix and vmail users and groups
+RUN addgroup -g 1001 postfix && \
+    adduser -D -u 1001 -G postfix -s /sbin/nologin postfix && \
+    addgroup -g 1002 vmail && \
+    adduser -D -u 1002 -G vmail -s /sbin/nologin vmail
 
 # Copy configuration files
 COPY postfix/main.cf /etc/postfix/main.cf
@@ -30,17 +33,8 @@ COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/
 # Create necessary directories and set permissions
 RUN mkdir -p /var/spool/postfix/private \
     && chown postfix:postfix /var/spool/postfix/private \
-    && chown vmail:vmail /var/spool/postfix/private \
+    && chown vmail:vmail /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private
-
-RUN mkdir -p /var/spool/postfix/private/transport \
-    && chown postfix:postfix /var/spool/postfix/private/transport \
-    && chown vmail:vmail /var/spool/postfix/private/transport \
-    && chmod 750 /var/spool/postfix/private/transport \
-    && chown root:root /etc/postfix/sql/*.cf \
-    && chmod 644 /etc/postfix/sql/*.cf \
-    && chown root:root /etc/postfix/sql/ \
-    && chmod 755 /etc/postfix/sql/
 
 # Expose the SMTP port
 EXPOSE 25
