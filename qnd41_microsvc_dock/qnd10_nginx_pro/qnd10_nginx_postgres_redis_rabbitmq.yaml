@@ -59,7 +59,7 @@ services:
       - lansmartquail
 
   
-  postfix:
+postfix:
     image: smartquail/qnd10postfix:prod
     restart: always
     env_file:
@@ -67,7 +67,7 @@ services:
     depends_on:
       - smartquaildb
     environment:
-      - inet_interfaces= all
+      - inet_interfaces=all
       - smtp_bind_address=0.0.0.0
       - smtpd_tls_cert_file=/etc/ssl/certs/fullchain.pem
       - smtpd_tls_key_file=/etc/ssl/private/privkey.pem
@@ -76,7 +76,7 @@ services:
       - debug_peer_level=2
       - TRANSPORT_MAPS=/etc/postfix/transport.pcre
       - PRIVATE_TRANSPORT=/var/spool/postfix/private/transport
-      - smtp_dns_resolver_options=inet_protocols = all
+      - smtp_dns_resolver_options=inet_protocols=all
       - inet_protocols=all
       - smtp_host_lookup=dns
     expose:
@@ -87,6 +87,7 @@ services:
       - postfix-spools:/var/spool/postfix
       - postfix-mail:/var/mail
       - postfix-logs:/var/log
+      - postfix-dovecot:/var/spool/dovecot  # Mount point for dovecot socket
     networks:
       - lansmartquail
 
@@ -97,6 +98,7 @@ services:
     volumes:
       - dovecot:/etc/dovecot
       - mail:/var/mail
+      - dovecot-spool:/var/spool/dovecot  # Ensure Dovecot writes the auth socket here
     ports:
       - "143:143"   # IMAP
       - "110:110"   # POP3
@@ -136,6 +138,8 @@ volumes:
   postfix-spools:
   postfix-mail:
   postfix-logs:
+  dovecot-spool:
+  postfix-dovecot:
   dovecot:
   mail:
 
