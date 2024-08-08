@@ -26,7 +26,7 @@ function createTable {
   local table_sql=$2
 
   log "Creating ${table_name} table in PostgreSQL..."
-  POSTFIX_POSTGRES_PASSWORDD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
+  POSTFIX_POSTGRES_PASSWORD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
   
   if [ $? -eq 0 ]; then
     log "${table_name} table created successfully."
@@ -74,10 +74,30 @@ function serviceConf {
   fi
 }
 
+function setPermissions {
+  # Ensure directories and files have correct permissions
+  log "Setting permissions for Postfix directories and files..."
+
+  # Set ownership and permissions for Postfix directories
+  chown -R postfix:postfix /var/spool/postfix
+  chmod 750 /var/spool/postfix/private
+  chmod 750 /var/spool/postfix
+
+  # Set ownership and permissions for Postfix configuration files
+  chown -R root:root /etc/postfix
+  chmod 640 /etc/postfix/*.cf
+
+  # Set permissions for SSL certificates
+  chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem
+  chmod 644 /etc/ssl/certs/fullchain.pem
+  chmod 600 /etc/ssl/private/privkey.pem
+}
+
 function serviceStart {
   addUserInfo
   createVirtualTables
   serviceConf
+  setPermissions
   log "[ Iniciando Postfix... ]"
   /usr/sbin/postfix start-fg
 }
