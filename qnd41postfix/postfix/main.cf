@@ -95,7 +95,7 @@ smtpd_sasl_auth_enable = yes
 smtpd_sasl_type = dovecot
 
 # Configurar el socket de Dovecot para SASL
-smtpd_sasl_path = /var/spool/postfix/private/auth
+smtpd_sasl_path = private/auth
 
 # Habilitar el encabezado de autenticación en los correos
 smtpd_sasl_authenticated_header = yes
