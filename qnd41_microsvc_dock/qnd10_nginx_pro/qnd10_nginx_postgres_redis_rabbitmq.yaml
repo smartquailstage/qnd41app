@@ -97,6 +97,7 @@ services:
     volumes:
       - dovecot:/etc/dovecot
       - mail:/var/mail
+      - postfix-spools:/var/spool/postfix
     ports:
       - "143:143"   # IMAP
       - "110:110"   # POP3
