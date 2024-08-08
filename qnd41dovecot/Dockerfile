@@ -1,4 +1,4 @@
-FROM debian:11
+FROM debian:11-slim
 
 LABEL org.opencontainers.image.authors="dovecot@dovecot.org"
 
@@ -6,9 +6,19 @@ ENV container=docker \
     LC_ALL=C
 ARG DEBIAN_FRONTEND=noninteractive
 
-ADD dovecot.gpg /etc/apt/trusted.gpg.d
+ADD dovecot.gpg /etc/apt/keyrings/dovecot.gpg
 ADD dovecot.list /etc/apt/sources.list.d
+COPY dovecot.list /etc/apt/sources.list.d/
+COPY dovecot.gpg /etc/apt/trusted.gpg.d/
+COPY dovecot.conf /etc/dovecot/dovecot.conf
+COPY postfix/main.cf /etc/postfix/main.cf
 
+
+# Create postfix user and group if they do not exist
+RUN if ! id -u postfix > /dev/null 2>&1; then \
+        addgroup --system postfix && \
+        adduser --system --ingroup postfix --no-create-home --shell /sbin/nologin postfix; \
+    fi
 
 RUN apt-get -y update && apt-get -y install \
   tini \
@@ -38,13 +48,20 @@ RUN apt-get -y update && apt-get -y install \
   make-ssl-cert generate-default-snakeoil && \
   mkdir /etc/dovecot && \
   ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /etc/dovecot/cert.pem && \
-  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem && \
-  mkdir -p /var/spool/postfix/private && \
-  chown postfix:postfix /var/spool/postfix/private && \
-  chmod 750 /var/spool/postfix/private
-
+  ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/dovecot/key.pem 
+  
+RUN mkdir -p /var/spool/postfix/private && \
+    chown vmail:vmail /var/spool/postfix/private
 
 ADD dovecot.conf /etc/dovecot/dovecot.conf
+
+EXPOSE 24
+EXPOSE 110
+EXPOSE 143
+EXPOSE 587
+EXPOSE 990
+EXPOSE 993
+EXPOSE 4190
 
 VOLUME ["/etc/dovecot", "/srv/mail"]
 ENTRYPOINT ["/usr/bin/tini", "--"]
