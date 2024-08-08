@@ -2,7 +2,7 @@
 
 # Configuración de las credenciales de PostgreSQL
 export PGPASSWORD="smartquaildev1719pass"  # Cambia esto por la contraseña real
-export PGUSER="sqadmindb"  
+export PGUSER="sqadmindb"
 
 function log {
   echo "$(date) $ME - $@"
@@ -45,14 +45,14 @@ function createVirtualTables {
 
 function serviceConf {
   # Check hostname variable
-  if [[ ! ${HOSTNAME} =~ \. ]]; then
-    HOSTNAME=$HOSTNAME.$DOMAIN
+  if [[ ! $HOSTNAME =~ \. ]]; then
+    HOSTNAME="$HOSTNAME.$DOMAIN"
   fi
 
   # Substitute configuration
   for VARIABLE in $(env | cut -f1 -d=); do
     VAR=${VARIABLE//:/_}
-    sed -i "s={{ $VAR }}=${!VAR}=g" /etc/postfix/*.cf
+    sed -i "s/{{ $VAR }}/${!VAR}/g" /etc/postfix/*.cf
   done
 
   # Override Postfix configuration
