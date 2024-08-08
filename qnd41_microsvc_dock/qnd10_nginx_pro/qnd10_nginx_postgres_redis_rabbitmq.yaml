@@ -108,8 +108,6 @@ services:
       - DOVECOT_USER=info
       - DOVECOT_PASSWORD=ms95355672
       - DOVECOT_AUTH_SOCKET_PATH=/var/spool/postfix/private/auth
-    depends_on:
-      - postfix
     networks:
       - lansmartquail
 
