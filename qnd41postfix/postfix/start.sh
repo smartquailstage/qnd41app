@@ -18,40 +18,29 @@ function addUserInfo {
   fi
 }
 
+# Exportar las variables de entorno para PostgreSQL
 export POSTFIX_POSTGRES_DB=${POSTFIX_POSTGRES_DB}
 export POSTFIX_POSTGRES_PASSWORD=${POSTFIX_POSTGRES_PASSWORD}
 export POSTFIX_POSTGRES_USER=${POSTFIX_POSTGRES_USER}
 export POSTFIX_POSTGRES_HOST=${POSTFIX_POSTGRES_HOST}
 
-function createVirtualDomainsTable {
-  log "Creating virtual_domains table in PostgreSQL..."
-  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "CREATE TABLE IF NOT EXISTS virtual_domains (
-    id SERIAL PRIMARY KEY,
-    domain VARCHAR(255) NOT NULL UNIQUE
-  );"
+function createTable {
+  local table_name=$1
+  local table_sql=$2
 
-  log "Creating virtual_mailbox_domains table in PostgreSQL..."
-  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "CREATE TABLE IF NOT EXISTS virtual_mailbox_domains (
-    id SERIAL PRIMARY KEY,
-    domain VARCHAR(255) NOT NULL UNIQUE
-  );"
+  log "Creating ${table_name} table in PostgreSQL..."
+  if psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"; then
+    log "${table_name} table created successfully."
+  else
+    log "Failed to create ${table_name} table."
+  fi
 }
 
-function createVirtualAliasesTable {
-  log "Creating virtual_aliases table in PostgreSQL..."
-  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "CREATE TABLE IF NOT EXISTS virtual_aliases (
-    id SERIAL PRIMARY KEY,
-    source VARCHAR(255) NOT NULL,
-    destination VARCHAR(255) NOT NULL
-  );"
-}
-
-function createVirtualMailboxesTable {
-  log "Creating virtual_mailboxes table in PostgreSQL..."
-  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "CREATE TABLE IF NOT EXISTS virtual_mailboxes (
-    id SERIAL PRIMARY KEY,
-    mailbox VARCHAR(255) NOT NULL UNIQUE
-  );"
+function createVirtualTables {
+  createTable "virtual_domains" "CREATE TABLE IF NOT EXISTS virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_mailbox_domains" "CREATE TABLE IF NOT EXISTS virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_aliases" "CREATE TABLE IF NOT EXISTS virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
+  createTable "virtual_mailboxes" "CREATE TABLE IF NOT EXISTS virtual_mailboxes (id SERIAL PRIMARY KEY, mailbox VARCHAR(255) NOT NULL UNIQUE);"
 }
 
 function serviceConf {
@@ -91,9 +80,7 @@ function serviceConf {
 
 function serviceStart {
   addUserInfo
-  createVirtualDomainsTable    # Crear tablas necesarias
-  createVirtualAliasesTable   # Crear tabla virtual_aliases
-  createVirtualMailboxesTable # Crear tabla virtual_mailboxes
+  createVirtualTables
   serviceConf
   # Iniciar Postfix
   log "[ Iniciando Postfix... ]"

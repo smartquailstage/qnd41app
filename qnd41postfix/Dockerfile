@@ -32,8 +32,10 @@ RUN if ! getent group postfix > /dev/null; then \
 # Create necessary directories and set permissions
 RUN mkdir -p /var/spool/postfix/private \
     && chown postfix:postfix /var/spool/postfix/private \
-    && chown vmail:vmail /var/spool/postfix \
-    && chmod 750 /var/spool/postfix/private
+    && chmod 750 /var/spool/postfix/private \
+    && chown vmail:vmail /var/spool/postfix 
+
+
 
 # Copy configuration files
 COPY postfix/main.cf /etc/postfix/main.cf
