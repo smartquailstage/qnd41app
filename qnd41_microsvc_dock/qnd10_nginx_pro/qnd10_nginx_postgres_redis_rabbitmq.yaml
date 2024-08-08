@@ -80,6 +80,10 @@ services:
       - smtp_dns_resolver_options=inet_protocols = all
       - inet_protocols=all
       - smtp_host_lookup=dns
+      - POSTFIX_POSTGRES_DB=POSFIXDB
+      - POSTFIX_POSTGRES_PASSWORD=smartquaildev1719pass 
+      - POSTFIX_POSTGRES_USER=sqadmindb
+      - POSTFIX_POSTGRES_HOST=smartquaildb
     expose:
       - "25"
     ports:
@@ -90,6 +94,7 @@ services:
       - postfix-logs:/var/log
     networks:
       - lansmartquail
+    
 
   dovecot:
     image: smartquail/qnd10dovecot:prod
@@ -110,6 +115,7 @@ services:
       - DOVECOT_AUTH_SOCKET_PATH=/var/spool/postfix/private/auth
     networks:
       - lansmartquail
+
 
 
 
