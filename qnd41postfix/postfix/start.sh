@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Configuración de las credenciales de PostgreSQL
+export PGPASSWORD="smartquaildev1719pass"  # Cambia esto por la contraseña real
+export PGUSER="sqadmindb"  
+
 function log {
   echo "$(date) $ME - $@"
 }
