@@ -87,7 +87,6 @@ services:
       - postfix-spools:/var/spool/postfix
       - postfix-mail:/var/mail
       - postfix-logs:/var/log
-      - postfix-dovecot:/var/spool/postfix
     networks:
       - lansmartquail
 
@@ -98,7 +97,6 @@ services:
     volumes:
       - dovecot:/etc/dovecot
       - mail:/var/mail
-      - dovecot-postfix:/var/spool/postfix
     ports:
       - "143:143"   # IMAP
       - "110:110"   # POP3
