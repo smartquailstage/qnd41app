@@ -12,7 +12,8 @@ RUN apk update && apk add --no-cache \
     bash \
     curl \
     openssl \
-    iproute2
+    iproute2 \
+    postgresql-client
 
 # Create postfix and vmail users and groups if they do not exist
 RUN if ! getent group postfix > /dev/null; then \
