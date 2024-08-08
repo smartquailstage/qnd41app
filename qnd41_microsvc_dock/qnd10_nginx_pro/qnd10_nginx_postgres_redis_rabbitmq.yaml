@@ -87,7 +87,7 @@ postfix:
       - postfix-spools:/var/spool/postfix
       - postfix-mail:/var/mail
       - postfix-logs:/var/log
-      - postfix-dovecot:/var/spool/dovecot  # Mount point for dovecot socket
+      - dovecot-spool:/var/spool/dovecot  # Mount point for dovecot socket
     networks:
       - lansmartquail
 
@@ -139,7 +139,6 @@ volumes:
   postfix-mail:
   postfix-logs:
   dovecot-spool:
-  postfix-dovecot:
   dovecot:
   mail:
 
