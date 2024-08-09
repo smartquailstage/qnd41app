@@ -67,7 +67,7 @@ smtpd_relay_restrictions =
 ###############
 # TLS Settings
 ###############
-
+ssl = yes
 smtp_tls_security_level = may
 smtpd_tls_security_level = may
 smtpd_tls_auth_only = no

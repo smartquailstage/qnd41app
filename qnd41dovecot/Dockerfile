@@ -14,6 +14,7 @@ COPY dovecot.conf /etc/dovecot/dovecot.conf
 COPY postfix/main.cf /etc/postfix/main.cf
 
 
+
 # Create postfix user and group if they do not exist
 RUN if ! id -u postfix > /dev/null 2>&1; then \
         addgroup --system postfix && \
