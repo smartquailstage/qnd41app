@@ -13,8 +13,8 @@ COPY dovecot.gpg /etc/apt/trusted.gpg.d/
 COPY dovecot.conf /etc/dovecot/dovecot.conf
 COPY postfix/main.cf /etc/postfix/main.cf
 
-COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/
-COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/
+COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/fullchain.pem
+COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/privkey.pem
 
 
 
