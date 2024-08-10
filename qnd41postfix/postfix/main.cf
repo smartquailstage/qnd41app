@@ -4,7 +4,7 @@
 
 # Main domain and hostname
 mydomain = {{ DOMAIN }}
-myhostname = {{ HOSTNAME }}
+myhostname = mail.smartquail.io
 myorigin = $mydomain
 
 # Message size limit
@@ -24,6 +24,9 @@ mydestination = $myhostname, $mydomain, localhost.localdomain, localhost, mail.s
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
+
+
+
 
 ###############
 # Restrictions
@@ -57,6 +60,8 @@ smtpd_relay_restrictions =
     permit_sasl_authenticated,
     reject_unauth_destination
 
+
+
 ###############
 # TLS Settings
 ###############
@@ -84,7 +89,7 @@ smtpd_tls_ciphers = high
 # Habilitar la autenticación SASL en Postfix
 smtpd_sasl_auth_enable = yes
 
-# Especificar el tipo de SASL
+# Especificar el tipo de SASL, en este caso, Dovecot
 smtpd_sasl_type = dovecot
 
 # Configurar el socket de Dovecot para SASL
@@ -97,13 +102,16 @@ smtpd_sasl_authenticated_header = yes
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_tls_security_options = noanonymous
 
-# Dominio local para SASL (opcional)
+# Dominio local para SASL (opcional, usa $myhostname o un dominio estático)
 smtpd_sasl_local_domain = $myhostname
 
 # Opcional: Permitir clientes de SASL rotos
 broken_sasl_auth_clients = yes
 
+# Configurar restricciones de destinatarios
 smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination
+
+
 
 ###############
 # Extra Settings
