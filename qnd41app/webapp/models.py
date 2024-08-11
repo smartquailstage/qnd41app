@@ -421,3 +421,25 @@ class GaleriadeImagenes(Orderable):
         FieldPanel('image_3_3'),
         FieldPanel('image_4_4'),
     ]
+
+@register_setting
+class GlobalLinksSettings(BaseSiteSetting):
+    contacus = models.URLField(blank=True,null=True,help_text="")
+    start_project_SBM = models.URLField(blank=True,null=True,help_text="")
+    start_project_SBL = models.URLField(blank=True,null=True,help_text="")
+    start_project_SBA = models.URLField(blank=True,null=True,help_text="")
+    start_project_SBT = models.URLField(blank=True,null=True,help_text="")
+
+
+    panels = [
+        MultiFieldPanel(
+            [
+            FieldPanel("contacus"),
+            FieldPanel("start_project_SBM"),
+            FieldPanel("start_project_SBL"),
+            FieldPanel("start_project_SBA"),  
+            FieldPanel("start_project_SBT"),         
+            ]
+        ,heading= "Global Links Settings")
+    ]
+
