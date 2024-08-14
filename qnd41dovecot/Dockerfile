@@ -55,4 +55,18 @@ RUN apt-get -y update && \
     ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem && \
     ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem
 
-#
+# Configuración de permisos y creación de directorios necesarios
+RUN mkdir -p /var/spool/postfix/private && \
+    chown vmail:vmail /var/spool/postfix/private
+
+EXPOSE 24
+EXPOSE 110
+EXPOSE 143
+EXPOSE 587
+EXPOSE 990
+EXPOSE 993
+EXPOSE 4190
+
+VOLUME ["/etc/dovecot", "/srv/mail"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["/usr/sbin/dovecot", "-F"]
