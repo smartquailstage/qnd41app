@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-01 21:21-0500\n"
-"PO-Revision-Date: 2024-08-13 18:42-0500\n"
+"PO-Revision-Date: 2024-08-13 18:39-0500\n"
 "Last-Translator:   <info@mail.smartquail.io>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -104,7 +104,7 @@ msgstr ""
 
 #: webapp/templates/webapp/home/OurTeam_section.html:20
 msgid "We Are Stronger in IT Business"
-msgstr "Somos profesionales en TICs para negocios y organizaciones"
+msgstr ""
 
 #: webapp/templates/webapp/home/callacction_section.html:20
 #: webapp/templates/webapp/home/footer_section.html:43
@@ -119,7 +119,7 @@ msgstr ""
 
 #: webapp/templates/webapp/home/callout.html:22
 msgid "We improve you business"
-msgstr "Potenciamos tu negocio hacia la nube"
+msgstr "Potenciamos tu negocio IT en la nube"
 
 #: webapp/templates/webapp/home/callout.html:32
 msgid "IT Business Analytics"
@@ -130,7 +130,7 @@ msgstr ""
 #: webapp/templates/webapp/home/callout.html:42
 #: webapp/templates/webapp/home/slider_section.html:25
 msgid "Learn more"
-msgstr "Saber más"
+msgstr ""
 
 #: webapp/templates/webapp/home/callout.html:37
 msgid "IT cloud Business DevOps"

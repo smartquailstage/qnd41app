@@ -42,20 +42,21 @@ RUN apt-get -y update && apt-get -y install \
   dovecot-sqlite \
   dovecot-submissiond \
   ca-certificates \
-  ssl-cert && \
-  rm -rf /var/lib/apt/lists && \
-  groupadd -g 1000 vmail && \
-  useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
-  passwd -l vmail && \
-  mkdir -p /srv/mail && \
-  chown vmail:vmail /srv/mail && \
-  mkdir -p /etc/dovecot && \
-  ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem && \
-  ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem
+  ssl-cert \
+  vim \  # Añadir vim aquí
+  && rm -rf /var/lib/apt/lists \
+  && groupadd -g 1000 vmail \
+  && useradd -u 1000 -g 1000 vmail -d /srv/vmail \
+  && passwd -l vmail \
+  && mkdir -p /srv/mail \
+  && chown vmail:vmail /srv/mail \
+  && mkdir -p /etc/dovecot \
+  && ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem \
+  && ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem
 
 # Configuración de permisos y creación de directorios necesarios
-RUN mkdir -p /var/spool/postfix/private && \
-    chown vmail:vmail /var/spool/postfix/private
+RUN mkdir -p /var/spool/postfix/private \
+  && chown vmail:vmail /var/spool/postfix/private
 
 EXPOSE 24
 EXPOSE 110

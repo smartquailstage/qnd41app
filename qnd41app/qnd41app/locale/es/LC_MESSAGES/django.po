@@ -104,7 +104,7 @@ msgstr ""
 
 #: webapp/templates/webapp/home/OurTeam_section.html:20
 msgid "We Are Stronger in IT Business"
-msgstr "Somos profesionales en TICs para negocios y organizaciones"
+msgstr "Somo profesionales en TICs para negocios y organizaciones"
 
 #: webapp/templates/webapp/home/callacction_section.html:20
 #: webapp/templates/webapp/home/footer_section.html:43
