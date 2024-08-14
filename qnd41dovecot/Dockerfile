@@ -25,47 +25,34 @@ RUN if ! id -u postfix > /dev/null 2>&1; then \
     fi
 
 # Instalar paquetes necesarios y configurar el entorno
-RUN apt-get -y update && apt-get -y install \
-  tini \
-  dovecot-core \
-  dovecot-gssapi \
-  dovecot-imapd \
-  dovecot-ldap \
-  dovecot-lmtpd \
-  dovecot-lua \
-  dovecot-managesieved \
-  dovecot-mysql \
-  dovecot-pgsql \
-  dovecot-pop3d \
-  dovecot-sieve \
-  dovecot-solr \
-  dovecot-sqlite \
-  dovecot-submissiond \
-  ca-certificates \
-  ssl-cert \
-  vim \  # Añadir vim aquí
-  && rm -rf /var/lib/apt/lists \
-  && groupadd -g 1000 vmail \
-  && useradd -u 1000 -g 1000 vmail -d /srv/vmail \
-  && passwd -l vmail \
-  && mkdir -p /srv/mail \
-  && chown vmail:vmail /srv/mail \
-  && mkdir -p /etc/dovecot \
-  && ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem \
-  && ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem
+RUN apt-get -y update && \
+    apt-get -y install \
+      tini \
+      dovecot-core \
+      dovecot-gssapi \
+      dovecot-imapd \
+      dovecot-ldap \
+      dovecot-lmtpd \
+      dovecot-lua \
+      dovecot-managesieved \
+      dovecot-mysql \
+      dovecot-pgsql \
+      dovecot-pop3d \
+      dovecot-sieve \
+      dovecot-solr \
+      dovecot-sqlite \
+      dovecot-submissiond \
+      ca-certificates \
+      ssl-cert \
+      vim && \
+    rm -rf /var/lib/apt/lists && \
+    groupadd -g 1000 vmail && \
+    useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
+    passwd -l vmail && \
+    mkdir -p /srv/mail && \
+    chown vmail:vmail /srv/mail && \
+    mkdir -p /etc/dovecot && \
+    ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem && \
+    ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem
 
-# Configuración de permisos y creación de directorios necesarios
-RUN mkdir -p /var/spool/postfix/private \
-  && chown vmail:vmail /var/spool/postfix/private
-
-EXPOSE 24
-EXPOSE 110
-EXPOSE 143
-EXPOSE 587
-EXPOSE 990
-EXPOSE 993
-EXPOSE 4190
-
-VOLUME ["/etc/dovecot", "/srv/mail"]
-ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/usr/sbin/dovecot", "-F"]
+#
