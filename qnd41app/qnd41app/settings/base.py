@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.locales',
+    'rosetta',
     #'wagtail.contrib.settings',
     
     'wagtail.admin',
@@ -152,7 +153,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'qnd41app.urls'
-
+LOCALE_PATHS =  (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
 #WAGTAIL SETUPS
 WAGTAILSEARCH_BACKENDS = {

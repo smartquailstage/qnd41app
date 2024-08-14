@@ -258,11 +258,15 @@ li.close-full-menu{
 }
 
 .attr-nav > ul > li > a{
-    color: #212121;
+    color: #b40f14;
     display: block;
     padding: 20px 15px;
     position: relative;
 }
+
+
+
+
 
 .attr-nav > ul > li > a span.badge{
     position: absolute;
@@ -1300,6 +1304,11 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     .attr-nav > ul > li > a{
         /*padding: 16px 15px 15px;*/
     }
+
+    .attr-nav > ul > li > a > p {
+        /*padding: 16px 15px 15px;*/
+    }
+
 
     .attr-nav > ul > li.dropdown > a.dropdown-toggle:before{
         display: none;
