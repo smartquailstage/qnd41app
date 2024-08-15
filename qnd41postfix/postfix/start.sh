@@ -43,6 +43,24 @@ function createVirtualTables {
   createTable "virtual_users" "CREATE TABLE IF NOT EXISTS virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
 }
 
+function insertInitialData {
+  log "Inserting initial data into PostgreSQL tables..."
+
+  local insert_sql="
+    INSERT INTO virtual_domains (domain) VALUES ('example.com');
+    INSERT INTO virtual_users (email, password) VALUES ('user@example.com', MD5('password'));
+    INSERT INTO virtual_aliases (source, destination) VALUES ('info@example.com', 'user@example.com');
+  "
+
+  POSTFIX_POSTGRES_PASSWORD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
+  
+  if [ $? -eq 0 ]; then
+    log "Initial data inserted successfully."
+  else
+    log "Failed to insert initial data."
+  fi
+}
+
 function serviceConf {
   if [[ ! $HOSTNAME =~ \. ]]; then
     HOSTNAME="$HOSTNAME.$DOMAIN"
@@ -97,6 +115,7 @@ function setPermissions {
 function serviceStart {
   addUserInfo
   createVirtualTables
+  insertInitialData
   serviceConf
   setPermissions
   log "[ Iniciando Postfix... ]"

@@ -1,0 +1,6 @@
+user=info
+password=ms95355672
+dbname=POSFIXDB
+hosts=smartquaildb
+query = SELECT 1 FROM virtual_users WHERE email='%s'
+
