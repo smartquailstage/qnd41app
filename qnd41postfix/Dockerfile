@@ -47,6 +47,8 @@ COPY postfix /etc/postfix
 COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/
 
+
+
 # Set correct permissions for the SSL certificates
 RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
     && chmod 644 /etc/ssl/certs/fullchain.pem \

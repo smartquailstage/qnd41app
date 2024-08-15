@@ -47,9 +47,9 @@ function insertInitialData {
   log "Inserting initial data into PostgreSQL tables..."
 
   local insert_sql="
-    INSERT INTO virtual_domains (domain) VALUES ('example.com');
-    INSERT INTO virtual_users (email, password) VALUES ('user@example.com', MD5('password'));
-    INSERT INTO virtual_aliases (source, destination) VALUES ('info@example.com', 'user@example.com');
+    INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io');
+    INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', MD5('password'));
+    INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io');
   "
 
   POSTFIX_POSTGRES_PASSWORD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
