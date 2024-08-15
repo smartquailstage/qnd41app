@@ -20,7 +20,7 @@ transport_maps = pcre:/etc/postfix/transport.pcre
 alias_maps =
 
 # Only accept virtual emails
-mydestination = $myhostname, $mydomain, localhost.localdomain, localhost, mail.smartquail.io, mail
+mydestination = $myhostname, $mydomain, localhost.localdomain, localhost
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
@@ -67,7 +67,7 @@ smtpd_relay_restrictions =
 ###############
 # TLS Settings
 ###############
-ssl = yes
+
 smtp_tls_security_level = may
 smtpd_tls_security_level = may
 smtpd_tls_auth_only = no

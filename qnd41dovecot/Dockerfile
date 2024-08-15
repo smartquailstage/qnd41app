@@ -22,6 +22,8 @@ COPY configPD/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
 COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 COPY configPD/10-auth.conf dovecot/conf.d/10-auth.conf
 COPY configPD/10-mail.conf dovecot/conf.d/10-mail.conf
+COPY configPD/10-master.conf dovecot/conf.d/10-master.conf
+
 
 
 
