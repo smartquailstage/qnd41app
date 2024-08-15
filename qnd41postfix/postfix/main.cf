@@ -4,7 +4,7 @@
 
 # Main domain and hostname
 mydomain = {{ DOMAIN }}
-myhostname = mail.smartquail.io
+myhostname = {{ HOSTNAME }}
 myorigin = $mydomain
 
 # Message size limit
@@ -20,13 +20,10 @@ transport_maps = pcre:/etc/postfix/transport.pcre
 alias_maps =
 
 # Only accept virtual emails
-mydestination = $myhostname, $mydomain, localhost.localdomain, localhost, mail.smartquail.io, mail
+mydestination = $myhostname, $mydomain, localhost.localdomain, localhost
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
-
-
-
 
 ###############
 # Restrictions
@@ -54,13 +51,18 @@ smtpd_sender_restrictions =
     reject_unauthenticated_sender_login_mismatch,
     permit
 
+# Recipient restrictions
+smtpd_recipient_restrictions =
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    permit
+
 # Relay restrictions
 smtpd_relay_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
     reject_unauth_destination
-
-
 
 ###############
 # TLS Settings
@@ -78,7 +80,7 @@ smtpd_tls_session_cache_timeout = 3600s
 
 tls_random_source = dev:/dev/urandom
 
-#smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
 smtpd_tls_ciphers = high
 
@@ -86,32 +88,15 @@ smtpd_tls_ciphers = high
 # SASL Settings
 ###############
 
-# Habilitar la autenticación SASL en Postfix
 smtpd_sasl_auth_enable = yes
-
-# Especificar el tipo de SASL, en este caso, Dovecot
 smtpd_sasl_type = dovecot
-
-# Configurar el socket de Dovecot para SASL
 smtpd_sasl_path = private/auth
-
-# Habilitar el encabezado de autenticación en los correos
 smtpd_sasl_authenticated_header = yes
-
-# Configuración de seguridad para SASL
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_tls_security_options = noanonymous
-
-# Dominio local para SASL (opcional, usa $myhostname o un dominio estático)
 smtpd_sasl_local_domain = $myhostname
 
-# Opcional: Permitir clientes de SASL rotos
 broken_sasl_auth_clients = yes
-
-# Configurar restricciones de destinatarios
-smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination
-
-
 
 ###############
 # Extra Settings
@@ -126,3 +111,4 @@ maillog_file = /dev/stdout
 virtual_mailbox_domains = pgsql:/etc/postfix/sql/virtual_mailbox_domains.cf
 virtual_mailbox_maps = pgsql:/etc/postfix/sql/virtual_mailbox_maps.cf
 virtual_alias_maps = pgsql:/etc/postfix/sql/virtual_alias_maps.cf
+virtual_mailbox_users = pgsql:/etc/postfix/sql/virtual_mailbox_users.cf
