@@ -80,7 +80,8 @@ smtpd_tls_session_cache_timeout = 3600s
 
 tls_random_source = dev:/dev/urandom
 
-smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+# Change to a supported dictionary type
+smtpd_tls_session_cache_database = hash:${data_directory}/smtpd_scache
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
 smtpd_tls_ciphers = high
 
@@ -111,4 +112,3 @@ maillog_file = /dev/stdout
 virtual_mailbox_domains = pgsql:/etc/postfix/sql/virtual_mailbox_domains.cf
 virtual_mailbox_maps = pgsql:/etc/postfix/sql/virtual_mailbox_maps.cf
 virtual_alias_maps = pgsql:/etc/postfix/sql/virtual_alias_maps.cf
-virtual_users = pgsql:/etc/postfix/sql/virtual_users.cf
