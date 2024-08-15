@@ -1,0 +1,12 @@
+# Auth SQL settings for Dovecot
+
+# Configuration for SQL-based authentication
+passdb {
+  driver = sql
+  args = /etc/dovecot/dovecot-sql.conf.ext
+}
+
+userdb {
+  driver = sql
+  args = /etc/dovecot/dovecot-sql.conf.ext
+}

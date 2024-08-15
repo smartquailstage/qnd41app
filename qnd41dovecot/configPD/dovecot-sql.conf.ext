@@ -1,0 +1,6 @@
+driver = pgsql
+connect = host=postgres dbname=mailserver user=mailuser password=mailpassword
+default_pass_scheme = SHA256-CRYPT
+
+password_query = SELECT email AS user, password FROM virtual_users WHERE email = '%u'
+user_query = SELECT email AS user FROM virtual_users WHERE email = '%u'
