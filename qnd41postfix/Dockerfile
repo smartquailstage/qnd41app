@@ -14,7 +14,11 @@ RUN apk update && apk add --no-cache \
     openssl \
     iproute2 \
     postfix-ldap \
-    postgresql-client  
+    postgresql-client \
+    cyrus-sasl-plain \
+    cyrus-sasl-login \
+    cyrus-sasl-crammd5 \
+    db 
 
 # Create postfix and vmail users and groups if they do not exist
 RUN if ! getent group postfix > /dev/null; then \
