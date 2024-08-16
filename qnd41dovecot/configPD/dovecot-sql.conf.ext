@@ -1,5 +1,5 @@
 driver = pgsql
-connect = host=postgres dbname=mailserver user=mailuser password=mailpassword
+connect = host=smartquaildb dbname=POSFIXDB user=sqadmindb password=smartquaildev1719pass
 default_pass_scheme = SHA256-CRYPT
 
 password_query = SELECT email AS user, password FROM virtual_users WHERE email = '%u'
