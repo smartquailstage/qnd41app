@@ -1,0 +1,1 @@
+send_mail('Django', 'Prueba','info@mail.smartquail.io',['phys.mauricio.silva@gmail.com'],fail_silently=False)
