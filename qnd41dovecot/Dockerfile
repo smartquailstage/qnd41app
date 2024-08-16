@@ -25,6 +25,7 @@ COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
 COPY configPD/10-master.conf /etc/dovecot/conf.d/10-master.conf
 COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
+COPY configPD/10-passdb.conf /etc/dovecot/conf.d/10-passdb.conf
 
 # Crear usuario y grupo postfix si no existen
 RUN if ! id -u postfix > /dev/null 2>&1; then \
