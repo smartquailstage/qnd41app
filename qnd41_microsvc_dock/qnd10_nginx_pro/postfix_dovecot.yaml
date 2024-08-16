@@ -71,11 +71,14 @@ services:
 
 
 volumes:
+  smartquaildb_data-qnd41:
   postfix-spools:
   postfix-mail:
   postfix-logs:
   dovecot:
   mail:
+
+
 
 
 networks:
