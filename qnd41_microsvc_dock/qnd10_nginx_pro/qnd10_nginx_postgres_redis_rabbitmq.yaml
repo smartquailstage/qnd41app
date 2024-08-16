@@ -123,6 +123,14 @@ services:
     networks:
       - lansmartquail
 
+  memcached:
+    image: memcached:latest
+    container_name: memcached
+    networks:
+      - lansmartquail
+    ports:
+      - "11211:11211" 
+
 
 
 
