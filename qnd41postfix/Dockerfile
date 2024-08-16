@@ -13,6 +13,7 @@ RUN apk update && apk add --no-cache \
     curl \
     openssl \
     iproute2 \
+    postfix-ldap \
     postgresql-client
 
 # Create postfix and vmail users and groups if they do not exist
