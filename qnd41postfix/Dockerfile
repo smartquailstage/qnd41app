@@ -17,7 +17,7 @@ RUN apk update && apk add --no-cache \
     postgresql-client \
     pcre \
     db \
-    gdbm \
+    gdbm
     
 
 # Create postfix and vmail users and groups if they do not exist
