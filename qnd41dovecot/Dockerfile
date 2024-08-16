@@ -11,7 +11,7 @@ ADD dovecot.gpg /etc/apt/keyrings/dovecot.gpg
 ADD dovecot.list /etc/apt/sources.list.d/
 
 # Copiar archivos de configuración de Dovecot
-COPY dovecot.conf /etc/dovecot/dovecot.conf
+COPY dovecot.conf /etc/dovecot/conf.d/dovecot.conf
 COPY postfix/main.cf /etc/postfix/main.cf
 
 # Copiar certificados SSL
@@ -19,13 +19,13 @@ COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/fullchain.pem
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/privkey.pem
 
 # Archivos de configuración postfix+Dovecot
-#COPY configPD/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
+COPY configPD/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
 COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
 COPY configPD/10-master.conf /etc/dovecot/conf.d/10-master.conf
 COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
-#COPY configPD/10-passdb.conf /etc/dovecot/conf.d/10-passdb.conf
+COPY configPD/10-passdb.conf /etc/dovecot/conf.d/10-passdb.conf
 
 # Crear usuario y grupo postfix si no existen
 RUN if ! id -u postfix > /dev/null 2>&1; then \
