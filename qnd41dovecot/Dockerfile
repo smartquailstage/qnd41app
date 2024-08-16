@@ -20,11 +20,11 @@ COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/privkey.pem
 
 # Archivos de configuración postfix+Dovecot
 #COPY configPD/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
-COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
-COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
-COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
-COPY configPD/10-master.conf /etc/dovecot/conf.d/10-master.conf
-COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
+#COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
+#COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
+#COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
+#COPY configPD/10-master.conf /etc/dovecot/conf.d/10-master.conf
+#COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 #COPY configPD/10-passdb.conf /etc/dovecot/conf.d/10-passdb.conf
 
 # Crear usuario y grupo postfix si no existen
