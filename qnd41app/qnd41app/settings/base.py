@@ -220,14 +220,7 @@ Configuration.configure(
     BRAINTREE_PRIVATE_KEY
 )
 
-# celery setup
-CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
-#CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
-#CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND')
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
+
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

@@ -222,6 +222,14 @@ ADMINS= (
 
 ALLOWED_HOSTS = ['*']
 
+# Configuración de Celery
+CELERY_BROKER_URL = 'amqp://localhost'  # URL de RabbitMQ
+CELERY_RESULT_BACKEND = 'rpc://'  # O usa otro backend si lo prefieres
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Guayaquil'
+
 #Static files DevMod
 
 MEDIA_URL = "/media/"
