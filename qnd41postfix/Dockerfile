@@ -18,7 +18,7 @@ RUN apk update && apk add --no-cache \
     pcre \
     db \
     gdbm \
-    postfix-memcache 
+
 
 # Create postfix and vmail users and groups if they do not exist
 RUN if ! getent group postfix > /dev/null; then \
