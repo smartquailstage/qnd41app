@@ -41,6 +41,8 @@ services:
     image: smartquail/qnd10dovecot:prod
     container_name: dovecot
     restart: always
+    depends_on:
+      - smartquaildb
     volumes:
       - dovecot:/etc/dovecot
       - mail:/var/mail
