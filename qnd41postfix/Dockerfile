@@ -19,8 +19,7 @@ RUN apk update && apk add --no-cache \
     libsasl2-modules \
     libsasl2-modules-db \
     libdb5.3-dev \
-    libpcre3-dev \
-    && rm -rf /var/lib/apt/lists/*
+    libpcre3-dev 
 
 # Create postfix and vmail users and groups if they do not exist
 RUN if ! getent group postfix > /dev/null; then \
