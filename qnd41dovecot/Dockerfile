@@ -19,7 +19,7 @@ COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/fullchain.pem
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/privkey.pem
 
 # Archivos de configuración postfix+Dovecot
-COPY configPD/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
+#COPY configPD/auth-sql.conf.ext /etc/dovecot/conf.d/auth-sql.conf.ext
 COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
