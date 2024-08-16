@@ -17,15 +17,14 @@ COPY postfix/main.cf /etc/postfix/main.cf
 # Copiar certificados SSL
 COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/fullchain.pem
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/privkey.pem
-#Archivos de configuración postfix+Dovecot
+
+# Archivos de configuración postfix+Dovecot
 COPY configPD/auth-sql.conf.ext /etc/dovecot/dovecot-dict-auth.conf.ext
 COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
-COPY configPD/10-mail.conf  /etc/dovecot/conf.d/10-mail.conf
-COPY configPD/10-master.conf  /etc/dovecot/conf.d/10-master.conf
-
-
-
+COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
+COPY configPD/10-master.conf /etc/dovecot/conf.d/10-master.conf
+COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 
 # Crear usuario y grupo postfix si no existen
 RUN if ! id -u postfix > /dev/null 2>&1; then \
@@ -54,7 +53,7 @@ RUN apt-get -y update && \
       ca-certificates \
       ssl-cert \
       vim && \
-    rm -rf /var/lib/apt/lists && \
+    rm -rf /var/lib/apt/lists/* && \
     groupadd -g 1000 vmail && \
     useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
     passwd -l vmail && \
@@ -77,5 +76,6 @@ EXPOSE 993
 EXPOSE 4190
 
 VOLUME ["/etc/dovecot", "/srv/mail"]
+
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/usr/sbin/dovecot", "-F"]
