@@ -16,7 +16,8 @@ RUN apk update && apk add --no-cache \
     postfix-ldap \
     postgresql-client \
     pcre \
-    db 
+    db \
+    gdbm
 
 # Create postfix and vmail users and groups if they do not exist
 RUN if ! getent group postfix > /dev/null; then \
