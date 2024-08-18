@@ -12,13 +12,17 @@ function log {
 }
 
 function addUserInfo {
-  if ! id -u info &>/dev/null; then
-    log "Adding user 'info@mail.smartquail.io'"
-    adduser --system --no-create-home info
+  # El nombre de usuario debe ser algo como "info" en lugar de "info@mail.smartquail.io"
+  local user_name="info@mail.smartquail.io"
+  
+  if ! id -u "$user_name" &>/dev/null; then
+    log "Adding user '${user_name}'"
+    adduser --system --no-create-home "$user_name"
   else
-    log "User 'info' already exists"
+    log "User '${user_name}' already exists"
   fi
 }
+
 
 function createTable {
   local table_name=$1
