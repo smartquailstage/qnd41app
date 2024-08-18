@@ -24,7 +24,6 @@ services:
       - .env
     depends_on:
       - smartquaildb
-      - dovecot
     expose:
       - "25"
     ports:
@@ -43,6 +42,7 @@ services:
     restart: always
     depends_on:
       - smartquaildb
+      - postfix
     volumes:
       - dovecot:/etc/dovecot
       - mail:/var/mail
