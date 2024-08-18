@@ -69,9 +69,9 @@ RUN apt-get -y update && \
 
 RUN mkdir -p /var/spool/postfix/private && \
     chown vmail:vmail /var/spool/postfix/private && \
-    mkdir -p /var/mail/users && \
-    chown vmail:vmail /var/mail/users && \
-    chmod -R 0770 /var/mail/users
+    mkdir -p /var/mail/ && \
+    chown vmail:vmail /var/mail/ && \
+    chmod -R 0770 /var/mail/
    
 
 EXPOSE 24

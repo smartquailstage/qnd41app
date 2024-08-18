@@ -59,8 +59,8 @@ function insertInitialData {
 
   local insert_sql="
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_users (user, password) VALUES ('info', 'ms95355672') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_users (username, password) VALUES ('info', 'ms95355672') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_aliases (source, destination) VALUES ('info', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/info') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailbox_domains (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/info') ON CONFLICT DO NOTHING;
   "
@@ -121,8 +121,8 @@ function setPermissions {
   chmod 640 /etc/postfix/*.cf
 
   # Set ownership and permissions for mail directories
-  chown -R postfix:postfix /var/mail/users
-  chmod 700 /var/mail/users
+  chown -R postfix:postfix /var/mail/
+  chmod 700 /var/mail/
 
   # Set permissions for SSL certificates
   chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem
