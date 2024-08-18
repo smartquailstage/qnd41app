@@ -71,8 +71,9 @@ RUN mkdir -p /var/spool/postfix/private && \
     chown vmail:vmail /var/spool/postfix/private && \
     mkdir -p /var/mail/users && \
     chown vmail:vmail /var/mail/users && \
-    chmod 0770 /var/mail/users && \
-    chmod -R 0770 /var/mail/users
+    chown -R vmail:vmail /var/mail/users && \
+    chmod -R 0770 /var/mail/users 
+   
 
 EXPOSE 24
 EXPOSE 110
