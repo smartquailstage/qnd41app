@@ -18,7 +18,6 @@ RUN apk update && apk add --no-cache \
     pcre \
     db \
     gdbm
-    
 
 # Create postfix and vmail users and groups if they do not exist
 RUN if ! getent group postfix > /dev/null; then \
@@ -36,9 +35,12 @@ RUN if ! getent group postfix > /dev/null; then \
 
 # Create necessary directories and set permissions
 RUN mkdir -p /var/spool/postfix/private \
+    && mkdir -p /var/mail/users \
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
-    && chmod 750 /var/spool/postfix
+    && chmod 750 /var/spool/postfix \
+    && chown -R vmail:vmail /var/mail/users \
+    && chmod 700 /var/mail/users
 
 # Set permissions for the SSL certificates
 RUN mkdir -p /etc/ssl/certs /etc/ssl/private \
@@ -52,8 +54,6 @@ COPY postfix /etc/postfix
 COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/
 
-
-
 # Set correct permissions for the SSL certificates
 RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
     && chmod 644 /etc/ssl/certs/fullchain.pem \
@@ -61,6 +61,9 @@ RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
 
 # Expose the SMTP port
 EXPOSE 25
+
+# Define the volume
+VOLUME ["/var/mail/users"]
 
 # Define entrypoint script
 COPY postfix/start.sh /usr/local/bin/start.sh
