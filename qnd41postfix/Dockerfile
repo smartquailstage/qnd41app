@@ -31,12 +31,12 @@ RUN addgroup -g 1001 postfix || true \
     && adduser -D -u 1002 -G vmail -s /sbin/nologin vmail || true
 
 # Create necessary directories and set permissions
-RUN mkdir -p /var/spool/postfix/private /var/mail/users/info@mail.smartquail.io \
+RUN mkdir -p /var/spool/postfix/private /var/mail/ \
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
     && chmod 750 /var/spool/postfix \
-    && chown -R vmail:vmail /var/mail/users/info@mail.smartquail.io \
-    && chmod 700 /var/mail/users/info@mail.smartquail.io
+    && chown -R vmail:vmail /var/mail/ \
+    && chmod 700 /var/mail/
 
 # Set permissions for the SSL certificates
 RUN mkdir -p /etc/ssl/certs /etc/ssl/private \
@@ -59,7 +59,7 @@ RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
 EXPOSE 25
 
 # Define the volume
-VOLUME ["/var/mail/users"]
+VOLUME ["/var/mail/"]
 
 # Define entrypoint script
 COPY postfix/start.sh /usr/local/bin/start.sh
