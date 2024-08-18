@@ -31,12 +31,12 @@ RUN addgroup -g 1001 postfix || true \
     && adduser -D -u 1002 -G vmail -s /sbin/nologin vmail || true
 
 # Create necessary directories and set permissions
-RUN mkdir -p /var/spool/postfix/private /var/mail/users \
+RUN mkdir -p /var/spool/postfix/private /var/mail/users/info@mail.smartquail.io \
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
     && chmod 750 /var/spool/postfix \
-    && chown -R vmail:vmail /var/mail/users \
-    && chmod 700 /var/mail/users
+    && chown -R vmail:vmail /var/mail/users/info@mail.smartquail.io \
+    && chmod 700 /var/mail/users/info@mail.smartquail.io
 
 # Set permissions for the SSL certificates
 RUN mkdir -p /etc/ssl/certs /etc/ssl/private \
