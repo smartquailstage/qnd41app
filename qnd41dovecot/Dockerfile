@@ -3,7 +3,8 @@ FROM debian:11-slim
 LABEL org.opencontainers.image.authors="dovecot@dovecot.org"
 
 ENV container=docker \
-    LC_ALL=C
+    LC_ALL=C \
+    TZ=America/Guayaquil
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Añadir claves y fuentes de APT
@@ -53,7 +54,8 @@ RUN apt-get -y update && \
       dovecot-submissiond \
       ca-certificates \
       ssl-cert \
-      vim && \
+      vim \
+      tzdata && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd -g 1000 vmail && \
     useradd -u 1000 -g 1000 vmail -d /srv/vmail && \
@@ -62,11 +64,16 @@ RUN apt-get -y update && \
     chown vmail:vmail /srv/mail && \
     mkdir -p /etc/dovecot && \
     ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem && \
-    ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem
+    ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem && \
+    # Configurar la zona horaria
+    ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 # Configuración de permisos y creación de directorios necesarios
 RUN mkdir -p /var/spool/postfix/private && \
-    chown vmail:vmail /var/spool/postfix/private
+    chown vmail:vmail /var/spool/postfix/private && \
+    mkdir -p /var/mail/users && \
+    chown vmail:vmail /var/mail/users
 
 EXPOSE 24
 EXPOSE 110
