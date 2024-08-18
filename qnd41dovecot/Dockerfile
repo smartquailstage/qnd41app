@@ -71,11 +71,7 @@ RUN mkdir -p /var/spool/postfix/private && \
     chown vmail:vmail /var/spool/postfix/private && \
     mkdir -p /var/mail/users && \
     chown vmail:vmail /var/mail/users && \
-    chmod 0770 /var/mail/users && \
-    mkdir -p /var/mail/users/info@mail.smartquail.io/tmp && \
-    chown vmail:vmail /var/mail/users/info@mail.smartquail.io && \
-    chmod 0770 /var/mail/users/info@mail.smartquail.io && \
-    chmod 0770 /var/mail/users/info@mail.smartquail.io/tmp
+    chmod -R 0770 /var/mail/users
    
 
 EXPOSE 24
