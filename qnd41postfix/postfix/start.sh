@@ -25,12 +25,12 @@ function createTable {
   local table_sql=$2
 
   log "Creating ${table_name} table in PostgreSQL..."
-  
+
   # Check if table exists
-  local check_sql="SELECT EXISTS (SELECT FROM information_schema.tables WHERE  table_schema = 'public' AND table_name = '${table_name}');"
+  local check_sql="SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = '${table_name}');"
   local table_exists=$(psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -t -c "$check_sql")
 
-  if [ "$table_exists" == "t" ]; then
+  if [[ "$table_exists" =~ ^t$ ]]; then
     log "Table ${table_name} already exists, skipping creation."
   else
     psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
@@ -43,11 +43,11 @@ function createTable {
 }
 
 function createVirtualTables {
-  createTable "virtual_domains" "CREATE TABLE virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
-  createTable "virtual_mailbox_domains" "CREATE TABLE virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
-  createTable "virtual_aliases" "CREATE TABLE virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
-  createTable "virtual_mailboxes" "CREATE TABLE virtual_mailboxes (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
-  createTable "virtual_users" "CREATE TABLE virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
+  createTable "virtual_domains" "CREATE TABLE IF NOT EXISTS virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_mailbox_domains" "CREATE TABLE IF NOT EXISTS virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_aliases" "CREATE TABLE IF NOT EXISTS virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
+  createTable "virtual_mailboxes" "CREATE TABLE IF NOT EXISTS virtual_mailboxes (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
+  createTable "virtual_users" "CREATE TABLE IF NOT EXISTS virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
 }
 
 function insertInitialData {
