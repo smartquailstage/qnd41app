@@ -6,7 +6,6 @@ export PGUSER="sqadmindb"
 export POSTFIX_POSTGRES_DB="POSFIXDB"
 export POSTFIX_POSTGRES_USER="sqadmindb"
 export POSTFIX_POSTGRES_HOST="smartquaildb"
-export POSTFIX_POSTGRES_PASSWORD="smartquaildev1719pass"
 
 function log {
   echo "$(date) $ME - $@"
@@ -15,7 +14,7 @@ function log {
 function addUserInfo {
   if ! id -u info &>/dev/null; then
     log "Adding user 'info'"
-    adduser -D -H info
+    adduser --system --no-create-home info
   else
     log "User 'info' already exists"
   fi
@@ -26,7 +25,7 @@ function createTable {
   local table_sql=$2
 
   log "Creating ${table_name} table in PostgreSQL..."
-  POSTFIX_POSTGRES_PASSWORD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
+  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
   
   if [ $? -eq 0 ]; then
     log "${table_name} table created successfully."
@@ -39,7 +38,7 @@ function createVirtualTables {
   createTable "virtual_domains" "CREATE TABLE IF NOT EXISTS virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
   createTable "virtual_mailbox_domains" "CREATE TABLE IF NOT EXISTS virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
   createTable "virtual_aliases" "CREATE TABLE IF NOT EXISTS virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
-  createTable "virtual_mailboxes" "CREATE TABLE IF NOT EXISTS virtual_mailboxes (id SERIAL PRIMARY KEY, mailbox VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_mailboxes" "CREATE TABLE IF NOT EXISTS virtual_mailboxes (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
   createTable "virtual_users" "CREATE TABLE IF NOT EXISTS virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
 }
 
@@ -50,10 +49,10 @@ function insertInitialData {
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io');
     INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672');
     INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io');
-    INSERT INTO virtual_mailboxes (source, mailbox) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io');
+    INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/users/info@mail.smartquail.io');
   "
 
-  POSTFIX_POSTGRES_PASSWORD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
+  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
   
   if [ $? -eq 0 ]; then
     log "Initial data inserted successfully."
@@ -106,6 +105,10 @@ function setPermissions {
   # Set ownership and permissions for Postfix configuration files
   chown -R root:root /etc/postfix
   chmod 640 /etc/postfix/*.cf
+
+  # Set ownership and permissions for mail directories
+  chown -R postfix:postfix /var/mail/users
+  chmod 700 /var/mail/users
 
   # Set permissions for SSL certificates
   chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem
