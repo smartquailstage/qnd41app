@@ -66,13 +66,16 @@ RUN apt-get -y update && \
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
-# Configuración de permisos y creación de directorios necesarios
+
 RUN mkdir -p /var/spool/postfix/private && \
     chown vmail:vmail /var/spool/postfix/private && \
     mkdir -p /var/mail/users && \
     chown vmail:vmail /var/mail/users && \
-    chown -R vmail:vmail /var/mail/users && \
-    chmod -R 0770 /var/mail/users 
+    chmod 0770 /var/mail/users && \
+    mkdir -p /var/mail/users/info@mail.smartquail.io/tmp && \
+    chown vmail:vmail /var/mail/users/info@mail.smartquail.io && \
+    chmod 0770 /var/mail/users/info@mail.smartquail.io && \
+    chmod 0770 /var/mail/users/info@mail.smartquail.io/tmp
    
 
 EXPOSE 24
