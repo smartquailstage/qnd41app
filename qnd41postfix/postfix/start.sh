@@ -13,7 +13,7 @@ function log {
 
 function addUserInfo {
   # El nombre de usuario debe ser algo como "info" en lugar de "info@mail.smartquail.io"
-  local user_name="info@mail.smartquail.io"
+  local user_name="info"
   
   if ! id -u "$user_name" &>/dev/null; then
     log "Adding user '${user_name}'"
@@ -60,7 +60,7 @@ function insertInitialData {
   local insert_sql="
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_aliases (source, destination) VALUES ('info', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/info@smartquail.io') ON CONFLICT DO NOTHING;
   "
 
