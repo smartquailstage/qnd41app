@@ -4,8 +4,8 @@ FROM alpine:3.16
 LABEL maintainer="your-email@example.com"
 
 # Environment variables
-ENV DOMAIN=mail.smartquail.io
-ENV HOSTNAME=137.184.0.57
+ENV DOMAIN=smartquail.io
+ENV HOSTNAME=mail.smartquail.io
 ENV LISTEN_PORT=25
 
 # Install Postfix and necessary dependencies

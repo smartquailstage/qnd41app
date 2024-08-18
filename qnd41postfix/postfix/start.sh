@@ -8,13 +8,12 @@ export POSTFIX_POSTGRES_USER="sqadmindb"
 export POSTFIX_POSTGRES_HOST="smartquaildb"
 
 function log {
-  echo "$(date) - $@"
+  echo "$(date) $ME - $@"
 }
 
 function addUserInfo {
-  # Añadir usuario de sistema 'info' si no existe
   if ! id -u info &>/dev/null; then
-    log "Adding system user 'info'"
+    log "Adding user 'info'"
     adduser --system --no-create-home info
   else
     log "User 'info' already exists"
@@ -26,21 +25,29 @@ function createTable {
   local table_sql=$2
 
   log "Creating ${table_name} table in PostgreSQL..."
-  psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
   
-  if [ $? -eq 0 ]; then
-    log "${table_name} table created successfully."
+  # Check if table exists
+  local check_sql="SELECT EXISTS (SELECT FROM information_schema.tables WHERE  table_schema = 'public' AND table_name = '${table_name}');"
+  local table_exists=$(psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -t -c "$check_sql")
+
+  if [ "$table_exists" == "t" ]; then
+    log "Table ${table_name} already exists, skipping creation."
   else
-    log "Failed to create ${table_name} table."
+    psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$table_sql"
+    if [ $? -eq 0 ]; then
+      log "${table_name} table created successfully."
+    else
+      log "Failed to create ${table_name} table."
+    fi
   fi
 }
 
 function createVirtualTables {
-  createTable "virtual_domains" "CREATE TABLE IF NOT EXISTS virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
-  createTable "virtual_mailbox_domains" "CREATE TABLE IF NOT EXISTS virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
-  createTable "virtual_aliases" "CREATE TABLE IF NOT EXISTS virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
-  createTable "virtual_mailboxes" "CREATE TABLE IF NOT EXISTS virtual_mailboxes (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
-  createTable "virtual_users" "CREATE TABLE IF NOT EXISTS virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
+  createTable "virtual_domains" "CREATE TABLE virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_mailbox_domains" "CREATE TABLE virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
+  createTable "virtual_aliases" "CREATE TABLE virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
+  createTable "virtual_mailboxes" "CREATE TABLE virtual_mailboxes (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
+  createTable "virtual_users" "CREATE TABLE virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
 }
 
 function insertInitialData {
@@ -127,8 +134,8 @@ function serviceStart {
   /usr/sbin/postfix start-fg
 }
 
-export DOMAIN=${DOMAIN:-"localdomain"}
-export HOSTNAME=${HOSTNAME:-"localhost"}
+export DOMAIN=${DOMAIN:-"smartquail.io"}
+export HOSTNAME=${HOSTNAME:-"mail.smartquail.io"}
 export MESSAGE_SIZE_LIMIT=${MESSAGE_SIZE_LIMIT:-"50000000"}
 export RELAYNETS=${RELAYNETS:-""}
 export RELAYHOST=${RELAYHOST:-""}
