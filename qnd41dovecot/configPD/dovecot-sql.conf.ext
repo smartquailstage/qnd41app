@@ -1,5 +1,5 @@
 driver = pgsql
-connect = host=smartquaildb dbname=POSFIXDB user=info@mail.smartquail.io password=ms95355672
+connect = host=smartquaildb dbname=POSFIXDB user=sqadmindb password=smartquaildev1719pass
 default_pass_scheme = PLAIN-MD5
 
 
