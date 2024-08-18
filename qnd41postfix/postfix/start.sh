@@ -8,12 +8,13 @@ export POSTFIX_POSTGRES_USER="sqadmindb"
 export POSTFIX_POSTGRES_HOST="smartquaildb"
 
 function log {
-  echo "$(date) $ME - $@"
+  echo "$(date) - $@"
 }
 
 function addUserInfo {
+  # Añadir usuario de sistema 'info' si no existe
   if ! id -u info &>/dev/null; then
-    log "Adding user 'info'"
+    log "Adding system user 'info'"
     adduser --system --no-create-home info
   else
     log "User 'info' already exists"
@@ -46,10 +47,10 @@ function insertInitialData {
   log "Inserting initial data into PostgreSQL tables..."
 
   local insert_sql="
-    INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io');
-    INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672');
-    INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io');
-    INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/users/info@mail.smartquail.io');
+    INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/users/info@mail.smartquail.io') ON CONFLICT DO NOTHING;
   "
 
   psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
