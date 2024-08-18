@@ -50,6 +50,7 @@ function insertInitialData {
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io');
     INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672');
     INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io');
+    INSERT INTO virtual_mailboxes (source, mailbox) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io');
   "
 
   POSTFIX_POSTGRES_PASSWORD=$POSTFIX_POSTGRES_PASSWORD psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
