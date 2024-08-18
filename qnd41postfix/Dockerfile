@@ -3,6 +3,11 @@ FROM alpine:3.16
 
 LABEL maintainer="your-email@example.com"
 
+# Environment variables
+ENV DOMAIN=mail.smartquail.io
+ENV HOSTNAME=137.184.0.57
+ENV LISTEN_PORT=25
+
 # Install Postfix and necessary dependencies
 RUN apk update && apk add --no-cache \
     postfix \
@@ -20,22 +25,13 @@ RUN apk update && apk add --no-cache \
     gdbm
 
 # Create postfix and vmail users and groups if they do not exist
-RUN if ! getent group postfix > /dev/null; then \
-        addgroup -g 1001 postfix; \
-    fi && \
-    if ! id -u postfix > /dev/null 2>&1; then \
-        adduser -D -u 1001 -G postfix -s /sbin/nologin postfix; \
-    fi && \
-    if ! getent group vmail > /dev/null; then \
-        addgroup -g 1002 vmail; \
-    fi && \
-    if ! id -u vmail > /dev/null 2>&1; then \
-        adduser -D -u 1002 -G vmail -s /sbin/nologin vmail; \
-    fi
+RUN addgroup -g 1001 postfix || true \
+    && adduser -D -u 1001 -G postfix -s /sbin/nologin postfix || true \
+    && addgroup -g 1002 vmail || true \
+    && adduser -D -u 1002 -G vmail -s /sbin/nologin vmail || true
 
 # Create necessary directories and set permissions
-RUN mkdir -p /var/spool/postfix/private \
-    && mkdir -p /var/mail/users \
+RUN mkdir -p /var/spool/postfix/private /var/mail/users \
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
     && chmod 750 /var/spool/postfix \
