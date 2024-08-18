@@ -13,7 +13,7 @@ function log {
 
 function addUserInfo {
   if ! id -u info &>/dev/null; then
-    log "Adding user 'info'"
+    log "Adding user 'info@mail.smartquail.io'"
     adduser --system --no-create-home info
   else
     log "User 'info' already exists"
@@ -57,7 +57,7 @@ function insertInitialData {
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_aliases (source, destination) VALUES ('info', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/users/info@smartquail.io') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_mailboxes (email, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/info@smartquail.io') ON CONFLICT DO NOTHING;
   "
 
   psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
