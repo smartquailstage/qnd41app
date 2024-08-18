@@ -50,7 +50,7 @@ function createVirtualTables {
   createTable "virtual_domains" "CREATE TABLE virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
   createTable "virtual_mailbox_domains" "CREATE TABLE virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
   createTable "virtual_aliases" "CREATE TABLE virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
-  createTable "virtual_mailboxes" "CREATE TABLE virtual_mailboxes (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
+  createTable "virtual_mailboxes" "CREATE TABLE virtual_mailboxes (id SERIAL PRIMARY KEY, username VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
   createTable "virtual_users" "CREATE TABLE virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
 }
 
