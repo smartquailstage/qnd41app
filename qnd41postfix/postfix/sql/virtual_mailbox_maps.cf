@@ -5,4 +5,4 @@ password=smartquaildev1719pass
 dbname=POSFIXDB
 hosts=smartquaildb
 
-query = SELECT mailbox FROM virtual_mailboxes WHERE mailbox='%s'
+query = SELECT mailbox FROM virtual_mailbox WHERE mailbox='%s'
