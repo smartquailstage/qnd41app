@@ -41,29 +41,28 @@ smtpd_helo_required = yes
 
 # Sender restrictions
 smtpd_sender_restrictions =
-    permit_mynetworks,
-    permit_sasl_authenticated,
-    reject_non_fqdn_sender,
-    reject_unknown_sender_domain,
-    reject_unlisted_sender,
-    reject_sender_login_mismatch,
-    reject_authenticated_sender_login_mismatch,
-    reject_unauthenticated_sender_login_mismatch,
+    permit_mynetworks,                     # Permite los remitentes de las redes definidas en mynetworks
+    permit_sasl_authenticated,            # Permite los remitentes autenticados
+    #reject_non_fqdn_sender,               # Rechaza remitentes con nombres de dominio no completamente calificados
+    #reject_unknown_sender_domain,         # Rechaza remitentes con dominios desconocidos
+    #reject_unlisted_sender,               # Rechaza remitentes que no están listados en las bases de datos virtuales
+    #reject_sender_login_mismatch,         # Rechaza si el remitente no coincide con el login
+    #reject_authenticated_sender_login_mismatch, # Rechaza si el remitente autenticado no coincide con el login
+    #reject_unauthenticated_sender_login_mismatch, # Rechaza si el remitente no autenticado no coincide con el login
     permit
 
 # Recipient restrictions
 smtpd_recipient_restrictions =
-    permit_mynetworks,
-    permit_sasl_authenticated,
-    reject_unauth_destination,
+    permit_mynetworks,                     # Permite los destinatarios en las redes definidas en mynetworks
+    permit_sasl_authenticated,            # Permite destinatarios autenticados
+    #reject_unauth_destination,            # Rechaza destinatarios fuera de los dominios permitidos
     permit
-
 
 # Relay restrictions
 smtpd_relay_restrictions =
-    permit_mynetworks,
-    permit_sasl_authenticated,
-    reject_unauth_destination,
+    permit_mynetworks,                     # Permite el reenvío desde las redes definidas en mynetworks
+    permit_sasl_authenticated,            # Permite el reenvío para usuarios autenticados
+    #reject_unauth_destination,            # Rechaza el reenvío a destinos no autorizados
     permit
 
 ###############
