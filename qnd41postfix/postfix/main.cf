@@ -43,6 +43,12 @@ smtpd_helo_required = yes
 smtpd_sender_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
+    reject_non_fqdn_sender,
+    reject_unknown_sender_domain,
+    #reject_unlisted_sender,
+    #reject_sender_login_mismatch,
+    #reject_authenticated_sender_login_mismatch,
+    #reject_unauthenticated_sender_login_mismatch,
     permit
 
 # Recipient restrictions
@@ -52,13 +58,13 @@ smtpd_recipient_restrictions =
     reject_unauth_destination,
     permit
 
+
 # Relay restrictions
 smtpd_relay_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
     reject_unauth_destination,
-    permit                             
-  
+    permit
 
 ###############
 # TLS Settings
