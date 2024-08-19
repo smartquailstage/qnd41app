@@ -11,7 +11,8 @@ myorigin = $mydomain
 message_size_limit = {{ MESSAGE_SIZE_LIMIT }}
 
 # Relayed networks
-mynetworks = 127.0.0.1/32 [::1]/128 {{ RELAYNETS }}
+mynetworks = 127.0.0.1/32 [::1]/128 209.85.0.0/16 {{ RELAYNETS }}
+ 
 
 
 transport_maps = pcre:/etc/postfix/transport.pcre
@@ -39,16 +40,15 @@ smtpd_sender_login_maps = $virtual_alias_maps
 # Helo restrictions are specified for smtp only in master.cf
 smtpd_helo_required = yes
 
-# Sender restrictions
-smtpd_sender_restrictions =
-    permit_mynetworks,
-    permit_sasl_authenticated,
+
+
+smtpd_sender_restrictions = 
+    permit_mynetworks, 
+    permit_sasl_authenticated, 
     reject_non_fqdn_sender,
-    reject_unknown_sender_domain,
-    reject_unlisted_sender,
+    reject_unknown_sender_domain, 
+    reject_unlisted_sender, 
     reject_sender_login_mismatch,
-    reject_authenticated_sender_login_mismatch,
-    reject_unauthenticated_sender_login_mismatch,
     permit
 
 # Recipient restrictions
