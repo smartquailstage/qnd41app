@@ -12,12 +12,24 @@ function log {
 }
 
 function addUserInfo {
-  # El nombre de usuario debe ser algo como "info" en lugar de "info@mail.smartquail.io"
   local user_name="info"
-  
+  local user_home="/home/${user_name}"
+
+  # Verifica si el usuario ya existe
   if ! id -u "$user_name" &>/dev/null; then
     log "Adding user '${user_name}'"
-    adduser --system --no-create-home "$user_name"
+
+    # Añade el usuario con un directorio home
+    adduser --system --home "$user_home" --no-create-home "$user_name"
+
+    # Crea el directorio home
+    mkdir -p "$user_home"
+
+    # Ajusta los permisos del directorio home
+    chown "$user_name:$user_name" "$user_home"
+    chmod 700 "$user_home"
+    
+    log "User '${user_name}' added with home directory '${user_home}'"
   else
     log "User '${user_name}' already exists"
   fi
