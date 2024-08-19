@@ -1,5 +1,10 @@
 driver = pgsql
 connect = host=smartquaildb dbname=POSFIXDB user=sqadmindb password=smartquaildev1719pass
 default_pass_scheme = PLAIN
-password_query = SELECT password FROM virtual_users WHERE username = '%u';
-user_query = SELECT source AS user FROM virtual_aliases WHERE source = '%u'; 
+# Consulta para obtener el usuario y el directorio de correo
+user_query = \
+  SELECT username AS user, maildir FROM virtual_mailboxes WHERE username = '%u';
+
+# Consulta para obtener la contraseña del usuario
+password_query = \
+  SELECT password FROM virtual_users WHERE username = '%u';
