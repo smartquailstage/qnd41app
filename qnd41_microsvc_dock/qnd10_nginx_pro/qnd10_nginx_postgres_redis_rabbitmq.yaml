@@ -68,7 +68,7 @@ services:
       - "25:25"
     volumes:
       - postfix-spools:/var/spool/postfix
-      - mail:/var/mail/
+      - mail:/home/
       - postfix-logs:/var/log
     networks:
       - lansmartquail
