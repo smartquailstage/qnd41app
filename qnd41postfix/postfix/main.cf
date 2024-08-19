@@ -19,8 +19,8 @@ transport_maps = pcre:/etc/postfix/transport.pcre
 # Empty alias list to override the configuration variable and disable NIS
 alias_maps =
 
-# Only accept virtual emails
-mydestination = $myhostname, $mydomain, localhost.localdomain, localhost, mail.smartquail.io, mail
+# No destination restrictions
+mydestination =
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
@@ -60,11 +60,7 @@ smtpd_recipient_restrictions =
 
 
 # Relay restrictions
-smtpd_relay_restrictions =
-    permit_mynetworks,
-    permit_sasl_authenticated,
-    reject_unauth_destination,
-    permit
+smtpd_relay_restrictions = permit
 
 ###############
 # TLS Settings
@@ -124,3 +120,4 @@ virtual_mailboxes = pgsql:/etc/postfix/sql/virtual_mailboxes.cf
 virtual_users = pgsql:/etc/postfix/sql/virtual_users.cf
 virtual_uid_maps = static:1000
 virtual_gid_maps = static:1000
+virtual_alias_domains = *
