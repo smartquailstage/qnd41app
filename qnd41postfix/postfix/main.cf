@@ -119,5 +119,6 @@ virtual_mailbox_domains = pgsql:/etc/postfix/sql/virtual_mailbox_domains.cf
 virtual_mailbox_maps = pgsql:/etc/postfix/sql/virtual_mailbox_maps.cf
 virtual_alias_maps = pgsql:/etc/postfix/sql/virtual_alias_maps.cf
 virtual_mailboxes = pgsql:/etc/postfix/sql/virtual_mailboxes.cf
+virtual_users = pgsql:/etc/postfix/sql/virtual_users.cf
 virtual_uid_maps = static:1000
 virtual_gid_maps = static:1000
