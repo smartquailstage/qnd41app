@@ -41,23 +41,23 @@ smtpd_helo_required = yes
 
 # Sender restrictions
 smtpd_sender_restrictions =
-    permit_mynetworks,                     # Permite los remitentes de las redes definidas en mynetworks
-    permit_sasl_authenticated,            # Permite los remitentes autenticados
-    permit                                # Permite todos los remitentes
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    permit
 
 # Recipient restrictions
 smtpd_recipient_restrictions =
-    permit_mynetworks,                     # Permite los destinatarios en las redes definidas en mynetworks
-    permit_sasl_authenticated,            # Permite destinatarios autenticados
-    reject_unauth_destination,            # Rechaza destinatarios fuera de los dominios permitidos (evita el abuso de reenvío)
-    permit                                # Permite todos los destinatarios que pasen la verificación previa
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    permit
 
 # Relay restrictions
 smtpd_relay_restrictions =
-    permit_mynetworks,                     # Permite el reenvío desde las redes definidas en mynetworks
-    permit_sasl_authenticated,            # Permite el reenvío para usuarios autenticados
-    reject_unauth_destination,            # Rechaza el reenvío a destinos no autorizados
-    permit                                # Permite el reenvío a cualquier destino si pasa la verificación previa
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    permit                             
   
 
 ###############
