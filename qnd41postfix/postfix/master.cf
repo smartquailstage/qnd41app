@@ -9,18 +9,14 @@ submission inet n       -       n       -       -       smtpd
   -o smtpd_tls_security_level=encrypt
   -o smtpd_sasl_auth_enable=yes
   -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-  -o cleanup_service_name=outclean
+  -o cleanup_service_name=cleanup
 
 smtps     inet  n       -       n       -       -       smtpd
   -o smtpd_tls_security_level=encrypt
   -o smtpd_sasl_auth_enable=yes
   -o smtpd_tls_wrappermode=yes
   -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-  -o cleanup_service_name=outclean
-
-# Additional services
-outclean   unix n       -       n       -       0       cleanup
-  -o header_checks=pcre:/etc/postfix/outclean_header_filter
+  -o cleanup_service_name=cleanup
 
 # Internal postfix services
 pickup    unix  n       -       n       60      1       pickup
@@ -44,3 +40,7 @@ anvil     unix  -       -       n       -       1       anvil
 scache    unix  -       -       n       -       1       scache
 postlog   unix-dgram n  -       n       -       1       postlogd
 local     unix  -       n       n       -       -       local
+
+# Custom transport services (e.g., virtual transport)
+# Define this only if you use virtual transport
+#virtual   unix  -       -       n       -       -       virtual
