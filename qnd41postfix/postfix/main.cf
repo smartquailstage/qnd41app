@@ -111,6 +111,7 @@ maillog_file = /dev/stdout
 ##############
 # PostgreSQL configuration
 ###############
+dovecot_destination_recipient_limit = 1
 virtual_transport = dovecot
 virtual_mailbox_base = /var/mail/
 virtual_mailbox_domains = pgsql:/etc/postfix/sql/virtual_mailbox_domains.cf
