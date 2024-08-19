@@ -1,8 +1,6 @@
-# Configuración de conexión a la base de datos
 user = sqadmindb
 password = smartquaildev1719pass
 dbname = POSFIXDB
 hosts = smartquaildb
+query = SELECT email AS user, '/var/mail/%u' AS maildir FROM virtual_mailboxes WHERE email = '%s'
 
-# Consulta para obtener la ruta del buzón para un usuario
-user_query = SELECT email AS user, '/var/mail/%u' AS maildir FROM virtual_mailboxes WHERE email = '%s'

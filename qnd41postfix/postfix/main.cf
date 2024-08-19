@@ -7,6 +7,10 @@ mydomain = {{ DOMAIN }}
 myhostname = {{ HOSTNAME }}
 myorigin = $mydomain
 
+
+
+home_mailbox = Maildir/
+
 # Message size limit
 message_size_limit = {{ MESSAGE_SIZE_LIMIT }}
 
