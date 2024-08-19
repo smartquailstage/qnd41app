@@ -59,7 +59,7 @@ function insertInitialData {
 
   local insert_sql="
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_users (username, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_users (username, password) VALUES ('info', 'ms95355672') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_aliases (source, destination) VALUES ('info', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailboxes (username, maildir) VALUES ('info@mail.smartquail.io', '/var/mail/info') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailbox_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
