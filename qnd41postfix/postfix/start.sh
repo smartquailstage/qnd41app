@@ -61,7 +61,7 @@ function insertInitialData {
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info@mail.smartquail.io') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_mailboxes (username ,email, maildir) VALUES ('info','info@mail.smartquail.io', '/var/mail/info') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_mailboxes (username ,email, maildir) VALUES ('info','info@mail.smartquail.io', '/var/mail/info@mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailbox_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
   "
 
@@ -140,7 +140,7 @@ function serviceStart {
   /usr/sbin/postfix start-fg
 }
 
-export DOMAIN=${DOMAIN:-"smartquail.io"}
+export DOMAIN=${DOMAIN:-"mail.smartquail.io"}
 export HOSTNAME=${HOSTNAME:-"mail.smartquail.io"}
 export MESSAGE_SIZE_LIMIT=${MESSAGE_SIZE_LIMIT:-"50000000"}
 export RELAYNETS=${RELAYNETS:-""}

@@ -5,4 +5,4 @@ dbname = POSFIXDB
 hosts = smartquaildb
 
 # Consulta para obtener la ruta del buzón para un usuario
-user_query = SELECT username AS user, '/var/mail/%u' AS maildir FROM virtual_mailboxes WHERE username = '%s'
+user_query = SELECT email AS user, '/var/mail/%u' AS maildir FROM virtual_mailboxes WHERE email = '%s'

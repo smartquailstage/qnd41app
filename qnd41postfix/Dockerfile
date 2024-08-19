@@ -7,7 +7,7 @@ ENV container=docker \
     LC_ALL=C \
     TZ=America/Guayaquil
 # Environment variables
-ENV DOMAIN=smartquail.io
+ENV DOMAIN=mail.smartquail.io
 ENV HOSTNAME=mail.smartquail.io
 ENV LISTEN_PORT=25
 
