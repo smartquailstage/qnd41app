@@ -46,7 +46,7 @@ smtpd_sender_restrictions =
     #reject_non_fqdn_sender,               # Rechaza remitentes con nombres de dominio no completamente calificados
     #reject_unknown_sender_domain,         # Rechaza remitentes con dominios desconocidos
     #reject_unlisted_sender,               # Rechaza remitentes que no están listados en las bases de datos virtuales
-    #reject_sender_login_mismatch,         # Rechaza si el remitente no coincide con el login
+    reject_sender_login_mismatch,         # Rechaza si el remitente no coincide con el login
     #reject_authenticated_sender_login_mismatch, # Rechaza si el remitente autenticado no coincide con el login
     #reject_unauthenticated_sender_login_mismatch, # Rechaza si el remitente no autenticado no coincide con el login
     permit
