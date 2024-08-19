@@ -34,7 +34,7 @@ smtpd_delay_reject = no
 append_dot_mydomain = no
 
 # Allowed senders are: the user or one of the alias destinations
-#smtpd_sender_login_maps = $virtual_alias_maps
+smtpd_sender_login_maps = $virtual_alias_maps
 
 # Helo restrictions are specified for smtp only in master.cf
 smtpd_helo_required = yes
