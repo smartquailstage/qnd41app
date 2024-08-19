@@ -1,5 +1,7 @@
 user=sqadmindb
 password=smartquaildev1719pass
-hosts = smartquaildb
-dbname = POSFIXDB
-query = SELECT 1 FROM virtual_users WHERE username='%s' AND password='%s'
+hosts=smartquaildb
+dbname=POSTFIXDB
+
+query = SELECT 1 FROM virtual_users WHERE username = '%s' AND password = '%s'
+

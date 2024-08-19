@@ -1,5 +1,7 @@
 user=sqadmindb
 password=smartquaildev1719pass
-dbname=POSFIXDB
+dbname=POSTFIXDB
 hosts=smartquaildb
-query = SELECT destination FROM virtual_aliases WHERE source='%s'
+
+# Query para obtener el destino de un alias
+query = SELECT destination FROM virtual_aliases WHERE source = '%s';
