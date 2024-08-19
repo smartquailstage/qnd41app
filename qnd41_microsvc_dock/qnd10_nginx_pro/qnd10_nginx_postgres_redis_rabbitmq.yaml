@@ -82,7 +82,7 @@ services:
       - postfix
     volumes:
       - dovecot:/etc/dovecot
-      - mail:/var/mail/users/
+      - mail:/var/mail/
       - postfix-spools:/var/spool/postfix
     ports:
       - "143:143"   # IMAP
