@@ -22,7 +22,7 @@ services:
       - lansmartquail
 
   smartquaildb:
-    image: postgres:14-alpine
+    image: postgres:13-alpine
     env_file:
       - .env
     restart: always
