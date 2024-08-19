@@ -85,7 +85,7 @@ EXPOSE 990
 EXPOSE 993
 EXPOSE 4190
 
-VOLUME ["/etc/dovecot", "/srv/mail"]
+VOLUME ["/etc/dovecot", "/var/mail/"]
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/usr/sbin/dovecot", "-F"]

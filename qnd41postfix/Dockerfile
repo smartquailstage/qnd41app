@@ -3,6 +3,9 @@ FROM alpine:3.16
 
 LABEL maintainer="your-email@example.com"
 
+ENV container=docker \
+    LC_ALL=C \
+    TZ=America/Guayaquil
 # Environment variables
 ENV DOMAIN=smartquail.io
 ENV HOSTNAME=mail.smartquail.io
