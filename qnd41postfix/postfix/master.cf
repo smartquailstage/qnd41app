@@ -25,7 +25,7 @@ qmgr      unix  n       -       n       300     1       qmgr
 tlsmgr    unix  -       -       n       1000   1       tlsmgr
 rewrite   unix  -       -       n       -       -       trivial-rewrite
 bounce    unix  -       -       n       -       0       bounce
-defer     unix  -       -       n       -       0       defer
+# Removed defer service if not used
 trace     unix  -       -       n       -       0       trace
 verify    unix  -       -       n       -       1       verify
 flush     unix  n       -       n       1000   0       flush
@@ -40,7 +40,3 @@ anvil     unix  -       -       n       -       1       anvil
 scache    unix  -       -       n       -       1       scache
 postlog   unix-dgram n  -       n       -       1       postlogd
 local     unix  -       n       n       -       -       local
-
-# Custom transport services (e.g., virtual transport)
-# Define this only if you use virtual transport
-#virtual   unix  -       -       n       -       -       virtual
