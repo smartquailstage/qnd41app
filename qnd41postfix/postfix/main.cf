@@ -17,6 +17,7 @@ message_size_limit = {{ MESSAGE_SIZE_LIMIT }}
 # Relayed networks
 mynetworks = 127.0.0.1/32 [::1]/128 209.85.0.0/16 {{ RELAYNETS }}
  
+virtual_transport = lmtp:unix:private/dovecot-lmtp
 
 transport_maps = pcre:/etc/postfix/transport.pcre
 
