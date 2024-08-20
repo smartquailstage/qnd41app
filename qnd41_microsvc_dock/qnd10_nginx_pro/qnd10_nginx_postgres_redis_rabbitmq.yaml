@@ -68,7 +68,7 @@ services:
       - "25:25"
     volumes:
       - postfix-spools:/var/spool/postfix
-      - mail:/home/
+      - mail:/var/mail/
       - postfix-logs:/var/log
     networks:
       - lansmartquail
@@ -82,7 +82,7 @@ services:
       - postfix
     volumes:
       - dovecot:/etc/dovecot
-      - mail:/home/
+      - mail:/var/mail/
       - postfix-spools:/var/spool/postfix
     ports:
       - "143:143"   # IMAP
