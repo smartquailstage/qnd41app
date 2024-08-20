@@ -6,6 +6,6 @@ default_pass_scheme = PLAIN
 user_query = SELECT email AS user, '/var/mail/%d/%n/Maildir' AS maildir FROM virtual_mailboxes WHERE email = '%u'
 
 # Consulta para obtener la contraseña del usuario
-password_query = SELECT password FROM virtual_users WHERE email = '%u';
+password_query = SELECT email as user, password FROM virtual_users WHERE email='%u';
 
 
