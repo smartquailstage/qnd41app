@@ -76,7 +76,7 @@ RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
 EXPOSE 25
 
 # Define the volume
-VOLUME ["/home"]
+VOLUME ["/var/mail/"]
 
 # Define entrypoint script
 COPY postfix/start.sh /usr/local/bin/start.sh
