@@ -28,6 +28,13 @@ function addUserInfo {
     # Ajusta los permisos del directorio home
     chown "$user_name:$user_name" "$user_home"
     chmod 700 "$user_home"
+
+    # Asegúrate de que el usuario postfix tenga acceso al directorio home del usuario
+    chown -R postfix:postfix "$user_home"
+    chmod -R 700 "$user_home"
+
+    chown -R vmail:vmail "$user_home"
+    chmod -R 700 "$user_home"
     
     log "User '${user_name}' added with home directory '${user_home}'"
   else
