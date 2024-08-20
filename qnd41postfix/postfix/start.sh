@@ -73,7 +73,7 @@ function insertInitialData {
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info');
-    INSERT INTO virtual_mailboxes (username, email, maildir) VALUES ('info', 'info@mail.smartquail.io', '/info/Maildir') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_mailboxes (username, email, maildir) VALUES ('info', 'info@mail.smartquail.io', 'info/Maildir') ON CONFLICT DO NOTHING;
     INSERT INTO virtual_mailbox_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
   "
 
