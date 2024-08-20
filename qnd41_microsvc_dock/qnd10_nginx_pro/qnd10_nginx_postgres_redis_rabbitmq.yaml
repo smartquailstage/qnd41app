@@ -62,6 +62,7 @@ services:
       - .env
     depends_on:
       - smartquaildb
+      - dovecot
     expose:
       - "25"
     ports:
@@ -79,7 +80,6 @@ services:
     restart: always
     depends_on:
       - smartquaildb
-      - postfix
     volumes:
       - dovecot:/etc/dovecot
       - mail:/var/mail/
@@ -89,6 +89,7 @@ services:
       - "110:110"   # POP3
       - "993:993"   # IMAPS (secure IMAP)
       - "995:995"   # POP3S (secure POP3)
+      - "12345:12345"  # Puerto para la autenticación de Dovecot postfix
     environment:
       - DOVECOT_USER=info
       - DOVECOT_PASSWORD=ms95355672
