@@ -115,7 +115,7 @@ maillog_file = /dev/stdout
 # PostgreSQL configuration
 ###############
 
-virtual_mailbox_base = /home
+#virtual_mailbox_base = /home
 virtual_mailbox_domains = pgsql:/etc/postfix/sql/virtual_mailbox_domains.cf
 virtual_mailbox_maps = pgsql:/etc/postfix/sql/virtual_mailbox_maps.cf
 virtual_alias_maps = pgsql:/etc/postfix/sql/virtual_alias_maps.cf
