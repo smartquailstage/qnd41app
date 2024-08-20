@@ -25,9 +25,6 @@ COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
 COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 
-
-
-
 # Crear usuario y grupo postfix si no existen
 RUN if ! id -u postfix > /dev/null 2>&1; then \
         addgroup --system postfix && \
@@ -69,13 +66,14 @@ RUN apt-get -y update && \
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
-
+# Configurar permisos y propiedad para directorios
 RUN mkdir -p /var/spool/postfix/private && \
     chown vmail:vmail /var/spool/postfix/private && \
     mkdir -p /var/mail/ && \
     chown vmail:vmail /var/mail/ && \
+    chmod 755 /var/mail && \
     chmod -R 755 /var/mail
-   
+ 
 
 EXPOSE 24
 EXPOSE 110
