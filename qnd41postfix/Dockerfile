@@ -39,15 +39,25 @@ RUN mkdir -p /var/spool/postfix/private /var/mail/ /home/info/Maildir/{cur,new,t
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
     && chmod 750 /var/spool/postfix \
-    && chown -R vmail:vmail /var/mail/ /home/info/Maildir \
-    && chmod 770 /var/mail/ /home/info/Maildir \
-    && chown -R postfix:postfix /home/info \
-    && chmod 770 /home/info
+    && chown -R vmail:vmail /var/mail/ /home/info \
+    && chmod 770 /var/mail/ /home/info \
+    && chown -R postfix:vmail /home/info/Maildir \
+    && chmod 770 /home/info/Maildir
 
 # Set permissions for the SSL certificates
 RUN mkdir -p /etc/ssl/certs /etc/ssl/private \
     && chmod 700 /etc/ssl/private \
     && chown root:root /etc/ssl/certs /etc/ssl/private
+
+# Set permissions for Postfix directories
+RUN chown -R root:root /var/spool/postfix \
+    && chmod 750 /var/spool/postfix \
+    && chown -R postfix:postdrop /var/spool/postfix/public \
+    && chmod 750 /var/spool/postfix/public \
+    && chown -R postfix:postdrop /var/spool/postfix/maildrop \
+    && chmod 750 /var/spool/postfix/maildrop \
+    && chown root:root /var/spool/postfix/pid \
+    && chmod 750 /var/spool/postfix/pid
 
 # Copy configuration files
 COPY postfix/main.cf /etc/postfix/main.cf
