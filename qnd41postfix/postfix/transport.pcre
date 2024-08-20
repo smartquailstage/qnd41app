@@ -6,3 +6,5 @@
 # Direcciones locales en mail.smartquail.io
 /mail\.smartquail\.io$/    :
 /^info@mail.smartquail.io$/ local:
+
+/@mail.smartquail.io$/     virtual
