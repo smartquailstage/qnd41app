@@ -66,11 +66,26 @@ function createTable {
 }
 
 function createVirtualTables {
-  createTable "virtual_domains" "CREATE TABLE IF NOT EXISTS virtual_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
-  createTable "virtual_mailbox_domains" "CREATE TABLE IF NOT EXISTS virtual_mailbox_domains (id SERIAL PRIMARY KEY, domain VARCHAR(255) NOT NULL UNIQUE);"
-  createTable "virtual_aliases" "CREATE TABLE IF NOT EXISTS virtual_aliases (id SERIAL PRIMARY KEY, source VARCHAR(255) NOT NULL, destination VARCHAR(255) NOT NULL);"
-  createTable "virtual_mailboxes" "CREATE TABLE IF NOT EXISTS virtual_mailboxes (id SERIAL PRIMARY KEY, username VARCHAR(255) NOT NULL UNIQUE, email VARCHAR(255) NOT NULL UNIQUE, maildir VARCHAR(255) NOT NULL);"
-  createTable "virtual_users" "CREATE TABLE IF NOT EXISTS virtual_users (id SERIAL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE, password TEXT NOT NULL);"
+  createTable "virtual_domains" "CREATE TABLE IF NOT EXISTS virtual_domains (
+    id SERIAL PRIMARY KEY,
+    domain VARCHAR(255) NOT NULL UNIQUE
+  );"
+
+  createTable "virtual_aliases" "CREATE TABLE IF NOT EXISTS virtual_aliases (
+    id SERIAL PRIMARY KEY,
+    domain_id INT NOT NULL,
+    source VARCHAR(255) NOT NULL,
+    destination VARCHAR(255) NOT NULL,
+    FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
+  );"
+
+  createTable "virtual_users" "CREATE TABLE IF NOT EXISTS virtual_users (
+    id SERIAL PRIMARY KEY,
+    domain_id INT NOT NULL,
+    password VARCHAR(106) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
+  );"
 }
 
 function insertInitialData {
@@ -78,14 +93,16 @@ function insertInitialData {
 
   local insert_sql="
     INSERT INTO virtual_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_users (email, password) VALUES ('info@mail.smartquail.io', 'ms95355672') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_aliases (source, destination) VALUES ('info@mail.smartquail.io', 'info');
-    INSERT INTO virtual_mailboxes (username, email, maildir) VALUES ('info', 'info@mail.smartquail.io', 'info@mail.smartquail.io/Maildir') ON CONFLICT DO NOTHING;
-    INSERT INTO virtual_mailbox_domains (domain) VALUES ('mail.smartquail.io') ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_users (domain_id, email, password) VALUES 
+      ((SELECT id FROM virtual_domains WHERE domain = 'mail.smartquail.io'), 'info@mail.smartquail.io', 'ms95355672') 
+    ON CONFLICT DO NOTHING;
+    INSERT INTO virtual_aliases (domain_id, source, destination) VALUES 
+      ((SELECT id FROM virtual_domains WHERE domain = 'mail.smartquail.io'), 'info@mail.smartquail.io', 'info') 
+    ON CONFLICT DO NOTHING;
   "
 
   psql -U "$POSTFIX_POSTGRES_USER" -d "$POSTFIX_POSTGRES_DB" -h "$POSTFIX_POSTGRES_HOST" -c "$insert_sql"
-  
+
   if [ $? -eq 0 ]; then
     log "Initial data inserted successfully."
   else

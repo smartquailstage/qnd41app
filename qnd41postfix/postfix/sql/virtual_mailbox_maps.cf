@@ -1,8 +1,7 @@
-# virtual_mailbox_maps.cf
+user = sqadmindb
+password = smartquaildev1719pass
+dbname = POSFIXDB
+hosts = smartquaildb
 
-user=sqadmindb
-password=smartquaildev1719pass
-dbname=POSFIXDB
-hosts=smartquaildb
-
-query = SELECT maildir FROM virtual_mailboxes WHERE email='%s'
+# Query para verificar la existencia de un buzón de correo
+query = SELECT 1 FROM virtual_users WHERE email='%s'
