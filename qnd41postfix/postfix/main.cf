@@ -82,8 +82,8 @@ smtpd_tls_loglevel = 1
 smtpd_tls_session_cache_timeout = 3600s
 
 tls_random_source = dev:/dev/urandom
-tlsmgr_cache_type = cyrus
-tls_session_cache_database = cyrus
+tlsmgr_cache_type = dovecot
+tls_session_cache_database = dovecot
 tls_session_cache_timeout = 1h
 tls_session_cache_size = 100000
 
@@ -93,7 +93,7 @@ tls_session_cache_size = 100000
 #tls_session_cache_memcached_server = memcached:11211
 #tls_session_cache_memcached_key = tls_cache
 
-smtpd_tls_session_cache_database = cyrus
+smtpd_tls_session_cache_database = dovecot
 #smtpd_tls_session_cache_database = pcre:${data_directory}/smtpd_scache
 #smtpd_tls_session_cache_database = memcache:$tls_session_cache_memcached_key
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, TLSv1.2, TLSv1.3
