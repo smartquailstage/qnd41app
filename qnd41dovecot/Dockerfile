@@ -19,6 +19,10 @@ COPY postfix/main.cf /etc/postfix/main.cf
 COPY mail.smartquail.io/certs/fullchain.pem /etc/ssl/certs/fullchain.pem
 COPY mail.smartquail.io/private/privkey.pem /etc/ssl/private/privkey.pem
 
+# Configurar los enlaces simbólicos para los certificados
+RUN ln -sf /etc/ssl/certs/fullchain.pem /etc/dovecot/private/fullchain.pem && \
+    ln -sf /etc/ssl/private/privkey.pem /etc/dovecot/private/privkey.pem
+
 # Archivos de configuración postfix+Dovecot
 COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
