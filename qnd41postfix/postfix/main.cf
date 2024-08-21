@@ -28,7 +28,7 @@ transport_maps = pcre:/etc/postfix/transport.pcre
 alias_maps =
 
 # No destination restrictions
-mydestination = 
+mydestination =   $myhostname, localhost.$mydomain, localhost, $mydomain
 
 # Relayhost if any is configured
 relayhost = 
