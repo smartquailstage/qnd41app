@@ -17,8 +17,6 @@ RUN apk update && apk add --no-cache \
     postfix-pcre \
     postfix-pgsql \
     cyrus-sasl \
-    cyrus-sasl-plain \
-    cyrus-sasl-login \
     bash \
     curl \
     openssl \
