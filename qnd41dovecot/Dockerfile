@@ -59,6 +59,8 @@ RUN apt-get -y update && \
     passwd -l vmail && \
     mkdir -p /srv/mail && \
     chown vmail:vmail /srv/mail && \
+    mkdir -p /var/mail && \
+    chown vmail:vmail /var/mail && \
     mkdir -p /etc/dovecot && \
     ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem && \
     ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem && \
