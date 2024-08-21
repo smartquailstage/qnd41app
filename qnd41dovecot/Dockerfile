@@ -92,4 +92,4 @@ EXPOSE 4190
 VOLUME ["/etc/dovecot", "/var/mail/"]
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/usr/sbin/dovecot", "-F"]
+CMD ["/usr/sbin/dovecot", "-F", "start.sh"]
