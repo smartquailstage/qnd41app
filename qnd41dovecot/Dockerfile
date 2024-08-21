@@ -11,7 +11,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ADD dovecot.gpg /etc/apt/keyrings/dovecot.gpg
 ADD dovecot.list /etc/apt/sources.list.d/
 
-# Copiar archivos de configuración de Dovecot
+# Copiar archivos de configuración de Dovecot y Postfix
 COPY dovecot.conf /etc/dovecot/conf.d/dovecot.conf
 COPY postfix/main.cf /etc/postfix/main.cf
 
@@ -24,7 +24,10 @@ COPY configPD/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 COPY configPD/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY configPD/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
 COPY configPD/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
+
+# Copiar el script de inicio
 COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 # Crear usuario y grupo postfix si no existen
 RUN if ! id -u postfix > /dev/null 2>&1; then \
@@ -62,25 +65,17 @@ RUN apt-get -y update && \
     chown vmail:vmail /srv/mail && \
     mkdir -p /var/mail && \
     chown vmail:vmail /var/mail && \
-    mkdir -p /etc/dovecot && \
-    ln -s /etc/ssl/certs/fullchain.pem /etc/dovecot/cert.pem && \
-    ln -s /etc/ssl/private/privkey.pem /etc/dovecot/key.pem && \
+    chmod 755 /var/mail && \
+    mkdir -p /var/spool/postfix/private && \
+    chown vmail:vmail /var/spool/postfix/private && \
     # Configurar la zona horaria
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
- # Configurar permisos y propiedad para directorios
-RUN mkdir -p /var/spool/postfix/private && \
-    chown vmail:vmail /var/spool/postfix/private && \
-    mkdir -p /var/mail && \
-    chown vmail:vmail /var/mail && \
-    chmod 755 /var/mail && \
-    # Crear subdirectorios necesarios y ajustar permisos
-    mkdir -p /var/mail/info@mail.smartquail.io/tmp && \
+# Configurar permisos y propiedad para directorios
+RUN mkdir -p /var/mail/info@mail.smartquail.io/tmp && \
     chown -R vmail:vmail /var/mail && \
     chmod -R 755 /var/mail
- 
-
 
 EXPOSE 24
 EXPOSE 110
@@ -92,5 +87,6 @@ EXPOSE 4190
 
 VOLUME ["/etc/dovecot", "/var/mail/"]
 
+# Eliminar el flag -F y usar el script de inicio
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/usr/sbin/dovecot", "-F", "start.sh"]
+CMD ["/start.sh"]
