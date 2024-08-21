@@ -17,7 +17,6 @@ RUN apk update && apk add --no-cache \
     memcached \
     postfix-pcre \
     postfix-pgsql \
-    postfix-memcached \
     cyrus-sasl \
     bash \
     curl \
