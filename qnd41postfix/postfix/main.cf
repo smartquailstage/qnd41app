@@ -16,6 +16,9 @@ message_size_limit = {{ MESSAGE_SIZE_LIMIT }}
 
 # Relayed networks
 mynetworks = 127.0.0.1/32 137.184.0.1/100 [::1]/128 209.85.0.0/16 192.168.1.0/24  {{ RELAYNETS }}
+
+inet_interfaces = all
+inet_protocols = ipv4
  
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 
@@ -28,7 +31,7 @@ alias_maps =
 mydestination = 
 
 # Relayhost if any is configured
-relayhost = [smtp.mail.smartquail.io]:587
+relayhost = 
 
 ###############
 # Restrictions
