@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Iniciar Dovecot en segundo plano
+echo "Starting Dovecot..."
+dovecot &
+
+# Esperar unos segundos para asegurar que Dovecot haya iniciado correctamente
+sleep 10
+
 # Define the user and group
 USER="vmail"
 GROUP="vmail"
@@ -16,12 +23,12 @@ chown $USER:$GROUP "$MAIL_DIR"
 chmod 755 "$MAIL_DIR"
 
 # Recursively adjust ownership and permissions for all subdirectories
-echo "Setting permissions and ownership for subdirectories of $MAIL_DIR"
+echo "Setting permissions and ownership for all directories under $MAIL_DIR"
 find "$MAIL_DIR" -type d -exec chown $USER:$GROUP {} \;
 find "$MAIL_DIR" -type d -exec chmod 755 {} \;
 
-# Set permissions for maildir subdirectories
-echo "Setting permissions for maildir subdirectories"
+# Set permissions for maildir subdirectories and files
+echo "Setting permissions for files under $MAIL_DIR"
 find "$MAIL_DIR" -type f -exec chmod 644 {} \;
 
 # Check if /var/mail/info@mail.smartquail.io/tmp exists; create if needed
@@ -37,6 +44,9 @@ chmod 755 "$INFO_DIR"
 echo "Verification of permissions and ownership:"
 ls -ld "$MAIL_DIR"
 ls -ld "$MAIL_DIR/info@mail.smartquail.io"
-ls -ld "$MAIL_DIR/info@mail.smartquail.io/tmp"
+ls -ld "$INFO_DIR"
 
 echo "Permissions and ownership have been set."
+
+# Keep the container running by tailing the log file
+tail -f /var/log/dovecot.log

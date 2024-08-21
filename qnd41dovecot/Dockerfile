@@ -87,6 +87,6 @@ EXPOSE 4190
 
 VOLUME ["/etc/dovecot", "/var/mail/"]
 
-# Eliminar el flag -F y usar el script de inicio
+# Usar el script de inicio para arrancar el servicio
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/start.sh"]
