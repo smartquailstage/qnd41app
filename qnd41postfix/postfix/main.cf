@@ -31,7 +31,9 @@ alias_maps =
 mydestination =   $myhostname, localhost.$mydomain, localhost, $mydomain
 
 # Relayhost if any is configured
-relayhost = 
+relayhost = $mydestination
+
+relay_domains = $mydomain
 
 ###############
 # Restrictions
