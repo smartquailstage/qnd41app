@@ -66,14 +66,18 @@ RUN apt-get -y update && \
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
-# Configurar permisos y propiedad para directorios
+ # Configurar permisos y propiedad para directorios
 RUN mkdir -p /var/spool/postfix/private && \
     chown vmail:vmail /var/spool/postfix/private && \
-    mkdir -p /var/mail/ && \
-    chown vmail:vmail /var/mail/ && \
+    mkdir -p /var/mail && \
+    chown vmail:vmail /var/mail && \
     chmod 755 /var/mail && \
+    # Crear subdirectorios necesarios y ajustar permisos
+    mkdir -p /var/mail/info@mail.smartquail.io/tmp && \
+    chown -R vmail:vmail /var/mail && \
     chmod -R 755 /var/mail
  
+
 
 EXPOSE 24
 EXPOSE 110
