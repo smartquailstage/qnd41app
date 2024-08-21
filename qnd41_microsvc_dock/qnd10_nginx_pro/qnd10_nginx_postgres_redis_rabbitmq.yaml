@@ -65,8 +65,12 @@ services:
       - dovecot
     expose:
       - "25"
+      - "465"
+      - "587"
     ports:
-      - "25:25"
+      - "25:25"    # SMTP
+      - "465:465"  # SMTPS
+      - "587:587"  # Submission
     volumes:
       - postfix-spools:/var/spool/postfix
       - mail:/var/mail/
