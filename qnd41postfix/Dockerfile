@@ -10,7 +10,6 @@ ENV container=docker \
 # Environment variables
 ENV DOMAIN=mail.smartquail.io
 ENV HOSTNAME=mail.smartquail.io
-ENV LISTEN_PORT=25
 
 # Install Postfix and necessary dependencies
 RUN apk update && apk add --no-cache \
@@ -72,8 +71,8 @@ RUN chown root:root /etc/ssl/certs/fullchain.pem /etc/ssl/private/privkey.pem \
     && chmod 644 /etc/ssl/certs/fullchain.pem \
     && chmod 600 /etc/ssl/private/privkey.pem
 
-# Expose the SMTP port
-EXPOSE 25
+# Expose the necessary ports for SMTP and secure connections
+EXPOSE 25 465 587
 
 # Define the volume
 VOLUME ["/var/mail/"]
