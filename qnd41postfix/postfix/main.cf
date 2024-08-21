@@ -91,7 +91,7 @@ tls_session_cache_memcached_key = tls_cache
 
 #smtpd_tls_session_cache_database = memcached:11211
 #smtpd_tls_session_cache_database = pcre:${data_directory}/smtpd_scache
-smtpd_tls_session_cache_database = memcached:$tls_session_cache_memcached_key
+smtpd_tls_session_cache_database = memcache:$tls_session_cache_memcached_key
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, TLSv1.2, TLSv1.3
 smtpd_tls_ciphers = high
 #smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3

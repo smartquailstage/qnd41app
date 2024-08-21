@@ -14,10 +14,11 @@ ENV HOSTNAME=mail.smartquail.io
 # Install Postfix and necessary dependencies
 RUN apk update && apk add --no-cache \
     postfix \
-    libmemcached-dev \
     postfix-pcre \
     postfix-pgsql \
     cyrus-sasl \
+    cyrus-sasl-plain\
+    cyrus-sasl-login\
     bash \
     curl \
     openssl \
