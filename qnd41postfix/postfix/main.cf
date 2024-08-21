@@ -45,6 +45,7 @@ append_dot_mydomain = no
 smtpd_helo_required = yes
 
 
+
 smtpd_sender_restrictions = 
     permit_mynetworks, 
     permit_sasl_authenticated, 
@@ -64,6 +65,7 @@ smtpd_recipient_restrictions =
 
 # Relay restrictions
 smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination, permit
+smtpd_relay_before_recipient_restrictions = yes
 
 ###############
 # TLS Settings
@@ -98,6 +100,8 @@ smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, TLSv1.2, TLSv1.3
 smtpd_tls_ciphers = high
 #smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
 smtp_tls_loglevel = 1
+
+
 
 
 
