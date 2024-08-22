@@ -27,7 +27,7 @@ alias_maps =
 
 # No destination restrictions
 mydestination = $myhostname, localhost.$mydomain, localhost
-virtual_mailbox_domains = $mydomain
+
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
@@ -64,7 +64,8 @@ smtpd_recipient_restrictions =
 smtpd_relay_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
-    reject_unauth_destination
+    reject_unauth_destination,
+    permit
 
 smtpd_relay_before_recipient_restrictions = yes
 
