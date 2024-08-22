@@ -34,28 +34,19 @@ RUN addgroup -g 1001 postfix || true \
     && adduser -D -u 1002 -G vmail -s /sbin/nologin vmail || true
 
 # Create necessary directories and set permissions
-RUN mkdir -p /var/spool/postfix/private /var/mail/ /home/info/Maildir/{cur,new,tmp} \
+RUN mkdir -p /var/spool/postfix/private /var/mail /home/info/Maildir/{cur,new,tmp} \
+    # Set ownership and permissions for /var/spool/postfix
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
     && chmod 750 /var/spool/postfix \
-    && chown -R vmail:vmail /var/mail/ /home/info/Maildir \
-    && chmod 700 /var/mail/ /home/info/Maildir \
-    # Set permissions for Postfix directories
-    && chown -R root:root /var/spool/postfix \
-    && chmod 750 /var/spool/postfix \
-    && chown -R postfix:postdrop /var/spool/postfix/public \
-    && chmod 750 /var/spool/postfix/public \
-    && chown -R postfix:postdrop /var/spool/postfix/maildrop \
-    && chmod 750 /var/spool/postfix/maildrop \
-    && chown root:root /var/spool/postfix/pid \
-    && chmod 750 /var/spool/postfix/pid \
-    # Add permissions for /home/info/Maildir
-    && mkdir -p /home/info/Maildir/ \
+    # Set ownership and permissions for /var/mail
+    && chown -R vmail:vmail /var/mail \
+    && chmod 700 /var/mail \
+    # Set ownership and permissions for /home/info/Maildir
     && chown -R vmail:vmail /home/info/Maildir \
-    && chmod 700 /home/info/Maildir
-
-# Set permissions for the SSL certificates
-RUN mkdir -p /etc/ssl/certs /etc/ssl/private \
+    && chmod 700 /home/info/Maildir \
+    # Set permissions for SSL certificates
+    && mkdir -p /etc/ssl/certs /etc/ssl/private \
     && chmod 700 /etc/ssl/private \
     && chown root:root /etc/ssl/certs /etc/ssl/private
 
