@@ -30,7 +30,7 @@ mydestination =
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
-relay_domains = gmail.com
+relay_domains = *
 
 
 
@@ -64,9 +64,9 @@ smtpd_relay_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
     reject_unauth_destination,
-    permit
 
-smtpd_relay_before_recipient_restrictions = no
+
+smtpd_relay_before_recipient_restrictions = yes
 
 ###############
 # TLS Settings
