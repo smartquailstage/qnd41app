@@ -26,7 +26,7 @@ transport_maps = pcre:/etc/postfix/transport.pcre
 alias_maps = 
 
 # No destination restrictions
-mydestination = $myhostname, localhost.$mydomain, localhost
+mydestination = 
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
