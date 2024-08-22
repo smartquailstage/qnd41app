@@ -82,10 +82,10 @@ RUN mkdir -p /var/mail/info@mail.smartquail.io/tmp && \
 EXPOSE 24
 EXPOSE 110
 EXPOSE 143
-EXPOSE 587
+#EXPOSE 587
 EXPOSE 990
 EXPOSE 993
-EXPOSE 4190
+#EXPOSE 4190
 
 VOLUME ["/etc/dovecot", "/var/mail/"]
 
