@@ -30,7 +30,7 @@ mydestination =
 
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
-relay_domains = *
+relay_domains = gmail.com
 
 
 
