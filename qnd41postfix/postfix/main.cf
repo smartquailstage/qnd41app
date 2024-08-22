@@ -56,16 +56,16 @@ smtpd_sender_restrictions =
 smtpd_recipient_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
-  #  reject_unauth_destination,
+    reject_unauth_destination,
     permit
 
 smtpd_relay_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
-   # reject_unauth_destination,
+    reject_unauth_destination,
     permit
 
-smtpd_relay_before_recipient_restrictions = yes
+smtpd_relay_before_recipient_restrictions = no
 
 ###############
 # TLS Settings
