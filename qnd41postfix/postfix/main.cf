@@ -66,6 +66,11 @@ smtpd_relay_restrictions =
     permit_sasl_authenticated,
     reject_unauth_destination,
 
+smtpd_client_restrictions =
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination
+
 
 smtpd_relay_before_recipient_restrictions = yes
 
