@@ -17,7 +17,7 @@ mynetworks = 127.0.0.1/32, [::1]/128, 209.85.0.0/16, 192.168.1.0/24, {{ RELAYNET
 
 inet_interfaces = all
 inet_protocols = ipv4
- 
+
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 
 transport_maps = pcre:/etc/postfix/transport.pcre
@@ -26,10 +26,12 @@ transport_maps = pcre:/etc/postfix/transport.pcre
 alias_maps = 
 
 # No destination restrictions
-mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+mydestination = $myhostname, localhost.$mydomain, localhost
+virtual_mailbox_domains = $mydomain
 
 # Relayhost if any is configured
-relayhost = 
+relayhost = [smtp.mail.smartquail.io]:587
+
 
 relay_domains = $mydomain
 
