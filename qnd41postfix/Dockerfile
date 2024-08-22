@@ -34,7 +34,7 @@ RUN addgroup -g 1001 postfix || true \
     && adduser -D -u 1002 -G vmail -s /sbin/nologin vmail || true
 
 # Create necessary directories and set permissions
-RUN mkdir -p /var/spool/postfix/private /var/mail /home/info/Maildir/{cur,new,tmp} \
+RUN mkdir -p /var/spool/postfix/private /var/mail/{cur,new,tmp} \
     # Set ownership and permissions for /var/spool/postfix
     && chown -R postfix:postfix /var/spool/postfix \
     && chmod 750 /var/spool/postfix/private \
@@ -42,9 +42,6 @@ RUN mkdir -p /var/spool/postfix/private /var/mail /home/info/Maildir/{cur,new,tm
     # Set ownership and permissions for /var/mail
     && chown -R vmail:vmail /var/mail \
     && chmod 700 /var/mail \
-    # Set ownership and permissions for /home/info/Maildir
-    && chown -R vmail:vmail /home/info/Maildir \
-    && chmod 700 /home/info/Maildir \
     # Set permissions for SSL certificates
     && mkdir -p /etc/ssl/certs /etc/ssl/private \
     && chmod 700 /etc/ssl/private \
