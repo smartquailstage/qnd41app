@@ -59,6 +59,7 @@ services:
   postfix:
     image: smartquail/qnd10postfix:prod
     restart: always
+    container_name: postfix
     env_file:
       - .env
     depends_on:
