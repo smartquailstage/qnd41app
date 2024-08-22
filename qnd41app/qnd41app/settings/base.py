@@ -277,15 +277,14 @@ WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 #POSTGRES_READY=str(os.environ.get('POSTGRES_READY_ENV'))
 
 
-#Email setups
-EMAIL_HOST          = os.environ.get('EMAIL_HOST')
-EMAIL_PORT          =  os.environ.get('EMAIL_PORT')
-EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS       = True
-EMAIL_USE_SSL       = False
+EMAIL_HOST = 'postfix'
+EMAIL_PORT = 25
+#EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'info'
+EMAIL_HOST_PASSWORD = 'ms95355672'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+#EMAIL_USE_SSL = False
 
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'  # URL del broker
