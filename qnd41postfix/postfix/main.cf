@@ -7,15 +7,13 @@ mydomain = {{ DOMAIN }}
 myhostname = {{ HOSTNAME }}
 myorigin = $mydomain
 
-
-
 home_mailbox = Maildir/
 
 # Message size limit
 message_size_limit = {{ MESSAGE_SIZE_LIMIT }}
 
 # Relayed networks
-mynetworks = 127.0.0.1/32 [::1]/128 209.85.0.0/16 192.168.1.0/24  {{ RELAYNETS }}
+mynetworks = 127.0.0.1/32, [::1]/128, 209.85.0.0/16, 192.168.1.0/24, {{ RELAYNETS }}
 
 inet_interfaces = all
 inet_protocols = ipv4
@@ -25,13 +23,13 @@ virtual_transport = lmtp:unix:private/dovecot-lmtp
 transport_maps = pcre:/etc/postfix/transport.pcre
 
 # Empty alias list to override the configuration variable and disable NIS
-alias_maps =
+alias_maps = 
 
 # No destination restrictions
-mydestination =   $myhostname, localhost.$mydomain, localhost, $mydomain
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 
 # Relayhost if any is configured
-relayhost = $mydestination
+relayhost = 
 
 relay_domains = $mydomain
 
@@ -43,13 +41,8 @@ relay_domains = $mydomain
 smtpd_delay_reject = no
 append_dot_mydomain = no
 
-# Allowed senders are: the user or one of the alias destinations
-#smtpd_sender_login_maps = $virtual_alias_maps
-
 # Helo restrictions are specified for smtp only in master.cf
 smtpd_helo_required = yes
-
-
 
 smtpd_sender_restrictions =
     permit_mynetworks,
@@ -66,13 +59,10 @@ smtpd_recipient_restrictions =
     reject_unauth_destination,
     permit
 
-
 smtpd_relay_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
     reject_unauth_destination
-
-
 
 smtpd_relay_before_recipient_restrictions = yes
 
@@ -96,23 +86,15 @@ tls_session_cache_database = dovecot
 tls_session_cache_timeout = 1h
 tls_session_cache_size = 100000
 
-
-
-#tls_session_cache = memcached
-#tls_session_cache_memcached_server = memcached:11211
-#tls_session_cache_memcached_key = tls_cache
+# Uncomment if using memcached for TLS session caching
+# tls_session_cache = memcached
+# tls_session_cache_memcached_server = memcached:11211
+# tls_session_cache_memcached_key = tls_cache
 
 smtpd_tls_session_cache_database = dovecot
-#smtpd_tls_session_cache_database = pcre:${data_directory}/smtpd_scache
-#smtpd_tls_session_cache_database = memcache:$tls_session_cache_memcached_key
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, TLSv1.2, TLSv1.3
 smtpd_tls_ciphers = high
-#smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
 smtp_tls_loglevel = 1
-
-
-
-
 
 ###############
 # SASL Settings
@@ -120,21 +102,11 @@ smtp_tls_loglevel = 1
 
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_type = dovecot
-smtpd_sasl_dialect = dovecot
 smtpd_sasl_path = private/auth
 smtpd_sasl_authenticated_header = yes
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_tls_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
-#smtpd_sasl_dovecot_auth_socket_path = private/auth
-#broken_sasl_auth_clients = yes
-#smtpd_sasl_auth_enable = yes
-#smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,reject_unauth_destination
-#smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
-
-
-
-
 
 ###############
 # Extra Settings
@@ -152,10 +124,6 @@ virtual_mailbox_domains = pgsql:/etc/postfix/sql/virtual_mailbox_domains.cf
 virtual_mailbox_maps = pgsql:/etc/postfix/sql/virtual_mailbox_maps.cf
 virtual_alias_maps = pgsql:/etc/postfix/sql/virtual_alias_maps.cf
 
-
 virtual_uid_maps = static:1000
 virtual_gid_maps = static:1000
 virtual_alias_domains = *
-
-
-
