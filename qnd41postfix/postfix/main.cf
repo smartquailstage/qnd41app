@@ -28,10 +28,8 @@ alias_maps =
 # No destination restrictions
 mydestination = $myhostname, localhost.$mydomain, localhost
 
-
 # Relayhost if any is configured
 relayhost = [smtp.mail.smartquail.io]:587
-
 
 relay_domains = $mydomain
 
@@ -94,7 +92,6 @@ tls_session_cache_size = 100000
 # tls_session_cache_memcached_server = memcached:11211
 # tls_session_cache_memcached_key = tls_cache
 
-smtpd_tls_session_cache_database = dovecot
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, TLSv1.2, TLSv1.3
 smtpd_tls_ciphers = high
 smtp_tls_loglevel = 1
