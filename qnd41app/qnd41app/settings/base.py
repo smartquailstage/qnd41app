@@ -289,13 +289,26 @@ EMAIL_HOST_PASSWORD = 'ms95355672'
 #DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #EMAIL_USE_SSL = False
 
-
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_BROKER_URL = 'redis://localhost:6379/0'  # URL del broker
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Backend de resultados
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Guayaquil'
+
+
+# Configuración de caché usando Redis
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://localhost:6379/1',
+    }
+}
+
+# Configuración de sesiones usando Redis
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
 
 
 

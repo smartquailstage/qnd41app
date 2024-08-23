@@ -31,7 +31,9 @@ def order_create(request):
             # set the order in the session
             request.session['order_id'] = order.id
             # redirect for payment
-            return redirect(reverse('payment:process'))
+            return render(request,
+                  'sbmorders/order/created.html',
+                  {'order': order })
     else:
         form = OrderCreateForm()
     return render(request,
@@ -41,18 +43,18 @@ def order_create(request):
 
 @staff_member_required
 def admin_order_detail(request, order_id):
-    sblorder = get_object_or_404(Order, id=order_id)
+    order = get_object_or_404(Order, id=order_id)
     return render(request,
                   'admin/sbmorders/order/detail.html',
-                  {'sblorder': sblorder})
+                  {'order': order})
 
 
 @staff_member_required
 def admin_order_pdf(request, order_id):
-    sbmorder = get_object_or_404(Order, id=order_id)
+    order = get_object_or_404(Order, id=order_id)
     html = render_to_string('sbmorders/order/pdf.html',
-                            {'sbmorder': sbmorder})
+                            {'order': order})
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename=order_{}.pdf"'.format(sbmorder.id)
+    response['Content-Disposition'] = 'filename=order_{}.pdf"'.format(order.id)
     weasyprint.HTML(string=html,  base_url=request.build_absolute_uri() ).write_pdf(response,stylesheets=[weasyprint.CSS('sbmorders/static/css/pdf.css')], presentational_hints=True)
     return response

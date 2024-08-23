@@ -2,19 +2,25 @@ from qnd41app.celery import app
 from django.core.mail import send_mail
 from .models import Order
 
-@app.task
-def order_created(order_id):
+@app.task(bind=True)
+def order_created(self, order_id):
     """
     Task to send an e-mail notification when an order is 
     successfully created.
     """
-    order = Order.objects.get(id=order_id)
+    try:
+        order = Order.objects.get(id=order_id)
+    except Order.DoesNotExist:
+        # Handle the case where the order doesn't exist
+        self.retry(countdown=60, max_retries=3)
+    
     subject = 'Order nr. {}'.format(order.id)
-    message = 'Dear {},\n\nYou have successfully placed an order.\
-                  Your order id is {}.'.format(order.first_name,
-                                            order.id)
-    mail_sent = send_mail(subject,
-                          message,
-                          'admin@myshop.com',
-                          [order.email])
+    message = 'Dear {},\n\nYou have successfully placed an order.\nYour order id is {}.'.format(order.first_name, order.id)
+    mail_sent = send_mail(
+        subject,
+        message,
+        'info@mail.smartquail.io',
+        [order.email],
+        fail_silently=False
+    )
     return mail_sent
