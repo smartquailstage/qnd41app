@@ -17,7 +17,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 # Un ejemplo de cómo se podría configurar un backend de resultados y un broker si fuera necesario:
-# app.conf.update(
-#     broker_url='redis://localhost:6379/0',
-#     result_backend='redis://localhost:6379/0',
-# )
+app.conf.update(
+     broker_url='redis://localhost:6379/0',
+     result_backend='redis://localhost:6379/0',
+ )

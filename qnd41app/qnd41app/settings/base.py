@@ -204,8 +204,11 @@ LOGIN_REDIRECT_URL = reverse_lazy('course_list')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#Ecommerce App
 CART_SESSION_ID = 'cart'
+SBLCART_SESSION_ID = 'cart'
+SBACART_SESSION_ID = 'cart'
+SBTCART_SESSION_ID = 'cart'
+SBMCART_SESSION_ID = 'cart'
 
 BRAINTREE_MERCHANT_ID = os.environ.get('BRAINTREE_M_ID')
 BRAINTREE_PUBLIC_KEY = os.environ.get('BRAINTREE_KEY')
@@ -281,7 +284,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'postfix'
 EMAIL_PORT = 25
 #EMAIL_USE_TLS = False
-EMAIL_HOST_USER = 'info'
+EMAIL_HOST_USER = 'info@mail.smartquail.io'
 EMAIL_HOST_PASSWORD = 'ms95355672'
 #DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #EMAIL_USE_SSL = False
@@ -292,7 +295,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Backend de resultados
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'UTC'
+CELERY_TIMEZONE = 'America/Guayaquil'
 
 
 

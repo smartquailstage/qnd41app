@@ -41,7 +41,7 @@
           <p><strong>{% trans 'Features' %}</strong> {{ product.description|linebreaks }} </p>
         </div>
         <div class="single-product-qty">
-          <form action="{% url "sbtcart:cart_add" product.id %}" method="post" >
+          <form action="{% url "sbmcart:cart_add" product.id %}" method="post" >
             {% csrf_token %}
             {% for hidden_field in cart_product_form.hidden_fields %}
               {{ hidden_field }}
