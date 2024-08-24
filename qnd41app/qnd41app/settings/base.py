@@ -195,8 +195,8 @@ REDIS_DB =os.environ.get('REDIS_DB')
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-from django.urls import reverse_lazy
-LOGIN_REDIRECT_URL = reverse_lazy('course_list')
+#from django.urls import reverse_lazy
+#LOGIN_REDIRECT_URL = reverse_lazy('course_list')
 
 
 
@@ -280,22 +280,6 @@ WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 #POSTGRES_READY=str(os.environ.get('POSTGRES_READY_ENV'))
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'postfix'
-EMAIL_PORT = 25
-#EMAIL_USE_TLS = False
-EMAIL_HOST_USER = 'info@mail.smartquail.io'
-EMAIL_HOST_PASSWORD = 'ms95355672'
-#DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-#EMAIL_USE_SSL = False
-
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # URL del broker
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Backend de resultados
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'America/Guayaquil'
 
 
 # Configuración de caché usando Redis
@@ -336,7 +320,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'es-Ec'
-
 TIME_ZONE = 'America/Guayaquil'
 
 

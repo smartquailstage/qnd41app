@@ -19,15 +19,7 @@ DATABASES = {
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-#Email setups
-EMAIL_HOST          = os.environ.get('EMAIL_HOST')
-EMAIL_PORT          =  os.environ.get('EMAIL_PORT')
-EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
-EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS       = True
-EMAIL_USE_SSL       = False
+
 
 
 
@@ -228,7 +220,7 @@ CELERY_RESULT_BACKEND = 'rpc://'  # O usa otro backend si lo prefieres
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'America/Guayaquil'
+
 
 #Static files DevMod
 
@@ -239,4 +231,5 @@ STATIC_URL = "/static/"
 STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
