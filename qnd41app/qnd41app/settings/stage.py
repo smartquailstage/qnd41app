@@ -6,7 +6,7 @@ from .base import *
 ENV_FILE_PATH = BASE_DIR / ".env_stage"
 load_dotenv(str(ENV_FILE_PATH))
 
-DEBUG=False
+DEBUG=True
 
 ALLOWED_HOSTS = ['*']
 
