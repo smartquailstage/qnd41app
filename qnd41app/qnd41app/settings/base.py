@@ -192,8 +192,8 @@ REDIS_DB =os.environ.get('REDIS_DB')
 #LOGINGS REDIRECT
 
 #LOGIN_REDIRECT_URL = 'accounts:dashboard'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+#LOGIN_URL = 'login'
+#LOGOUT_URL = 'logout'
 
 #from django.urls import reverse_lazy
 #LOGIN_REDIRECT_URL = reverse_lazy('course_list')
@@ -286,7 +286,7 @@ WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://localhost:6379/1',
+        'LOCATION': 'redis://redis:6379/1',
     }
 }
 
