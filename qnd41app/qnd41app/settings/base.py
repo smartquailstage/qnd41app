@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     #'django_comments',
     #Wagtail Inicials
     'core',
-     'webapp',
+    
     #'wagtail',
     'wagtail',
     'wagtailmedia',
@@ -112,6 +112,7 @@ INSTALLED_APPS = [
     'sbacart',
     'sbashop',
     'sbaorders',
+    'webapp',
     'social_django',
     'sorl.thumbnail',
     #'students',
