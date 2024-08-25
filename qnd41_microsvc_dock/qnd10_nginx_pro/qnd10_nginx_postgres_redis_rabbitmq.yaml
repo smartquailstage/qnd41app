@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     environment:
       - PORT=9000
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     env_file:
       - .env_stage
     depends_on:

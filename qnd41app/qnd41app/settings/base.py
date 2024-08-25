@@ -175,7 +175,7 @@ WAGTAIL_SITE_NAME = 'Smart Business Media'
 #RESTFRAMEWORK
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
- 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
 
@@ -287,7 +287,7 @@ WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://redis:6379/1',
+        'LOCATION': 'redis://:ms95355672@redis:6379/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
