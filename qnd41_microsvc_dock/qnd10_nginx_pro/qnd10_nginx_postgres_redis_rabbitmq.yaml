@@ -122,9 +122,8 @@ services:
       - lansmartquail
 
   redis:
-    image: redis:latest
+    image: redis/redis-stack:latest
     container_name: redis
-   # expose: "6379"
     ports:
       - "6379:6379"  # Puerto de Redis
     volumes:
