@@ -124,7 +124,7 @@ services:
   redis:
     image: redis:latest
     container_name: redis
-    expose: "6379"
+   # expose: "6379"
     ports:
       - "6379:6379"  # Puerto de Redis
     volumes:
