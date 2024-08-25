@@ -126,8 +126,14 @@ services:
     container_name: redis
     ports:
       - "6379:6379"  # Puerto de Redis
+      - "8001:8001"
     volumes:
-      - redis_data:/data
+      - redis_data:/root/redis
+      - redis_data_config:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_PASSWORD=ms95355672
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
     networks:
       - lansmartquail
 
@@ -166,6 +172,7 @@ volumes:
   mail:
   rabbitmq_data:
   redis_data:
+  redis_data_config:
 
 networks:
   lansmartquail:
