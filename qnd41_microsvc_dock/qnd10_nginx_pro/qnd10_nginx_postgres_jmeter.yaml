@@ -66,27 +66,28 @@ services:
     ports:
       - "6379:6379"  # Puerto de Redis
       - "8001:8001"
+    env_file:
+      - .env_stage
     volumes:
       - redis_data:/root/redis
       - redis_data_config:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PASSWORD=ms95355672
       - REDIS_PORT=6379
-      - REDIS_DATABASES=16
+      - REDIS_DATABASES=2
     networks:
       - lansmartquail
 
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
+    env_file:
+      - .env_stage
     ports:
       - "5672:5672"  # Puerto de RabbitMQ
       - "15672:15672"  # Puerto del panel de gestión web
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: admin  
-      RABBITMQ_DEFAULT_PASS: devpass
     networks:
       - lansmartquail
 

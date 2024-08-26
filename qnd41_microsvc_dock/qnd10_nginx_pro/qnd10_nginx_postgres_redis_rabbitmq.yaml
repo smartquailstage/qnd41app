@@ -114,9 +114,6 @@ services:
       - "15672:15672"  # Puerto del panel de gestión web
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: admin  
-      RABBITMQ_DEFAULT_PASS: devpass
     networks:
       - lansmartquail
 
