@@ -245,19 +245,10 @@ EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
 EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS       = False
-EMAIL_USE_SSL       = False
+#EMAIL_USE_TLS       = False
+#EMAIL_USE_SSL       = False
 
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://:{os.getenv("REDIS_PASSWORD")}@redis:6379/1',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
 
 CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND')
