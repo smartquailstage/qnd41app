@@ -6,6 +6,9 @@ services:
     restart: unless-stopped
     env_file:
       - .env_stage
+    environment:
+      - PORT=9000
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     depends_on:
       - smartquaildb
       - redis
