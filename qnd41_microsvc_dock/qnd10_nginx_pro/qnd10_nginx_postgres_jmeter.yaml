@@ -63,8 +63,6 @@ services:
     ports:
       - "6379:6379"  # Puerto de Redis
       - "8001:8001"
-    env_file:
-      - .env_stage
     volumes:
       - redis_data:/root/redis
       - redis_data_config:/usr/local/etc/redis/redis.conf
