@@ -10,7 +10,7 @@ services:
       - .env_stage
     depends_on:
       - smartquaildb
-      - postfix
+      - redis
     expose:
       - "9000"
     ports:
