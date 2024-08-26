@@ -283,11 +283,10 @@ WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 
 
 
-# Configuración de caché usando Redis
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://:ms95355672@redis:6379/1',
+        'LOCATION': f'redis://:{os.getenv("REDIS_PASSWORD")}@redis:6379/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
