@@ -75,6 +75,20 @@ services:
     networks:
       - lansmartquail
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"  # Puerto de RabbitMQ
+      - "15672:15672"  # Puerto del panel de gestión web
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin  
+      RABBITMQ_DEFAULT_PASS: devpass
+    networks:
+      - lansmartquail
+
 
 
 
@@ -86,6 +100,7 @@ volumes:
   smartquaildb_data-qnd41:
   redis_data:
   redis_data_config:
+  rabbitmq_data:
 
 networks:
   lansmartquail:
