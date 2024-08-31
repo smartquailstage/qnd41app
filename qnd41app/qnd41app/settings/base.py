@@ -69,6 +69,9 @@ INSTALLED_APPS = [
     #'wagtail.contrib.modeladmin',
     #'wagalytics',
     #'wagtailfontawesome',
+    "wagtail_localize",
+    #"wagtail_localize.locales",
+    'wagtail_ai',
     'wagtailgmaps',
     'wagtailmenus',
     'wagtail.contrib.modeladmin',
@@ -100,18 +103,23 @@ INSTALLED_APPS = [
     #'phonenumber_field',
     'shop',
     'cart',
+
     'sblcart',
     'sblshop',
     'sblorders',
+
     'sbtcart',
     'sbtshop',
     'sbtorders',
+
     'sbmcart',
     'sbmshop',
     'sbmorders',
+
     'sbacart',
     'sbashop',
     'sbaorders',
+    
     'webapp',
     'social_django',
     'sorl.thumbnail',
@@ -180,8 +188,6 @@ REST_FRAMEWORK = {
 }
 
 #Redis Setup
-
-
 
 
 

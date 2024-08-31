@@ -8,6 +8,7 @@ class Category(models.Model):
                             unique=True)
     logo = models.ImageField(upload_to='logo/%Y/%m/%d',
                               blank=True,null=True)
+    title = models.CharField(max_length=250, null=True, blank=True)
 
     class Meta:
         ordering = ('name',)

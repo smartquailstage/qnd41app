@@ -1,4 +1,4 @@
-#!/Volumes/SMARQUAIL-HD/QNDSV1.0/qnd41app/qnd41app_venv/bin/python3.11
+#!/Users/smartquail/Desktop/qnd41app/qnd41app_venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

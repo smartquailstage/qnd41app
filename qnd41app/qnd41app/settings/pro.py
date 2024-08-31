@@ -1,7 +1,21 @@
 from .base import *
+ENV_FILE_PATH = BASE_DIR / ".env_prod"
+load_dotenv(str(ENV_FILE_PATH))
 
-DEBUG=  "0"
 
+DEBUG=True
+
+
+ALLOWED_HOSTS = ['*']
+
+
+CSRF_COOKIE_DOMAIN=".www.smartquail.io"
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://www.smartquail.io','https://146.190.164.22']
+CORS_ALLOWED_ORIGINS = [
+    'https://www.smartquail.io','https://146.190.164.22'
+    # Otros orígenes permitidos si los hay
+]
 
 BATON = {
     'SITE_HEADER': '<a href="#"><img src="https://qnd41-staticfiles.sfo3.digitaloceanspaces.com/static/img/m2.png" height="26px"></a>',
@@ -378,6 +392,7 @@ BATON = {
 
 
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -428,3 +443,24 @@ STATICFILES_DIRS = [
 ]
 
 from .cdn.conf import * #noqa
+
+#Email setups
+EMAIL_HOST          = os.environ.get('EMAIL_HOST')
+EMAIL_PORT          =  os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_USE_TLS       = False
+#EMAIL_USE_SSL       = False
+
+
+REDIS_HOST=os.environ.get('REDIS_HOST')
+REDIS_PORT=os.environ.get('REDIS_PORT')
+REDIS_DB =os.environ.get('REDIS_DB')  
+
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'

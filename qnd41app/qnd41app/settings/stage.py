@@ -11,6 +11,18 @@ DEBUG=True
 ALLOWED_HOSTS = ['*']
 
 
+import wagtail_ai
+
+WAGTAIL_AI_PROMPTS = wagtail_ai.DEFAULT_PROMPTS + [
+    {
+        "label": "Simplify",
+        "description": "Rewrite your text in a simpler form",
+        "prompt": "Rewrite the following text to make it simper and more succinct",
+        "method": "replace",
+    }
+]
+
+
 CSRF_COOKIE_DOMAIN=".www.smartquail.io"
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://www.smartquail.io','https://146.190.164.22']
@@ -194,16 +206,19 @@ BATON = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR / 'db.sqlite3')
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+# Obtención de variables de entorno para la configuración de PostgreSQL
 DB_USERNAME = os.environ.get("POSTGRES_USER")
 DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
 DB_DATABASE = os.environ.get("POSTGRES_DB")
 DB_HOST = os.environ.get("POSTGRES_HOST")
 DB_PORT = os.environ.get("POSTGRES_PORT")
-DB_IS_AVIAL = all([
+
+# Verificación de disponibilidad de las variables necesarias para PostgreSQL
+DB_IS_AVAILABLE = all([
     DB_USERNAME,
     DB_PASSWORD,
     DB_DATABASE,
@@ -211,18 +226,18 @@ DB_IS_AVIAL = all([
     DB_PORT
 ])
 
-POSTGRES_READY="1"
-if DB_IS_AVIAL and POSTGRES_READY:
+# Configuración condicional para PostgreSQL
+if DB_IS_AVAILABLE:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': DB_DATABASE,
-        "USER": DB_USERNAME,
-        "PASSWORD": DB_PASSWORD,
-        "HOST": DB_HOST,
-        "PORT": DB_PORT,
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': DB_DATABASE,
+            'USER': DB_USERNAME,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
+            'PORT': DB_PORT,
+        }
     }
-}
 
 #Static files DevMod
 
