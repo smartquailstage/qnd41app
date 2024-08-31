@@ -71,7 +71,7 @@ INSTALLED_APPS = [
     #'wagtailfontawesome',
     "wagtail_localize",
     #"wagtail_localize.locales",
-    'wagtail_ai',
+    #'wagtail_ai',
     'wagtailgmaps',
     'wagtailmenus',
     'wagtail.contrib.modeladmin',
