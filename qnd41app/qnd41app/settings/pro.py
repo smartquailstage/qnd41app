@@ -429,7 +429,10 @@ if DB_IS_AVIAL and POSTGRES_READY:
 #Static files DevMod
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT  = os.path.join(BASE_DIR, 'mediafiles')
+MEDIA_ROOT  = BASE_DIR / "mediafiles-cdn"
+MEDIAFILES_DIRS = [
+    BASE_DIR / "media"
+]
 #STATICFILES_DIRS = [BASE_DIR / "staticfiles"]  
 #STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
 
@@ -443,6 +446,9 @@ STATICFILES_DIRS = [
 ]
 
 from .cdn.conf import * #noqa
+
+
+
 
 #Email setups
 EMAIL_HOST          = os.environ.get('EMAIL_HOST')
@@ -464,3 +470,26 @@ CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
+
+
+# social auth settings
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET =  os.environ.get('SOCIAL_AUTH_TWITTER_SECRET')
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ')
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
