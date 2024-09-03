@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.search',
+    
     'wagtail.locales',
     'rosetta',
     #'wagtail.contrib.settings',
@@ -157,8 +158,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    #'wagtail.core.middleware.SiteMiddleware',
-    #'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    #'wagtail.core.middleware.site.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'qnd41app.urls'
@@ -322,6 +323,10 @@ WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
 
 
 WAGTAIL_I18N_ENABLED = True
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 
 
