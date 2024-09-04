@@ -5,7 +5,8 @@ django>=4.2,<5.0
 django-baton==2.6.2
 
 # Wagtail
-wagtail>=4.1.0
+#wagtail==6.0.2
+wagtail==4.0.4
 
 psycopg[binary]
 
@@ -22,7 +23,7 @@ XlsxWriter
 requests
 
 # Celery
-celery>=5.2.7,<6.0  # Compatible with Django 4.2
+celery>=5.4.0
 
 # uWSGI
 uWSGI==2.0.24
@@ -34,7 +35,10 @@ redis>=4.5.5
 django-dotenv
 
 # Psycopg2
-psycopg2-binary>=2.9.6  # Removed comment, using binary version
+#psycopg2>=2.9.6
+
+# Psycopg2 Binary
+#psycopg2-binary
 
 # Django Storages
 django-storages

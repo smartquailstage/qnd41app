@@ -5,7 +5,7 @@ django>=4.2,<5.0
 django-baton==2.6.2
 
 # Wagtail
-wagtail==4.2.4
+wagtail==5.0.1
 
 psycopg[binary]
 
