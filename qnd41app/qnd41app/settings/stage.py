@@ -247,6 +247,10 @@ MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [BASE_DIR / "staticfiles"]  
 STATIC_URL = "/static/"
 STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
+# settings.py
+
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
