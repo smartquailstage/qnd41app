@@ -75,7 +75,7 @@ INSTALLED_APPS = [
     #'wagtail_ai',
     'wagtailgmaps',
     'wagtailmenus',
-    'wagtail.contrib.modeladmin',
+    #'wagtail.contrib.modeladmin',
     'django_social_share',
    
     'taggit',
