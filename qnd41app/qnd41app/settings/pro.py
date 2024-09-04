@@ -445,6 +445,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+#DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
+
 from .cdn.conf import * #noqa
 
 
