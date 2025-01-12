@@ -171,7 +171,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
 # settings.py
 
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
 
 
 ROOT_URLCONF = 'qnd41app.urls'
