@@ -121,7 +121,7 @@ INSTALLED_APPS = [
     'sbashop',
     'sbaorders',
     'bootstrap4',
-    'webapp',
+    #'webapp',
     'social_django',
     'sorl.thumbnail',
     #'students',
