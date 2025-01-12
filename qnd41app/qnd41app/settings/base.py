@@ -120,7 +120,7 @@ INSTALLED_APPS = [
     'sbacart',
     'sbashop',
     'sbaorders',
-    
+    'bootstrap4',
     'webapp',
     'social_django',
     'sorl.thumbnail',
@@ -135,7 +135,7 @@ INSTALLED_APPS = [
     'ckeditor',
    # 'js_blog_app',
     'wagtail.contrib.settings',
-     "bootstrap4",
+    
     "bootstrap_datepicker_plus",
     
     'baton.autodiscover',
