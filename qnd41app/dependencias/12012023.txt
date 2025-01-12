@@ -7,7 +7,7 @@ django-baton==2.6.2
 # Wagtail
 wagtail>=4.1.0
 
-psycopg[binary]
+psycopg
 
 # Django Social Share
 django-social-share
@@ -25,7 +25,7 @@ requests
 celery>=5.2.7,<6.0  # Compatible with Django 4.2
 
 # uWSGI
-uWSGI==2.0.24
+uWSGI==2.0.28
 
 # Redis
 redis>=4.5.5
