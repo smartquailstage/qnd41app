@@ -48,7 +48,7 @@ RUN python3.13 -m venv /py && \
     apk add busybox-extras && \
     apk add openssl-dev && \
     apk add gettext && \
-    apk add neofetch && \
+    #apk add neofetch && \
     #/py/bin/pip install  rust  &&  \
     #/py/bin/pip install   py3-kiwisolver &&  \
     /py/bin/pip install -r /12012023.txt && \
