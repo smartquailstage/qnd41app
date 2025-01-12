@@ -273,6 +273,11 @@ AWS_ACCESS_KEY_ID = 'your-access-key'
 AWS_SECRET_ACCESS_KEY = 'your-secret-key'
 AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
 
+from django.core.files.storage import FileSystemStorage
+
+WAGTAILIMAGES_STORAGE = FileSystemStorage()
+
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
