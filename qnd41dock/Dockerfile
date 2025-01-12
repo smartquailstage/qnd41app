@@ -1,4 +1,4 @@
-FROM python:3.11.6-alpine3.18
+FROM python:3.13-alpine
 LABEL maintainer="mau_dev@smartquail.io"
 
 ENV PYTHONUNBUFFERED 1
