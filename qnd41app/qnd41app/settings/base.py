@@ -268,14 +268,7 @@ WAGTAIL_ADMIN_BASE_URL =  os.environ.get('DOMAINS')
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 5 * 1024 * 1024 * 1024  # 5 GB en bytes
 WAGTAILIMAGES_MAX_IMAGE_PIXELS = 1000000000  # 1 millardo de píxeles (1 Gb)
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'your-access-key'
-AWS_SECRET_ACCESS_KEY = 'your-secret-key'
-AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
 
-from django.core.files.storage import FileSystemStorage
-
-WAGTAILIMAGES_STORAGE = FileSystemStorage()
 
 
 

@@ -48,8 +48,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r dependencias/01112025.txt
+        python3 -m pip install --upgrade pip
+        pip3 install -r dependencias/01112025.txt
     - name: Run Tests
       run: |
-        python manage.py test
+        python3 manage.py test
