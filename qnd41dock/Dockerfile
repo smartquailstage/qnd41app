@@ -16,7 +16,7 @@ RUN git clone https://github.com/smartquailstage/${NODE_VERSION}.git
 
 #COPY . /qnode0_app
 #COPY ./qnode0_app.dev/qnode0_app_env_dev/qnode0_app/ /qnode0_app
-COPY ./12012023.txt /12012023.txt
+COPY ./01112025.txt /01112025.txt
 COPY ./scripts /scripts
 COPY ./uwsgi_stage.ini /${NODE_VERSION}/${NODE_APP_NAME}/uwsgi_stage.ini
 COPY ./baton.min.js /${NODE_VERSION}/${NODE_APP_NAME}/${NODE_APP_NAME}/baton.min.js
