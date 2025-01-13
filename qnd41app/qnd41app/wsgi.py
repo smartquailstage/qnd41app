@@ -15,7 +15,7 @@ from django.core.wsgi import get_wsgi_application
 # Establecer la ruta al archivo .env en la carpeta de settings
 CURRENT_DIR = pathlib.Path(__file__).resolve().parent
 BASE_DIR = CURRENT_DIR.parent
-env_path = CURRENT_DIR / '.env_stage'
+env_path = CURRENT_DIR / '.env_pro'
 load_dotenv(dotenv_path=env_path)
 
 # Establecer el módulo de configuración de Django

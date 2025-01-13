@@ -11,9 +11,9 @@ SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL:-"smartquail.info@gmail.com"}
 
 #rm /py/lib/python3.10/site-packages/baton/static/baton/app/dist/baton.min.js
 #cp -f /qnd0.0_app_stg/qnd00_app_stg/baton.min.js /py/lib/python3.10/site-packages/baton/static/baton/app/dist/
-python manage.py migrate --settings=$NODE_NAME.settings.stage --noinput 
+python manage.py migrate --settings=$NODE_NAME.settings.pro --noinput 
 python manage.py createsuperuser --email $SUPERUSER_EMAIL --noinput || true
-python manage.py collectstatic --settings=$NODE_NAME.settings.stage --noinput 
+python manage.py collectstatic --settings=$NODE_NAME.settings.pro --noinput 
 #cp -f /qnode4.1_app/qnode41_app/baton.min.js /qnode4.1_app/qnode41_app/qnode41_app/staticfiles/baton/app/dist/
 #python manage.py makemessages
 #python django-admin makemessages --all
