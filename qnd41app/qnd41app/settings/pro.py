@@ -3,7 +3,7 @@ from .base import *
 
 
 
-ENV_FILE_PATH = BASE_DIR / ".env_stage"
+ENV_FILE_PATH = BASE_DIR / ".env_prod"
 load_dotenv(str(ENV_FILE_PATH))
 
 DEBUG=True

@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 if SECRET_KEY is None:
     raise ValueError("DJANGO_SECRET_KEY is not set in the environment variables.")
 
-
+DJANGO_SETTINGS_MODULE = 'qnd41app.settings.pro'
 
 
 # Application definition
