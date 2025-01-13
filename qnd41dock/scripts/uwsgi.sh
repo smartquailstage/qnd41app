@@ -6,6 +6,7 @@ neofetch --ascii qnode_art.txt --ascii_colors 2 222 3 2 2 -L, --logo && \
 #cp /root/go/bin/mhsendmail /usr/bin/mhsendmail && \
 #echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mailhog:1025' > /usr/local/etc/php/php.ini
 NODE_NAME="qnd41app"
+DJANGO_SETTINGS_MODULE="qnd41app.settings.pro"
 APP_PORT=${PORT:-9000}
 SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL:-"smartquail.info@gmail.com"}
 
