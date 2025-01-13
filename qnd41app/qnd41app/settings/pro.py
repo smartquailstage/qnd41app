@@ -1,12 +1,26 @@
 from .base import *
-ENV_FILE_PATH = BASE_DIR / ".env_prod"
-load_dotenv(str(ENV_FILE_PATH))
 
+
+
+
+ENV_FILE_PATH = BASE_DIR / ".env_stage"
+load_dotenv(str(ENV_FILE_PATH))
 
 DEBUG=True
 
-
 ALLOWED_HOSTS = ['*']
+
+
+#import wagtail_ai
+
+#WAGTAIL_AI_PROMPTS = wagtail_ai.DEFAULT_PROMPTS + [
+#    {
+#        "label": "Simplify",
+#        "description": "Rewrite your text in a simpler form",
+#        "prompt": "Rewrite the following text to make it simper and more succinct",
+#        "method": "replace",
+#    }
+#]
 
 
 CSRF_COOKIE_DOMAIN=".www.smartquail.io"
@@ -18,11 +32,11 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 BATON = {
-    'SITE_HEADER': '<a href="#"><img src="https://qnd41-staticfiles.sfo3.digitaloceanspaces.com/static/img/m2.png" height="26px"></a>',
-    'SITE_TITLE': '',
-    'INDEX_TITLE': 'TODO EN ORDEN CLEAN & BUILDING CIA. LTDA.- BUSINESS ANALITYCS CONSULTING',
+    'SITE_HEADER': '<a href="#"><img src="/static/img/m2.png" height="26px"></a>',
+    'SITE_TITLE': 'The Smartest IT Business Analytics',
+    'INDEX_TITLE': 'SmartBusinessAnalytics by SmartQuail',
     'SUPPORT_HREF': '#',
-    'COPYRIGHT': '<a href="#"><img src="https://qnd41-staticfiles.sfo3.digitaloceanspaces.com/static/img/m2.png" height="18px"></a>&nbsp;&nbsp; copyright © 2022', # noqa
+    'COPYRIGHT': '<a href="#"><img src="/static/img/m2.png" height="18px"></a>&nbsp;&nbsp; copyright © 2024', # noqa
     'POWERED_BY': '<a href="#"><img src="/static/img/logo_smartquailgray.png" height="13px"</a>',
     'CONFIRM_UNSAVED_CHANGES': True,
     'SHOW_MULTIPART_UPLOADING': True,
@@ -34,13 +48,10 @@ BATON = {
     'MENU_TITLE': 'Todo en Orden',
     'MESSAGES_TOASTS': False,
     'GRAVATAR_DEFAULT_IMG': 'retro',
-    'LOGIN_SPLASH': 'https://qnd41-staticfiles.sfo3.digitaloceanspaces.com/static/img/login_splash.jpg',
-    'SEARCH_FIELD': {
-        'label': 'Search contents...',
-         'url': '/search/',
-    },
+    'LOGIN_SPLASH': '/static/img/login_splash.jpg',
+   
     'MENU': (
-        { 'type': 'title', 'label': 'Gerencia', 'apps': ('auth','todo_en_orden', ) },
+       
         {
             'type': 'app',
             'name': 'auth',
@@ -57,355 +68,158 @@ BATON = {
                 },
             )
         },
+         { 'type': 'title', 'label': 'Dirección Espacio Público', 'apps': ('auth','todo_en_orden', ) },
          {
             'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Dpto Contable',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-        {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Dpto Operativo',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-         {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Dpto RRHH',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-        {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Dpto Legal',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-        {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Dpto Marketing',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-         { 'type': 'title', 'label': 'Administración Operativa', 'apps': ('auth','todo_en_orden', ) },
-              {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Entradas y salidas',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-         {
-            'type': 'app',
-            'name': 'todo_en_orden',
+            'name': 'actividades_espacio_publico',
             'label': 'Propuestas',
             'icon': 'fa fa-user',
             'models': (
                 {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'subject',
+                    'label': 'Administración de eventos'
                 },
                 {
-                    'name': 'order',
-                    'label': 'Servicios'
+                    'name': 'evento_30000',
+                    'label': 'Evento 30000'
                 },
+                 {
+                    'name': 'evento_20000',
+                    'label': 'Evento 20000'
+                },
+                {
+                    'name': 'evento_10000',
+                    'label': 'Evento 10000'
+                },
+                {
+                    'name': 'evento_5000',
+                    'label': 'Evento 5000'
+                },
+              
             )
         },
-         {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Servicios',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
+         { 'type': 'title', 'label': 'Dirección Creatividad & Fomento', 'apps': ('auth','todo_en_orden', ) },
         {
             'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Kardex por Venta',
+            'name': 'editorial_literaria',
+            'label': 'Editorial & literario',
             'icon': 'fa fa-user',
             'models': (
                 {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'subject',
+                    'label': 'Categorías de convocatorias'
                 },
                 {
-                    'name': 'order',
-                    'label': 'Servicios'
+                    'name': 'course',
+                    'label': 'Convocatorias realizadas'
                 },
+                
+                {
+                    'name': 'module',
+                    'label': 'Bases técnicas inscriptas en convocatorias'
+                },
+              
             )
         },
          {
             'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Kardex por Contrato ',
+            'name': 'proyectos',
+            'label': 'Proyectos postulados',
             'icon': 'fa fa-user',
             'models': (
                 {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'subject',
+                    'label': 'Volumenes editoriales'
                 },
                 {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-                 {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Contratos ',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
+                    'name': 'project',
+                    'label': 'Proyectos editoriales '
                 },
             )
         },
 
-         {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Kardex de herramientas ',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-
-          
-        
-        { 'type': 'title', 'label': 'Administración Contable', 'apps': ('auth','todo_en_orden', ) },
+         { 'type': 'title', 'label': 'Administración de perfiles', 'apps': ('auth','todo_en_orden', ) },
               {
             'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Cuentas por cobrar',
+            'name': 'usuarios',
+            'label': 'Administración de usuarios',
             'icon': 'fa fa-user',
             'models': (
                 {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'profile',
+                    'label': 'Perfil de usuarios'
                 },
                 {
-                    'name': 'order',
-                    'label': 'Servicios'
+                    'name': 'contacts',
+                    'label': 'Perfil de contactos'
+                },
+                {
+                    'name': 'legal',
+                    'label': 'Perfil de personería'
+                },
+                {
+                    'name': 'activity',
+                    'label': 'Perfil de actividad cultural'
+                },
+                {
+                    'name': 'declaracionveracidad',
+                    'label': 'declaratorias'
                 },
             )
         },
+         { 'type': 'title', 'label': 'Comunicación', 'apps': ('auth','todo_en_orden', ) },
          {
             'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Cuentas por pagar',
+            'name': 'usuarios',
+            'label': 'Información y Normativas',
             'icon': 'fa fa-user',
             'models': (
                 {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'dashboard',
+                    'label': 'Pagina de Inicio'
                 },
                 {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-         {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Egresos',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'privacypolicy',
+                    'label': 'Políticas de privacidad Fomento editorial'
                 },
                 {
-                    'name': 'order',
-                    'label': 'Servicios'
+                    'name': 'termsofuse',
+                    'label': 'Condiciones de uso Fomento editorial'
                 },
-            )
-        },
-        {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'venta de Insumos',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-         {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Facturación',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
-
-        {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Nómina',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
-                },
-            )
-        },
 
                 {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'IESS',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Clientes'
+                    'name': 'activityprivacypolicy',
+                    'label': 'Políticas de privacidad Espacio público'
                 },
-                {
-                    'name': 'order',
-                    'label': 'Servicios'
+                 {
+                    'name': 'activitytermsofuse',
+                    'label': 'Condiciones de uso Espacio público'
                 },
-            )
-        },
 
-          {
-            'type': 'app',
-            'name': 'todo_en_orden',
-            'label': 'Bancos',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'order',
-                    'label': 'Banco Guayaquil'
-                },
-                {
-                    'name': 'order',
-                    'label': 'Banco Internacional'
-                },
+
             )
-        },
-              
+        },        
     ),
 }
-
-
 
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR / 'db.sqlite3')
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+# Obtención de variables de entorno para la configuración de PostgreSQL
 DB_USERNAME = os.environ.get("POSTGRES_USER")
 DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
 DB_DATABASE = os.environ.get("POSTGRES_DB")
 DB_HOST = os.environ.get("POSTGRES_HOST")
 DB_PORT = os.environ.get("POSTGRES_PORT")
-DB_IS_AVIAL = all([
+DB_ENGINE = os.environ.get("POSTGRES_ENGINE")
+
+# Verificación de disponibilidad de las variables necesarias para PostgreSQL
+DB_IS_AVAILABLE = all([
     DB_USERNAME,
     DB_PASSWORD,
     DB_DATABASE,
@@ -413,42 +227,36 @@ DB_IS_AVIAL = all([
     DB_PORT
 ])
 
-POSTGRES_READY="1"
-if DB_IS_AVIAL and POSTGRES_READY:
+# Configuración condicional para PostgreSQL
+if DB_IS_AVAILABLE:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': DB_DATABASE,
-        "USER": DB_USERNAME,
-        "PASSWORD": DB_PASSWORD,
-        "HOST": DB_HOST,
-        "PORT": DB_PORT,
+        'default': {
+            'ENGINE': DB_ENGINE,
+            'NAME': DB_DATABASE,
+            'USER': DB_USERNAME,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
+            'PORT': DB_PORT,
+        }
     }
-}
 
 #Static files DevMod
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT  = BASE_DIR / "mediafiles-cdn"
-MEDIAFILES_DIRS = [
-    BASE_DIR / "media"
-]
-#STATICFILES_DIRS = [BASE_DIR / "staticfiles"]  
-#STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
- #Deploy Project- Don`t touch 
+MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]  
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles-cdn"
+STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
+# settings.py
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
-
-DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 from .cdn.conf import * #noqa
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# celery setup
 
 
 
@@ -489,7 +297,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SEC
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://redis:6379/1',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }

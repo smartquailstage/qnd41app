@@ -122,7 +122,7 @@ INSTALLED_APPS = [
     #'sbashop',
     #'sbaorders',
     'bootstrap4',
-    #'webapp',
+    'webapp',
     'social_django',
     'sorl.thumbnail',
     #'students',
@@ -130,6 +130,7 @@ INSTALLED_APPS = [
     'qr_code',
     'storages',
     #'actions',
+    'boto3',
    
     #'memcache_status',
     'rest_framework',
