@@ -19,7 +19,7 @@ env_path = CURRENT_DIR / '.env_pro'
 load_dotenv(dotenv_path=env_path)
 
 # Establecer el módulo de configuración de Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'qnd41app.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'qnd41app.settings.pro')
 
 # Crear la aplicación WSGI
 application = get_wsgi_application()
