@@ -49,7 +49,7 @@ jobs:
     - name: Install Dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip3 install -r dependencias/01112025.txt
+        pip3 install -r dependencias/12012023.txt
     - name: Run Tests
       run: |
         python3 manage.py test
