@@ -102,9 +102,8 @@ RUN python3.11 -m venv /py && \
 
 
      
+ENV PATH="/py/bin:/scripts:$PATH"
 
-
-ENV PATH="/scripts:/py/bin:$PATH"
 #COPY ./scripts/gunicorn.socket /qnode0.0_app/qnode0_app/run/
 
 RUN apk add --no-cache --update musl musl-utils musl-locales tzdata
