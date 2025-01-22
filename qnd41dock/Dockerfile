@@ -1,4 +1,4 @@
-FROM python:3.13-alpine
+FROM python:3.11-alpine
 LABEL maintainer="mau_dev@smartquail.io"
 
 ENV PYTHONUNBUFFERED 1
@@ -35,7 +35,7 @@ EXPOSE 9000
 #EXPOSE 587
 
 
-RUN python3.13 -m venv /py && \
+RUN python3.11 -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client && \
     apk add --update --no-cache --virtual .tmp-deps && \
@@ -94,8 +94,8 @@ RUN python3.13 -m venv /py && \
     #chmod -R u+x /scripts/gunicorn_run.sh &&\
     chmod -R u+x /scripts/uwsgi.sh &&\
     chmod -R +x /scripts && \
-    rm /py/lib/python3.13/site-packages/baton/static/baton/app/dist/baton.min.js && \
-    cp /${NODE_VERSION}/${NODE_APP_NAME}/${NODE_APP_NAME}/baton.min.js  /py/lib/python3.13/site-packages/baton/static/baton/app/dist/ 
+    rm /py/lib/python3.11/site-packages/baton/static/baton/app/dist/baton.min.js && \
+    cp /${NODE_VERSION}/${NODE_APP_NAME}/${NODE_APP_NAME}/baton.min.js  /py/lib/python3.11/site-packages/baton/static/baton/app/dist/ 
 
 
 
