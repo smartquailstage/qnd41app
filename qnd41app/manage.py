@@ -2,7 +2,14 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import pathlib
 from dotenv import load_dotenv
+
+# Establecer la ruta al archivo .env en la carpeta de settings
+CURRENT_DIR = pathlib.Path(__file__).resolve().parent
+BASE_DIR = CURRENT_DIR.parent
+env_path = CURRENT_DIR / '.env_pro'
+load_dotenv(dotenv_path=env_path)
 
 def main():
     """Run administrative tasks."""
