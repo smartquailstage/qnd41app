@@ -9,7 +9,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'qnd41app.settings.pro')
 app = Celery('qnd41app')
 
 # Carga las configuraciones de Celery desde los archivos de configuración de Django
-app.config_from_object('django.conf:settings.pro', namespace='CELERY')
+app.config_from_object('django.conf:qnd41app.settings.pro', namespace='CELERY')
 
 # Carga tareas de todos los módulos de tareas en Django apps
 app.autodiscover_tasks()
