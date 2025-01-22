@@ -1,17 +1,25 @@
+#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
 import os
 import sys
+from dotenv import load_dotenv
+
 
 def main():
-    # Definir explícitamente el módulo de configuración a utilizar
-    settings_module = 'qnd41app.settings.pro'  # Aquí defines de forma explícita el módulo de configuración pro.
-
-    # Establecer la variable de entorno DJANGO_SETTINGS_MODULE
-    # Esto le dice a Django qué archivo de configuración utilizar para este entorno.
-    os.environ['DJANGO_SETTINGS_MODULE'] = settings_module
-
-    # Ahora que ya hemos configurado el módulo de settings, ejecutamos el comando de Django
-    from django.core.management import execute_from_command_line
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'qnd30_app_stg.settings.stage')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
     execute_from_command_line(sys.argv)
 
+
 if __name__ == '__main__':
+
+    load_dotenv()
     main()
