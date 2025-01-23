@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG=  "1"
+DEBUG=  "0"
 
 
 

@@ -23,13 +23,13 @@ ALLOWED_HOSTS = ['*']
 #]
 
 
-CSRF_COOKIE_DOMAIN=".www.smartquail.io"
-CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://www.smartquail.io','https://146.190.164.22']
-CORS_ALLOWED_ORIGINS = [
-    'https://www.smartquail.io','https://146.190.164.22'
-    # Otros orígenes permitidos si los hay
-]
+#CSRF_COOKIE_DOMAIN=".www.smartquail.io"
+#CSRF_COOKIE_SECURE = True
+#CSRF_TRUSTED_ORIGINS = ['https://www.smartquail.io','https://146.190.164.22']
+#CORS_ALLOWED_ORIGINS = [
+#    'https://www.smartquail.io','https://146.190.164.22'
+#    # Otros orígenes permitidos si los hay
+#]
 
 BATON = {
     'SITE_HEADER': '<a href="#"><img src="/static/img/m2.png" height="26px"></a>',
@@ -242,16 +242,15 @@ if DB_IS_AVAILABLE:
 
 #Static files DevMod
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
-STATICFILES_DIRS = [BASE_DIR / "staticfiles"]  
-STATIC_URL = "/static/"
-STATIC_ROOT = STATIC_ROOT = BASE_DIR / "static"
-# settings.py
 
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+STATIC_ROOT = BASE_DIR / "static"
 
 from .cdn.conf import * #noqa
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
