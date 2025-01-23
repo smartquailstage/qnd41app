@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-
 import os
 import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'qnd41app.settings.pro')  # Asegúrate de que sea absoluto
+    
+    # Imponer el valor por defecto, sin depender del entorno
+    os.environ['DJANGO_SETTINGS_MODULE'] = os.getenv('DJANGO_SETTINGS_MODULE', 'qnd41app.settings.pro')
 
     try:
         from django.core.management import execute_from_command_line
