@@ -121,7 +121,7 @@ INSTALLED_APPS = [
     'sbacart',
     'sbashop',
     'sbaorders',
-    
+
     'bootstrap4',
     'webapp',
     'social_django',
@@ -351,7 +351,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
-
+MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+STATIC_ROOT = BASE_DIR / "static"
 
 
 
