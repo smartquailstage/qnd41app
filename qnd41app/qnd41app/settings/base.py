@@ -121,6 +121,7 @@ INSTALLED_APPS = [
     'sbacart',
     'sbashop',
     'sbaorders',
+    
     'bootstrap4',
     'webapp',
     'social_django',
