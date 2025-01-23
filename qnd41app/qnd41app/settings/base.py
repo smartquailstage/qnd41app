@@ -3,9 +3,9 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+#prueba
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Load environment variables from the .env_local file.
 ENV_FILE_PATH = BASE_DIR / ".env_prod"
@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 if SECRET_KEY is None:
     raise ValueError("DJANGO_SECRET_KEY is not set in the environment variables.")
 
-DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
+
 
 
 # Application definition
