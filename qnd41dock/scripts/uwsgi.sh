@@ -29,14 +29,7 @@ python3 manage.py createsuperuser --email $SUPERUSER_EMAIL --noinput || true
 echo "Recolectando archivos estáticos..."
 python3 manage.py collectstatic --settings=$NODE_NAME.settings.pro --noinput
 
-# Verificar si el archivo uwsgi_stage.ini está disponible antes de iniciar el servidor
-if [ ! -f "uwsgi_pro.ini" ]; then
-    echo "Error: El archivo uwsgi_stage.ini no existe."
-    exit 1
-fi
 
-# Inicia el servidor uWSGI
-echo "Iniciando uWSGI..."
 uwsgi --http :9000 --workers 2  --master  --enable-threads  --module $NODE_NAME.wsgi  --ini uwsgi_pro.ini
 
 # Opcional: Gunicorn (descomentado si lo necesitas en lugar de uWSGI)
