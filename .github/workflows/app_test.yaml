@@ -13,7 +13,7 @@ jobs:
     env:
       DJANGO_SECRET_KEY: test-key-not-good
       NAME_DB: QND41DB
-      PASSWORD_DB: TESTDB
+      PASSWORD_DB: Support1719@
       USER_DB: sqadmindb
       HOST_DB: smartquaildb
       PORT_DB: 5432 
@@ -24,7 +24,7 @@ jobs:
         image: postgres:16-alpine
         env: 
           POSTGRES_DB: QND41DB
-          POSTGRES_PASSWORD: TESTDB
+          POSTGRES_PASSWORD: Support1719@
           POSTGRES_USER: sqadmindb
           POSTGRES_HOST: smartquaildb
           POSTGRES_PORT: 5432 
