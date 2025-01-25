@@ -1,7 +1,7 @@
 FROM python:3.11-alpine
 LABEL maintainer="mau_dev@smartquail.io"
 
-#ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED 1
 
 ENV NODE_VERSION=qnd41app
 ENV NODE_APP_NAME=qnd41app
