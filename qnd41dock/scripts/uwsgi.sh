@@ -4,10 +4,10 @@
 set -e
 
 # Mostrar información del sistema (si neofetch está disponible, si no, se elimina o reemplaza por una salida simple)
-if command -v neofetch > /dev/null 2>&1; then
-    neofetch --ascii qnode_art.txt --ascii_colors 2 222 3 2 2 -L, --logo
+if command -v screenfetch > /dev/null 2>&1; then
+    screenfetch --ascii qnode_art.txt
 else
-    echo "neofetch no está instalado, omitiendo la visualización ASCII."
+    echo "screenfetch no está instalado, omitiendo la visualización ASCII."
 fi
 
 # Variables de configuración

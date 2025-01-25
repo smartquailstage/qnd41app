@@ -50,7 +50,7 @@ RUN python3.11 -m venv /py && \
     apk add busybox-extras && \
     apk add openssl-dev && \
     apk add gettext && \
-    apk add neofetch && \
+    apk add screenfetch && \
     #/py/bin/pip install  rust  &&  \
     #/py/bin/pip install   py3-kiwisolver &&  \
     /py/bin/pip install -r /12012023.txt && \
