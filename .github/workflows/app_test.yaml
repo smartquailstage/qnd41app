@@ -60,7 +60,7 @@ jobs:
     - name: Start uWSGI server
       run: |
         # Iniciar el servidor uWSGI en segundo plano
-        uwsgi --workers 2  --master  --enable-threads  --module qnd41app.wsgi  --ini uwsgi_pro.ini &
+        uwsgi --workers 2  --master  --enable-threads  --module qnd41app.wsgi  --ini uwsgi_stage.ini &
         # Esperar un momento para asegurarse de que uWSGI esté corriendo
         sleep 5
 
