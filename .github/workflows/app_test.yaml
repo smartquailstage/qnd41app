@@ -60,7 +60,7 @@ jobs:
     - name: Start uWSGI server
       run: |
         # Iniciar el servidor uWSGI en segundo plano
-        uwsgi --workers 2  --master  --enable-threads  --module qnd41app.wsgi  --ini qnd41app/qnd41app/qnd41app/uwsgi_stage.ini &
+        uwsgi --workers 2  --master  --enable-threads  --module qnd41app.wsgi  --ini uwsgi_pro.ini &
         # Esperar un momento para asegurarse de que uWSGI esté corriendo
         sleep 5
 
@@ -68,8 +68,3 @@ jobs:
       run: |
         # Ejecutar las pruebas de Django
         python3 manage.py test --settings=qnd41app.settings.stage
-
-    - name: Stop uWSGI server
-      run: |
-        # Detener el servidor uWSGI
-        pkill uwsgi
