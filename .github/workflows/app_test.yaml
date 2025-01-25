@@ -59,10 +59,10 @@ jobs:
     - name: Prepare Database
       run: |
         # Configura la base de datos
-        python3 manage.py migrate --settings=qnd41app.settings.stage
+        python3 manage.py migrate --settings=qnd41app.settings.pro
         # Crear superusuario si no existe
         python3 manage.py createsuperuser --email "admin@smartquail.com" --noinput || echo "El superusuario ya existe"
-        python3 manage.py collectstatic --settings=qnd41app.settings.stage --noinput
+        python3 manage.py collectstatic --settings=qnd41app.settings.pro --noinput
 
     - name: Start uWSGI server
       run: |
