@@ -55,21 +55,7 @@ jobs:
         pip3 install -r dependencias/12012023.txt
         pip3 install uwsgi  # Instalar uWSGI para la prueba
 
-    - name: Wait for PostgreSQL to be ready
-      run: |
-        until pg_isready -h smartquaildb -p QND41DB -U sqadmindb; do
-        echo "Esperando a que PostgreSQL esté listo..."
-        sleep 5
-        done
 
-
-    - name: Prepare Database
-      run: |
-        # Configura la base de datos
-        python3 manage.py migrate --settings=qnd41app.settings.pro
-        # Crear superusuario si no existe
-        python3 manage.py createsuperuser --email "admin@smartquail.com" --noinput || echo "El superusuario ya existe"
-        python3 manage.py collectstatic --settings=qnd41app.settings.pro --noinput
 
     - name: Start uWSGI server
       run: |
