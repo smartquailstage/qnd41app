@@ -27,8 +27,7 @@ uwsgi --workers 2 \
       --master \
       --enable-threads \
       --module $NODE_NAME.wsgi \
-      --ini uwsgi_stage.ini \
-      --static-map /static=/qnd41app/qnd41app/qnd41app/static/
+      --ini uwsgi_stage.ini 
 
 # Opcional: Gunicorn (descomentado si lo necesitas en lugar de uWSGI)
 # gunicorn --worker-tmp-dir /dev/shm --bind "0.0.0.0:${APP_PORT}" qnode0_app.wsgi:application

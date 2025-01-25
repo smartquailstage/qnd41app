@@ -297,3 +297,20 @@ CACHES = {
         }
     }
 }
+
+
+# Configuración de AWS
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = os.environ.get("AWS_S3_ENDPOINT_URL")  # Cambia si usas otro endpoint
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400", 
+    "ACL": "public-read"  # Cambia a 'private' si los archivos deben ser privados
+}
+
+# Configuración de almacenamiento
+AWS_LOCATION = os.environ.get("AWS_LOCATION")  # 'static' o 'media'
+
+# Asegúrate de que la URL de los archivos estáticos esté correcta
+STATIC_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
