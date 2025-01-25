@@ -23,11 +23,7 @@ python3 manage.py createsuperuser --email $SUPERUSER_EMAIL --noinput || true
 python3 manage.py collectstatic --settings=$NODE_NAME.settings.pro --noinput
 
 # Inicia el servidor uWSGI
-uwsgi --workers 2 \
-      --master \
-      --enable-threads \
-      --module $NODE_NAME.wsgi \
-      --ini uwsgi_stage.ini 
+uwsgi --workers 2  --master  --enable-threads  --module $NODE_NAME.wsgi  --ini uwsgi_stage.ini 
 
 # Opcional: Gunicorn (descomentado si lo necesitas en lugar de uWSGI)
 # gunicorn --worker-tmp-dir /dev/shm --bind "0.0.0.0:${APP_PORT}" qnode0_app.wsgi:application
