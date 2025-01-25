@@ -34,7 +34,7 @@ RUN apk add --no-cache \
     busybox-extras \
     openssl-dev \
     gettext \
-    screenfetch \
+   # screenfetch \
     musl musl-utils musl-locales tzdata && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /12012023.txt
