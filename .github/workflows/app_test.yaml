@@ -13,15 +13,15 @@ jobs:
     env:
       DJANGO_SECRET_KEY: test-key-not-good
       NAME_DB: node0db
-      PASSWORD_DB: smartquailadmindb
-      USER_DB: smartquailadmin
+      PASSWORD_DB: QND41DB
+      USER_DB: sqadmindb
       HOST_DB: smartquaildb
       PORT_DB: 5432 
       DB_IGNORE_SSL: "true"
     
     services:
       smartquaildb:
-        image: postgres:13-alpine
+        image: postgres:16-alpine
         env: 
           POSTGRES_DB: ${{ env.NAME_DB }}
           POSTGRES_PASSWORD: ${{ env.PASSWORD_DB }}
