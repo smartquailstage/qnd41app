@@ -1,4 +1,4 @@
-from .base import *
+from .base_local import *
 
 DEBUG=  "0"
 
