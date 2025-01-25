@@ -30,7 +30,7 @@ echo "Recolectando archivos estáticos..."
 python3 manage.py collectstatic --settings=$NODE_NAME.settings.pro --noinput
 
 
-uwsgi --http :9000 --workers 2  --master  --enable-threads  --module $NODE_NAME.wsgi  --ini /qnd41app/qnd41app/uwsgi_pro.ini
+uwsgi --http :9000 --workers 2  --master  --enable-threads  --module $NODE_NAME.wsgi  --ini uwsgi_pro.ini
 
 # Opcional: Gunicorn (descomentado si lo necesitas en lugar de uWSGI)
 # gunicorn --worker-tmp-dir /dev/shm --bind "0.0.0.0:${APP_PORT}" qnode0_app.wsgi:application
