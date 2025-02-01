@@ -73,42 +73,28 @@
               <li>
                 <div class="row">
                   <div class="col-menu col-md-3">
-                    {% smartbusinessmedia_menus as menus %}
-                    {% for menu in menus %}
-                    <h6 class="title">{{menu.heading}}</h6>
+                    <a href="{% url 'sbmshop:product_list' %}"> <h6 class="title" style="color:#bd1818;">SmartBusinessMedia®</h6></a>
                     <div class="content">
-                      {% flat_menu menu.handle template="webapp/home/navbar/products/smartbusinessmedia.html" %}
+                      <ul class="menu-col">
+                        <li><a href="{% url 'sbmshop:product_list' %}#portfolio-filter">{% trans 'Media Customer Relationship Management Plataform (MCRM).'%}</a></li>
+
+                        <li><a href="{% url 'sbmshop:product_list' %}#Staff">{% trans 'Marketing Media Consulting' %}</a></li>
+                       
+                      </ul>
                     </div>
-                    {% endfor %}
                   </div>
+                  <!--=== end col-3 ===-->
                   <div class="col-menu col-md-3">
-                    {% smartbusinessanalytics_menus as menus2 %}
-                    {% for menu in menus2 %}
-                    <h6 class="title">{{menu.heading}}</h6>
+                    <h6 class="title">SmartBusinessTechnologies®</h6>
                     <div class="content">
-                      {% flat_menu menu.handle template="webapp/home/navbar/products/smartbusinessanalytics.html" %}
+                      <ul class="menu-col">
+                        <li><a href="creative-onepage.html">IT Cloud Architectures Technologies</a></li>
+                        <li><a href="creative-portfolio.html">IT Cloud Infrastructures Technologies</a></li>
+                        <li><a href="personal-resume.html">IT  Cloud Technologies Consulting</a></li>
+                      </ul>
                     </div>
-                    {% endfor %}
                   </div>
-                  <div class="col-menu col-md-3">
-                    {% smartbusinesslaw_menus as menus %}
-                    {% for menu in menus %}
-                    <h6 class="title">{{menu.heading}}</h6>
-                    <div class="content">
-                      {% flat_menu menu.handle template="webapp/home/navbar/products/smartbusinesslaw.html" %}
-                    </div>
-                    {% endfor %}
-                  </div>
-                  <div class="col-menu col-md-3">
-                    {% smartbusinesstechnologies_menus as menus %}
-                    {% for menu in menus %}
-                    <h6 class="title">{{menu.heading}}</h6>
-                    <div class="content">
-                      {% flat_menu menu.handle template="webapp/home/navbar/products/smartbusinesstechnologies.html" %}
-                    </div>
-                    {% endfor %}
-                  </div>
-               
+                
                 </div>
                 <!--=== end row ===-->
               </li>

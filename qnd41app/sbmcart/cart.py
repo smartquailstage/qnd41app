@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from sbmshop.models import SBMProduct
+from sbmcoupons.models import Coupon
 
 
 class Cart(object):
@@ -10,9 +11,10 @@ class Cart(object):
         Initialize the cart.
         """
         self.session = request.session
+        self.coupon_id = self.session.get('coupon_id')  # Get the coupon_id from session
         cart = self.session.get(settings.SBMCART_SESSION_ID)
         if not cart:
-            # save an empty cart in the session
+            # Save an empty cart in the session if not already present
             cart = self.session[settings.SBMCART_SESSION_ID] = {}
         self.cart = cart
 
@@ -22,7 +24,7 @@ class Cart(object):
         from the database.
         """
         product_ids = self.cart.keys()
-        # get the product objects and add them to the cart
+        # Get the product objects and add them to the cart
         products = SBMProduct.objects.filter(id__in=product_ids)
 
         cart = self.cart.copy()
@@ -55,7 +57,7 @@ class Cart(object):
         self.save()
 
     def save(self):
-        # mark the session as "modified" to make sure it gets saved
+        # Mark the session as "modified" to make sure it gets saved
         self.session.modified = True
 
     def remove(self, product):
@@ -71,6 +73,20 @@ class Cart(object):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def clear(self):
-        # remove cart from session
+        # Remove the cart from session
         del self.session[settings.SBMCART_SESSION_ID]
         self.save()
+
+    @property
+    def coupon(self):
+        if self.coupon_id:
+            return Coupon.objects.get(id=self.coupon_id)
+        return None
+
+    def get_discount(self):
+        if self.coupon:
+            return (self.coupon.discount / Decimal('100')) * self.get_total_price()
+        return Decimal('0')
+
+    def get_total_price_after_discount(self):
+        return self.get_total_price() - self.get_discount()

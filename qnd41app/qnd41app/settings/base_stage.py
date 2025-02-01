@@ -105,6 +105,11 @@ INSTALLED_APPS = [
     #'shop',
     #'cart',
 
+    'sbmshop',
+    'sbmorders',
+    'sbmcoupons',
+    'sbmpayments',
+
     'sblcart',
     'sblshop',
     'sblorders',
@@ -114,9 +119,7 @@ INSTALLED_APPS = [
     'sbtshop',
     'sbtorders',
 
-    'sbmcart',
-    'sbmshop',
-    'sbmorders',
+ 
 
     'sbacart',
     'sbashop',

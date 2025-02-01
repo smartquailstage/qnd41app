@@ -13,7 +13,15 @@
           <div class="col-sm-6 col-md-4">
             <div class="widget widget-text">
               <div class="logo logo-footer"><a href="{% slugurl 'home' %}"> <img class="logo logo-display"  src="{% static 'img/logo_smartquailWhite.png' %}" alt=""></a> </div>
-              <p>{{ page.bio | richtext }}</p>
+              <p style="line-height: 20px;">
+                {% trans 'SmartQuail,Inc es una empresa líder en el desarrollo de soluciones de Tecnologías de la Información y Comunicación (TIC) en la nube, con el objetivo de democratizar el acceso a los sistemas de información a nivel global.' %}
+              </p>
+              <p style="line-height: 20px;">
+              A través de nuestras soluciones innovadoras y accesibles, trabajamos para garantizar que las tecnologías más avanzadas sean aprovechadas por organizaciones de todos los tamaños y sectores.
+            </p>
+            <p style="line-height: 20px;">
+              Be Smart, Be a Smart Quail.
+            </p>
             </div>
           </div>
           <div class="col-sm-6 col-md-2">
@@ -40,12 +48,9 @@
           </div>
           <div class="col-sm-6 col-md-4">
             <div class="widget widget-text widget-links">
-              <h5 class="widget-title">{% trans 'Contact Us' %}</h5>
+              <h5 class="widget-title">{% trans 'We are Social' %}</h5>
               <ul>
-                <li> <i class="icofont icofont-google-map"></i> Francisco Salazar E14-19, Quito-Ecuador </li>
-                <li> <i class="icofont icofont-iphone"></i> <a href="https://api.whatsapp.com/send?phone=593963521262">+593 963 52162</a> </li>
-                <li> <i class="icofont icofont-mail"></i> <a href="mailto:info@mail.smartquail.io">info@mail.smartquail.io</a> </li>
-                <li> <i class="icofont icofont-globe"></i> <a href="{% slugurl 'inicio' %}">www.smartquail.io</a> </li>
+                <li> <a href="https://api.whatsapp.com/send?phone=593963521262"><i class="icofont icofont-whatsapp"></i></a> <a href="mailto:info@mail.smartquail.io"><i class="icofont icofont-mail"></i></a><i class="icofont icofont-facebook"></i><i class="icofont icofont-instagram"></i>  </li>
               </ul>
             </div>
           </div>

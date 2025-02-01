@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Load environment variables from the .env_local file.
-ENV_FILE_PATH = BASE_DIR / ".env_prod"
+ENV_FILE_PATH = BASE_DIR / ".env_local"
 load_dotenv(dotenv_path=ENV_FILE_PATH)
 
 # Retrieve the Django secret key from environment variables.
@@ -77,6 +77,10 @@ INSTALLED_APPS = [
     'wagtailmenus',
     #'wagtail.contrib.modeladmin',
     'django_social_share',
+    #'sbmshop',
+    #'sbmorders',
+    #'sbmcoupons',
+    #'sbmpayments',
    
     'taggit',
     #'proyectos',
@@ -114,9 +118,7 @@ INSTALLED_APPS = [
     'sbtshop',
     'sbtorders',
 
-    'sbmcart',
-    'sbmshop',
-    'sbmorders',
+ 
 
     'sbacart',
     'sbashop',

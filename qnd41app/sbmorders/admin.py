@@ -2,7 +2,7 @@ import csv
 import datetime
 from django.contrib import admin
 from django.http import HttpResponse
-from .models import Order, OrderItem
+from .models import Order, OrderItem, BankTransfer
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
@@ -60,3 +60,8 @@ class OrderAdmin(admin.ModelAdmin):
             obj.save()
 
     duplicate_selected.short_description = "Duplicar elementos seleccionados"
+
+@admin.register(BankTransfer)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'bank', 'bank_id','paid','transfer_date','accept_terms_and_conditions']
+    list_filter = ['id', 'bank', 'bank_id','paid','transfer_date','accept_terms_and_conditions']
