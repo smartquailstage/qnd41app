@@ -2,10 +2,11 @@
 django>=4.2,<5.0
 
 # Django Baton
-django-baton==2.6.2
+#django-baton==2.6.2
+django-unfold
 
 # Wagtail
-wagtail>=4.1.0
+wagtail
 
 psycopg
 

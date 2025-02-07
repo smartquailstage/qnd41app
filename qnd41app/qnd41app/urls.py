@@ -18,7 +18,8 @@ from django.urls import path,re_path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
-from baton.autodiscover import admin
+#from baton.autodiscover import admin
+from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail import urls as wagtaildocs_urls
@@ -30,7 +31,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = i18n_patterns(
 
     path('analytics/', admin.site.urls),
-    path('baton/', include('baton.urls')),
+   # path('baton/', include('baton.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('rosetta/', include('rosetta.urls')),
     
@@ -42,7 +43,8 @@ urlpatterns = i18n_patterns(
     #path('payment/', include('payment.urls', namespace='payment')),
    # path('shop/', include('shop.urls', namespace='shop')),
    # path('cart/', include('cart.urls', namespace='cart')),
-   
+
+
 
     path('sbashop/', include('sbashop.urls', namespace='sbashop')),
     path('sbacart/', include('sbacart.urls', namespace='sbacart')),

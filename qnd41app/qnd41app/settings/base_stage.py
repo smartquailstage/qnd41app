@@ -24,8 +24,10 @@ if SECRET_KEY is None:
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",  # before django.contrib.admin
+  # optional, if django-simple-history package is used
     #'usuarios',
-    'baton',
+    #'baton',
     #'editorial_literaria',
     #'account',
     #'courses',
@@ -105,6 +107,8 @@ INSTALLED_APPS = [
     #'shop',
     #'cart',
 
+
+
     'sbmshop',
     'sbmorders',
     'sbmcoupons',
@@ -143,10 +147,184 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     
     "bootstrap_datepicker_plus",
+    "unfold.contrib.filters",  # optional, if special filters are needed
+    "unfold.contrib.forms",  # optional, if special form elements are needed
+    "unfold.contrib.inlines",  # optional, if special inlines are needed
+    "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    "unfold.contrib.simple_history",
     
-    'baton.autodiscover',
+    #'baton.autodiscover',
    
 ]
+
+
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
+UNFOLD = {
+    "SITE_TITLE": "SmartBusinessAnalytics",
+    "SITE_HEADER": "SmartBusinessAnalytics",
+    "SITE_URL": "/",
+    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
+    "SITE_ICON": {
+        "light": lambda request: static("img/logo.png"),  # light mode
+        "dark": lambda request: static("img/logo.png"),  # dark mode
+    },
+    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
+    "SITE_LOGO": {
+        "light": lambda request: static("img/smartbusinessanalytics.png"),  # light mode
+        "dark": lambda request: static("img/smartbusinessanalytics.png"),  # dark mode
+    },
+    "SITE_SYMBOL": "speed",  # symbol from icon set
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/svg+xml",
+            "href": lambda request: static("img/logo.png"),
+        },
+    ],
+    "SHOW_HISTORY": True, # show/hide "History" button, default: True
+    "SHOW_VIEW_ON_SITE": True, # show/hide "View on site" button, default: True
+    "SHOW_BACK_BUTTON": True, # show/hide "Back" button on changeform in header, default: False
+    "ENVIRONMENT": "danger.environment_callback",
+    #"DASHBOARD_CALLBACK": "sbmshop.dashboard_callback",
+    "THEME": "dark", # Force theme: "dark" or "light". Will disable theme switcher
+    "LOGIN": {
+        "image": lambda request: static("img/login_splash.jpg"),
+        #"redirect_after": lambda request: reverse_lazy("admin:APP_MODEL_changelist"),
+    },
+    "STYLES": [
+        lambda request: static("css/style.css"),
+    ],
+    "SCRIPTS": [
+        lambda request: static("js/script.js"),
+    ],
+    "BORDER_RADIUS": "6px",
+    "COLORS": {
+        "base": {
+            "50": "249 250 251",
+            "100": "243 244 246",
+            "200": "229 231 235",
+            "300": "209 213 219",
+            "400": "156 163 175",
+            "500": "107 114 128",
+            "600": "75 85 99",
+            "700": "55 65 81",
+            "800": "31 41 55",
+            "900": "17 24 39",
+            "950": "3 7 18",
+        },
+        "primary": {
+            "50": "250 245 255",
+            "100": "243 232 255",
+            "200": "233 213 255",
+            "300": "216 180 254",
+            "400": "192 132 252",
+            "500": "168 85 247",
+            "600": "147 51 234",
+            "700": "126 34 206",
+            "800": "107 33 168",
+            "900": "88 28 135",
+            "950": "59 7 100",
+        },
+        "font": {
+            "subtle-light": "var(--color-base-500)",  # text-base-500
+            "subtle-dark": "var(--color-base-400)",  # text-base-400
+            "default-light": "var(--color-base-600)",  # text-base-600
+            "default-dark": "var(--color-base-300)",  # text-base-300
+            "important-light": "var(--color-base-900)",  # text-base-900
+            "important-dark": "var(--color-base-100)",  # text-base-100
+        },
+    },
+    "EXTENSIONS": {
+        "modeltranslation": {
+            "flags": {
+                "en": "🇬🇧",
+                "fr": "🇫🇷",
+                "nl": "🇧🇪",
+            },
+        },
+    },
+
+    "SIDEBAR": {
+        "show_search": True,  # Search in applications and models names
+        "show_all_applications": True,  # Dropdown with all applications and models
+        "navigation": [
+            {
+                "title": _("Business Analytics"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:index"),
+                       # "badge": "sample_app.badge_callback",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Users"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("SmartBusinessMedia"),
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                    },
+                ],
+            },
+        ],
+    },
+
+    "TABS": [
+        {
+            "models": [
+                "sbmshop.category",
+            ],
+            "items": [
+                {
+                    "title": _("Your custom title"),
+                    "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                   # "permission": "sample_app.permission_callback",
+                },
+            ],
+        },
+    ],
+
+
+}
+
+
+def dashboard_callback(request, context):
+    """
+    Callback to prepare custom variables for index template which is used as dashboard
+    template. It can be overridden in application by creating custom admin/index.html.
+    """
+    context.update(
+        {
+            "sample": "example",  # this will be injected into templates/admin/index.html
+        }
+    )
+    return context
+
+
+def environment_callback(request):
+    """
+    Callback has to return a list of two values represeting text value and the color
+    type of the label displayed in top right corner.
+    """
+    return ["Production", "danger"] # info, danger, warning, success
+
+
+def badge_callback(request):
+    return 3
+
+def permission_callback(request):
+    return request.user.has_perm("sample_app.change_model")
 
 
 
