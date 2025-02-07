@@ -153,3 +153,5 @@ weasyprint>=57.0
 
 # Wagtail Menus
 wagtailmenus>=1.5.1
+
+qrcode
