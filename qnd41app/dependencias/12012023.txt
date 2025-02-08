@@ -155,3 +155,8 @@ weasyprint>=57.0
 wagtailmenus>=1.5.1
 
 qrcode
+
+twilio 
+requests
+openai
+wagtail-ai

@@ -85,7 +85,7 @@ INSTALLED_APPS = [
     'wagtailmenus',
     #'wagtail.contrib.modeladmin',
     'django_social_share',
-   
+    'mailing',
     'taggit',
     #'proyectos',
    # 'students',
@@ -151,6 +151,7 @@ INSTALLED_APPS = [
     'ckeditor',
    # 'js_blog_app',
     'wagtail.contrib.settings',
+    "wagtail_ai",
     
     "bootstrap_datepicker_plus",
 
@@ -192,7 +193,7 @@ UNFOLD = {
     "SHOW_BACK_BUTTON": True, # show/hide "Back" button on changeform in header, default: False
     "ENVIRONMENT": "danger.environment_callback",
     #"DASHBOARD_CALLBACK": "sbmshop.dashboard_callback",
-    "THEME": "dark", # Force theme: "dark" or "light". Will disable theme switcher
+    "THEME": "light", # Force theme: "dark" or "light". Will disable theme switcher
     "LOGIN": {
         "image": lambda request: static("img/login_splash.jpg"),
         #"redirect_after": lambda request: reverse_lazy("admin:APP_MODEL_changelist"),
@@ -203,7 +204,7 @@ UNFOLD = {
     "SCRIPTS": [
         lambda request: static("js/script.js"),
     ],
-    "BORDER_RADIUS": "6px",
+    "BORDER_RADIUS": "3px",
     "COLORS": {
         "base": {
             "50": "249 250 251",
@@ -218,14 +219,15 @@ UNFOLD = {
             "900": "17 24 39",
             "950": "3 7 18",
         },
+        
         "primary": {
             "50": "250 245 255",
             "100": "243 232 255",
             "200": "233 213 255",
             "300": "216 180 254",
             "400": "192 132 252",
-            "500": "168 85 247",
-            "600": "147 51 234",
+            "500": "194 2 2",
+            "600": "254 2 2",
             "700": "126 34 206",
             "800": "107 33 168",
             "900": "88 28 135",
@@ -278,6 +280,32 @@ UNFOLD = {
                     },
                 ],
             },
+
+                        {
+                "title": _("Business Analytics"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:index"),
+                       # "badge": "sample_app.badge_callback",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Users"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("SmartBusinessMedia"),
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                    },
+                ],
+            },
+
         ],
     },
 
@@ -288,7 +316,7 @@ UNFOLD = {
             ],
             "items": [
                 {
-                    "title": _("Your custom title"),
+                    "title": _("Categories"),
                     "link": reverse_lazy("admin:sbmshop_category_changelist"),
                    # "permission": "sample_app.permission_callback",
                 },
@@ -349,7 +377,18 @@ MIDDLEWARE = [
 
 
 
-
+WAGTAIL_AI = {
+    "BACKENDS": {
+        "default": {
+            "CLASS": "wagtail_ai.ai.llm.LLMBackend",
+            "CONFIG": {
+                # Model ID recognizable by the "LLM" library.
+                "MODEL_ID": "gpt-3.5-turbo",
+                "PROMPT_KWARGS": {"system": "A custom, global system prompt."},
+            },
+        }
+    }
+}
 
 ROOT_URLCONF = 'qnd41app.urls'
 LOCALE_PATHS =  (
