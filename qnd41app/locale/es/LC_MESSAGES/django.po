@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-01 21:21-0500\n"
-"PO-Revision-Date: 2024-08-13 18:42-0500\n"
-"Last-Translator:   <info@mail.smartquail.io>\n"
+"POT-Creation-Date: 2025-02-10 19:34-0500\n"
+"PO-Revision-Date: 2025-02-10 19:39-0500\n"
+"Last-Translator:   <sdfas@asdf.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.10.0\n"
+"X-Translated-Using: django-rosetta 0.10.1\n"
 
 #: core/templates/admin/login.html:23
 msgid "Please correct the error below."
@@ -59,6 +59,1117 @@ msgstr ""
 msgid " By %(filter_title)s "
 msgstr ""
 
+#: sbacart/templates/detail.html:30 sbacart/templates/sbacart/detail.html:30
+#: sblcart/templates/sbtcart/detail.html:30
+#: sbtcart/templates/sbtcart/detail.html:30
+msgid "Your SmartQuail shopping cart"
+msgstr ""
+
+#: sbacart/templates/detail.html:39 sbacart/templates/sbacart/detail.html:39
+#: sblcart/templates/sbtcart/detail.html:39
+#: sbmpayments/templates/payment/done_trans.html:261
+#: sbmshop/templates/sbmshop/product/detail.html:197
+#: sbtcart/templates/sbtcart/detail.html:39
+msgid "Price"
+msgstr ""
+
+#: sbacart/templates/detail.html:40 sbacart/templates/sbacart/detail.html:40
+#: sblcart/templates/sbtcart/detail.html:40
+#: sbmshop/templates/sbmshop/product/detail.html:141
+#: sbtcart/templates/sbtcart/detail.html:40
+msgid "Description"
+msgstr ""
+
+#: sbacart/templates/detail.html:42 sbacart/templates/sbacart/detail.html:42
+#: sblcart/templates/sbtcart/detail.html:42
+#: sbtcart/templates/sbtcart/detail.html:42
+msgid "Subtotal price"
+msgstr ""
+
+#: sbacart/templates/detail.html:50 sbacart/templates/sbacart/detail.html:50
+#: sblcart/templates/sbtcart/detail.html:50
+#: sbtcart/templates/sbtcart/detail.html:50
+msgid "Remove"
+msgstr ""
+
+#: sbacart/templates/detail.html:57 sbacart/templates/sbacart/detail.html:57
+#: sblcart/templates/sbtcart/detail.html:57
+#: sbtcart/templates/sbtcart/detail.html:57
+msgid "TOTAL PRICE"
+msgstr ""
+
+#: sbacart/templates/detail.html:60 sbacart/templates/sbacart/detail.html:60
+#: sblcart/templates/sbtcart/detail.html:60
+#: sbmcart/templates/sbmcart/detail.html:262
+#: sbtcart/templates/sbtcart/detail.html:60
+msgid "Continue shopping"
+msgstr ""
+
+#: sbacart/templates/detail.html:62 sbacart/templates/sbacart/detail.html:62
+#: sblcart/templates/sbtcart/detail.html:62
+#: sbmcart/templates/sbmcart/detail.html:264
+#: sbtcart/templates/sbtcart/detail.html:62
+msgid "Checkout"
+msgstr ""
+
+#: sbaorders/templates/sbaorders/header.html:57
+#: sbashop/templates/sbashop/header.html:57
+#: sblorders/templates/sblorders/header.html:57
+#: sblshop/templates/sblshop/header.html:57
+#: sbmorders/templates/sbmorders/header.html:57
+#: sbtorders/templates/sbtorders/header.html:57
+#: sbtshop/templates/sbtshop/header.html:57 shop/templates/shop/header.html:57
+msgid "Login"
+msgstr ""
+
+#: sbaorders/templates/sbaorders/header.html:74
+#: sbashop/templates/sbashop/header.html:74
+#: sblorders/templates/sblorders/header.html:74
+#: sblshop/templates/sblshop/header.html:74
+#: sbmorders/templates/sbmorders/header.html:74
+#: sbmshop/templates/sbmshop/header.html:111
+#: sbtorders/templates/sbtorders/header.html:74
+#: sbtshop/templates/sbtshop/header.html:74 shop/templates/shop/header.html:74
+#: webapp/templates/webapp/home/header.html:71
+msgid "Products"
+msgstr "Productos"
+
+#: sbaorders/templates/sbaorders/header.html:120
+#: sbashop/templates/sbashop/header.html:120
+#: sblorders/templates/sblorders/header.html:120
+#: sblshop/templates/sblshop/header.html:120
+#: sbmorders/templates/sbmorders/header.html:120
+#: sbmshop/templates/sbmshop/header.html:145
+#: sbtorders/templates/sbtorders/header.html:120
+#: sbtshop/templates/sbtshop/header.html:120
+#: shop/templates/shop/header.html:120
+#: webapp/templates/webapp/home/header.html:103
+msgid "Solutions"
+msgstr "Soluciones"
+
+#: sbaorders/templates/sbaorders/header.html:158
+#: sbashop/templates/sbashop/header.html:158
+#: sblorders/templates/sblorders/header.html:158
+#: sblshop/templates/sblshop/header.html:158
+#: sbmorders/templates/sbmorders/header.html:158
+#: sbmshop/templates/sbmshop/header.html:174
+#: sbtorders/templates/sbtorders/header.html:158
+#: sbtshop/templates/sbtshop/header.html:158
+#: shop/templates/shop/header.html:158
+#: webapp/templates/webapp/home/header.html:141
+msgid "Training & Jobs"
+msgstr "Capacitación y empleo"
+
+#: sbaorders/templates/sbaorders/header.html:185
+#: sbashop/templates/sbashop/header.html:185
+#: sblorders/templates/sblorders/header.html:185
+#: sblshop/templates/sblshop/header.html:185
+#: sbmorders/templates/sbmorders/header.html:185
+#: sbmshop/templates/sbmshop/header.html:201
+#: sbtorders/templates/sbtorders/header.html:185
+#: sbtshop/templates/sbtshop/header.html:185
+#: shop/templates/shop/header.html:185
+#: webapp/templates/webapp/home/header.html:168
+msgid "Resources"
+msgstr "Recursos"
+
+#: sbaorders/templates/sbaorders/header.html:231
+#: sbashop/templates/sbashop/header.html:231
+#: sblorders/templates/sblorders/header.html:231
+#: sblshop/templates/sblshop/header.html:231
+#: sbmorders/templates/sbmorders/header.html:231
+#: sbtorders/templates/sbtorders/header.html:231
+#: sbtshop/templates/sbtshop/header.html:231
+#: shop/templates/shop/header.html:231
+#, fuzzy
+#| msgid "Partners"
+msgid "Parthers"
+msgstr "Aliados"
+
+#: sbaorders/templates/sbaorders/header.html:258
+#: sbashop/templates/sbashop/header.html:258
+#: sblorders/templates/sblorders/header.html:258
+#: sblshop/templates/sblshop/header.html:258
+#: sbmorders/templates/sbmorders/header.html:258
+#: sbmshop/templates/sbmshop/header.html:274
+#: sbtorders/templates/sbtorders/header.html:258
+#: sbtshop/templates/sbtshop/header.html:258
+#: shop/templates/shop/header.html:258
+#: webapp/templates/webapp/home/header.html:241
+msgid "About"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/detail.html:41
+#: sblshop/templates/sblshop/product/detail.html:41
+#: sbtshop/templates/sbtshop/product/detail.html:41
+msgid "Features"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/detail.html:84
+#: sblshop/templates/sblshop/product/detail.html:84
+#: sbtshop/templates/sbtshop/product/detail.html:84
+msgid "Order Now"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/detail.html:89
+#: sblshop/templates/sblshop/product/detail.html:89
+#: sbtshop/templates/sbtshop/product/detail.html:89
+msgid "Characteristcs"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/detail.html:98
+#: sblshop/templates/sblshop/product/detail.html:98
+#: sbtshop/templates/sbtshop/product/detail.html:98
+msgid "Terms & Conditions"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/list.html:42
+msgid "Legalsa IT Cloud Business Systems"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/list.html:56
+#: sblshop/templates/sblshop/product/list.html:55
+#: sbtshop/templates/sbtshop/product/list.html:55
+msgid "Order this plan now"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/banner.html:21
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/banner.html:21
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/banner.html:21
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/banner.html:21
+#: shop/templates/shop/product/smartbusinessmedia/index/banner.html:21
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/banner.html:21
+#: webapp/templates/webapp/products/smartbusinesslaw/index/banner.html:21
+#: webapp/templates/webapp/products/smartbusinessmedia/index/banner.html:21
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/banner.html:21
+msgid "Order now"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:13
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:13
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:13
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:13
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:13
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:13
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:13
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:13
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:13
+msgid "Business Media Envelopment"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:22
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:22
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:22
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:22
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:22
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:22
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:22
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:22
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:22
+msgid "Business Story Telling"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:23
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:30
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:37
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:49
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:56
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:63
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:23
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:30
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:37
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:49
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:56
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:63
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:23
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:30
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:37
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:49
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:56
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:63
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:23
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:30
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:37
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:49
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:56
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:63
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:23
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:30
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:37
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:49
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:56
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:63
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:23
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:30
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:37
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:49
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:56
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:63
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:23
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:30
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:37
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:49
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:56
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:63
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:23
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:30
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:37
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:49
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:56
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:63
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:23
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:30
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:37
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:49
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:56
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:63
+msgid "See more"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:29
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:29
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:29
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:29
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:29
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:29
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:29
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:29
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:29
+msgid "SEM Strategy"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:36
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:36
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:36
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:36
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:36
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:36
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:36
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:36
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:36
+msgid "SEO Strategy"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:48
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:48
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:48
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:48
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:48
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:48
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:48
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:48
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:48
+msgid "Community Manager (RRSS)"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:55
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:55
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:55
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:55
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:55
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:55
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:55
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:55
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:55
+msgid "Web3.0 Development"
+msgstr ""
+
+#: sbashop/templates/sbashop/product/smartbusinessmedia/index/features.html:62
+#: sblshop/templates/sblshop/product/smartbusinessmedia/index/features.html:62
+#: sbmshop/templates/sbmshop/product/smartbusinessmedia/index/features.html:62
+#: sbtshop/templates/sbtshop/product/smartbusinessmedia/index/features.html:62
+#: shop/templates/shop/product/smartbusinessmedia/index/features.html:62
+#: webapp/templates/webapp/products/smartbusinessanalytics/index/features.html:62
+#: webapp/templates/webapp/products/smartbusinesslaw/index/features.html:62
+#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:62
+#: webapp/templates/webapp/products/smartbusinesstechnologies/index/features.html:62
+msgid "Media Analytics"
+msgstr ""
+
+#: sblshop/templates/sblshop/product/list.html:42
+#: sbtshop/templates/sbtshop/product/list.html:42
+msgid "Legal IT Cloud Business Systems"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:136
+msgid "Checkout your suscription plan."
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:139
+msgid ""
+"This product includes public domain access with SSL/TTL protection, as well "
+"as a user manual, which will be automatically sent to your email once the "
+"payment for the selected product is processed. Before checking out, please "
+"ensure that the subscription plan you have chosen aligns with your business "
+"model and the product you wish to purchase."
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:147
+msgid "Detail"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:153
+msgid "SmartQuail® Product"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:159
+msgid "Business model"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:164
+msgid "Make monthly payments"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:170
+msgid "Subscription period"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:175
+msgid "Sub total"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:181
+#: sbmorders/templates/sbmorders/order/create.html:532
+msgid "Promotional Discount"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:196
+msgid "Total Pay"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:210
+msgid "You're lucky¡"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:211
+msgid "This product has the follow promotional code"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:220
+msgid "Write in to below box the promotional Code"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:245
+msgid "Final Price to Pay"
+msgstr ""
+
+#: sbmcart/templates/sbmcart/detail.html:248
+msgid "You Saved"
+msgstr ""
+
+#: sbmcoupons/forms.py:6
+msgid "Coupon"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:40
+msgid "Políticas de privacidad y uso de información"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:73
+msgid "Terminos y Condiciones de uso"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:78
+msgid ""
+"El pago será considerado efectivo una vez que el sistema bancario local "
+"confirme la transacción realizada. La validación de la transacción se "
+"llevará a cabo verificando los siguientes aspectos: La identidad del usuario"
+" que realizó el pago. La verificación de los datos del banco y la "
+"transacción. La validación de la fecha y hora en la que se realizó la "
+"compra. Solo después de la confirmación por parte del sistema bancario "
+"local, se procesará el pedido y se iniciará el envío de los productos "
+"adquiridos. Si la transacción no puede ser confirmada o es rechazada, el "
+"pago no será considerado válido y no se procederá con la entrega del "
+"producto."
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:85
+#: sbmpayments/templates/payment/canceled.html:40
+msgid "Payment Process"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:86
+msgid "Subscription Payment Track ID"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:88
+msgid ""
+"Scan the QR-Code for get SmartQuail Bank Information & copy to the bank "
+"place required"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:95
+msgid "Fill this form with the bank  ticket information"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:101
+msgid "Nombre de Institución financiera desde donde se realiza el pago."
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:116
+msgid "ID de operación bancaria realizada."
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:128
+#: sbmorders/templates/sbmorders/order/create.html:194
+msgid "Escriba tal como indica el comprobante bancario"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:130
+msgid "Acept the policyes & terms for purchase technologies products "
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:132
+msgid "Acepto los términos y condiciones del contrato"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/bank_transfer.html:161
+msgid "Submit Payment Request"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:107
+msgid "Subscription process"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:117
+msgid "Terms &  subscription policies"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:133
+msgid "Payment Method"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:134
+msgid "Please select your preferred payment method."
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:139
+msgid "Credit/Debit Card"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:143
+msgid "Bank Transfer"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:147
+msgid "PayPal Payment Gateway"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:159
+msgid ""
+"Please fill out the following form to complete your SmartBusinessMedia® "
+"subscription."
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:166
+msgid "Owner's subscription name"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:182
+msgid "Owner's subscription last name"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:198
+msgid " Contact Information"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:200
+msgid "Business local address"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:218
+msgid "Contact Phone Number "
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:235
+#: sbmorders/templates/sbmorders/order/pdf.html:221
+#: sbmorders/templates/sbmorders/order/pdf.html:244
+msgid "Email"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:252
+#: sbmorders/templates/sbmorders/order/pdf.html:243
+msgid "City"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:267
+msgid "Business Information"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:269
+msgid "Your business Name"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:285
+msgid "National or T.A.X  I.D Number "
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:303
+msgid "National or T.A.X  I.D "
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:325
+msgid "I'm Agree"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:341
+msgid ""
+"I hereby acknowledge that I have read and fully understood the terms and "
+"conditions of the User Agreement and the Subscription Policies. By "
+"continuing with this process, I confirm that I agree to abide by all the "
+"terms and policies outlined therein."
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:397
+msgid "Suscription Information"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:410
+#: sbmorders/templates/sbmorders/order/pdf.html:241
+#: sbmpayments/templates/payment/done_trans.html:103
+#, fuzzy
+#| msgid "Products"
+msgid "Product Name"
+msgstr "Productos"
+
+#: sbmorders/templates/sbmorders/order/create.html:413
+#, fuzzy
+#| msgid "Products"
+msgid "Product Avality"
+msgstr "Productos"
+
+#: sbmorders/templates/sbmorders/order/create.html:429
+msgid "Front End"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:437
+msgid "Node Name"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:441
+msgid "Node Version"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:446
+msgid "App Type"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:451
+msgid "Domain Name"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:457
+msgid "Reliability"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:477
+msgid "Cloud Resources Requirements"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:480
+#: sbmpayments/templates/payment/done_trans.html:128
+#: sbmpayments/templates/payment/done_trans.html:143
+#: sbmpayments/templates/payment/done_trans.html:160
+#: sbmpayments/templates/payment/done_trans.html:177
+#: sbmpayments/templates/payment/done_trans.html:194
+#: sbmpayments/templates/payment/done_trans.html:211
+msgid "Virtual Central Processing Unit (vCPU)"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:486
+#: sbmpayments/templates/payment/done_trans.html:133
+#: sbmpayments/templates/payment/done_trans.html:149
+#: sbmpayments/templates/payment/done_trans.html:166
+#: sbmpayments/templates/payment/done_trans.html:183
+#: sbmpayments/templates/payment/done_trans.html:200
+#: sbmpayments/templates/payment/done_trans.html:217
+msgid "Virtual Memory"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:491
+#: sbmpayments/templates/payment/done_trans.html:138
+#: sbmpayments/templates/payment/done_trans.html:154
+#: sbmpayments/templates/payment/done_trans.html:171
+#: sbmpayments/templates/payment/done_trans.html:188
+#: sbmpayments/templates/payment/done_trans.html:205
+#: sbmpayments/templates/payment/done_trans.html:222
+msgid "Storage"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:510
+msgid "Payment Invoice"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:514
+msgid "Subscription price"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:520
+msgid "Period Subscrition"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:526
+msgid "Subscrition Sub Total Value"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:537
+msgid "Subscription Total Value"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/create.html:554
+msgid "Pay Subscription"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:172
+msgid "Subscription Invoice"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:178
+#: sbmorders/templates/sbmorders/order/pdf.html:196
+#: sbmpayments/templates/payment/done_trans.html:247
+msgid "Business Name"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:180
+msgid "Authorized by"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:195
+msgid "Subscription Track Number:"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:197
+msgid "T.A.X/ID Number:"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:198
+msgid "Subscription Owner"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:199
+msgid "Location"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:219
+msgid "Contact Phone Number"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:220
+msgid "Contact Address"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:222
+#, fuzzy
+#| msgid "Solutions"
+msgid "Conditions"
+msgstr "Soluciones"
+
+#: sbmorders/templates/sbmorders/order/pdf.html:242
+msgid "Address"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:245
+msgid "Payment Gateway"
+msgstr ""
+
+#: sbmorders/templates/sbmorders/order/pdf.html:268
+msgid "T.A.X"
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:41
+msgid "Your payment process has not been successful."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:55
+msgid "We were unable to process your payment. "
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:56
+msgid "Here are some possible reasons why this may have occurred"
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:60
+msgid ""
+"Insufficient funds: There may not be enough balance in your account to "
+"complete the transaction."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:63
+msgid ""
+"Incorrect card details: Please ensure the card number, expiration date, and "
+"CVV code are entered correctly."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:66
+msgid ""
+"Expired card: The card you are using may have expired. Please check the "
+"expiration date.."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:69
+msgid ""
+"Bank restrictions: Your bank may have placed restrictions on online "
+"transactions or payments to certain merchants."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:72
+msgid ""
+"Security blocks: Sometimes, our payment system may flag the transaction as "
+"suspicious. Please contact your bank or try using a different card."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:76
+msgid ""
+"Technical issues: There could have been a temporary issue with our payment "
+"gateway or your bank's system."
+msgstr ""
+
+#: sbmpayments/templates/payment/canceled.html:79
+msgid ""
+"Please verify your payment details and try again. If the issue persists, "
+"contact your bank for more information or use an alternative payment method."
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:40
+msgid "¡Su compra se ha realizado con éxito!"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:52
+msgid "Información de Pago"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:58
+msgid "Payment Date-Time"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:63
+msgid "Track ID payment "
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:69
+msgid "Customer Bank Name"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:74
+msgid "Customer Bank ID number Reciept"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:79
+msgid "Payment status"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:81
+msgid "Pending"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:83
+msgid "Paid"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:90
+msgid ""
+"Una vez que Smarquail verifique que el pago es efectivo, imadiatamente el "
+"sistema enviara el producto al siguiente corro electrónico,"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:90
+msgid "Con la siguiente descripción"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:93
+msgid "SmartQuail® IT Cloud Business Product"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:109
+msgid "Product Category"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:110
+msgid "Usuarios Simuláneos"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:242
+msgid "SmartQuail® IT Cloud Business Subscripcion"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:251
+msgid "Customer Name"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:266
+msgid "Subscription Period"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:271
+msgid "Promocional Discount"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:276
+msgid "Promocional Code"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:281
+msgid "Total Price"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:288
+msgid "BusinessQnode®-Url"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:293
+msgid "Date Subscripcion Expire"
+msgstr ""
+
+#: sbmpayments/templates/payment/done_trans.html:299
+msgid "Agradecimientos"
+msgstr ""
+
+#: sbmpayments/templates/payment/process.html:41
+msgid "Descargo de Responsabilidad sobre el Manejo de Información Personal"
+msgstr ""
+
+#: sbmpayments/urls.py:9
+msgid "process/"
+msgstr ""
+
+#: sbmpayments/urls.py:10
+msgid "done_trans/<int:order_id>/"
+msgstr ""
+
+#: sbmpayments/urls.py:11
+msgid "done/"
+msgstr ""
+
+#: sbmpayments/urls.py:12
+msgid "canceled/"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/header.html:82
+msgid "You Shoping Cart is empty"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/header.html:119
+msgid "Marketing Business Models"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/header.html:120
+msgid "IT Cloud Business Media+CRM."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/header.html:122
+#: webapp/templates/webapp/home/header.html:81
+msgid "Marketing Media Consulting"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/header.html:247
+#: webapp/templates/webapp/home/header.html:214
+msgid "Partners"
+msgstr "Aliados"
+
+#: sbmshop/templates/sbmshop/product/detail.html:104
+msgid "Where the Art & Technologies Meet"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:118
+msgid "OpenSource Licence"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:120
+msgid ""
+"Este proyecto está licenciado bajo los términos de la Licencia Open Source "
+"correspondiente. Esto significa que puedes usar, modificar y distribuir este"
+" software de forma libre, siempre y cuando cumplas con los términos "
+"establecidos en la licencia MIT."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:159
+msgid "Cloud Computing Software Requirements"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:177
+msgid "Cloud Computing Hadware Resources Requirements"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:196
+msgid ""
+"Subscribe now and scale your Marketing business projects to the cloud in "
+"minutes with"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:197
+#, fuzzy
+#| msgid "Solutions"
+msgid "Suscription"
+msgstr "Soluciones"
+
+#: sbmshop/templates/sbmshop/product/detail.html:197
+msgid "monthly"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:201
+msgid ""
+"This product subscription includes a promotional discount—don't miss out on "
+"this opportunity!"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:202
+msgid "Promotional Expire at"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:206
+msgid ""
+"Delivery Software time since subscription becomes effective: 120 minutes."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:207
+msgid "Minimum subscription period: 3 months"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:216
+msgid ""
+"Select the number of suscriptions ,you prefered to pay for this product:"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:237
+msgid "Suscribe Now"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/detail.html:245
+msgid "Demand on it"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:74
+msgid "Your smartest IT Cloud Growth partner for Marketing Business Models."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:75
+msgid "Where Art and Technology Meet"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:78
+msgid "Customer Relationship Management"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:78
+msgid "Implentation & Front End Devlopment"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:78
+msgid "Marketing process automation"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:78
+msgid "Marketing Artificial Inteligent"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:80
+msgid "Start Your Business Media Project"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:95
+msgid "Let’s Start"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:96
+msgid ""
+"Join us and discover which startup marketing model best fits your business "
+"strategy!."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:98
+msgid "Marketing Business Models Scale"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:110
+#: sbmshop/templates/sbmshop/product/list.html:140
+#: sbmshop/templates/sbmshop/product/list.html:170
+#: sbmshop/templates/sbmshop/product/list.html:209
+#: sbmshop/templates/sbmshop/product/list.html:240
+#: sbmshop/templates/sbmshop/product/list.html:270
+#: sbmshop/templates/sbmshop/product/list.html:300
+msgid "Customers"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:110
+#: sbmshop/templates/sbmshop/product/list.html:140
+#: sbmshop/templates/sbmshop/product/list.html:170
+#: sbmshop/templates/sbmshop/product/list.html:209
+#: sbmshop/templates/sbmshop/product/list.html:240
+#: sbmshop/templates/sbmshop/product/list.html:270
+#: sbmshop/templates/sbmshop/product/list.html:300
+msgid "Employes"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:341
+msgid "Tell us, Which is your Marketing Business Model."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:353
+msgid ""
+"At Smartquail, Inc., we believe that a business model is primarily defined "
+"by its reach and impact on the community. It's essential to choose the "
+"product you want to obtain based on your business model. With "
+"SmartBusinessTechnologies, we automatically calculate the cloud resources "
+"your business model requires. This allows us to optimize the cloud resources"
+" you use, ultimately reducing costs. In this way, we develop technologies "
+"that are both user-friendly and environmentally sustainable."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:369
+msgid "IT Cloud Business Media CRM"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:370
+msgid ""
+"Select the SmartBusinessMedia CRM that best aligns with your marketing "
+"business model."
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:393
+msgid "Available"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:395
+msgid "Coming Soon"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:397
+msgid "Marketing Business Model:"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:398
+msgid "Subscription:"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:398
+msgid "Monthly"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:425
+msgid "Consulting us"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/list.html:426
+msgid "We are professional, creative, smart, and fun!"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/manual_pdf.html:28
+msgid "User Manual"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/manual_pdf.html:43
+msgid "Contents"
+msgstr ""
+
+#: sbmshop/templates/sbmshop/product/sbm_list.html:9
+msgid "Subscribe Now"
+msgstr ""
+
+#: shop/templates/shop/product/list.html:126
+#: shop/templates/shop/product/list.html:245
+msgid "add a cart"
+msgstr ""
+
 #: webapp/templates/webapp/aboutus.html:34
 msgid "About of SmartQuail"
 msgstr ""
@@ -98,20 +1209,40 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: webapp/templates/webapp/createitbusiness/slider_section.html:13
+#: webapp/templates/webapp/createitbusiness/slider_section.html:20
 msgid "Choose your business project"
+msgstr ""
+
+#: webapp/templates/webapp/createitbusiness/slider_section.html:38
+#: webapp/templates/webapp/home/callout.html:35
+#: webapp/templates/webapp/home/callout.html:41
+#: webapp/templates/webapp/home/callout.html:46
+#: webapp/templates/webapp/home/slider_section.html:26
+#: webapp/templates/webapp/home/slider_section.html:44
+msgid "Learn more"
+msgstr "Saber más"
+
+#: webapp/templates/webapp/createitbusiness/slider_section.html:56
+#: webapp/templates/webapp/home/slider_section.html:62
+msgid "Create your IT BusinessAnalytics"
+msgstr ""
+
+#: webapp/templates/webapp/createitbusiness/slider_section.html:73
+#: webapp/templates/webapp/createitbusiness/slider_section.html:90
+#: webapp/templates/webapp/home/callacction_section.html:20
+#: webapp/templates/webapp/home/slider_section.html:79
+#: webapp/templates/webapp/home/slider_section.html:96
+msgid "Contact Us"
+msgstr ""
+
+#: webapp/templates/webapp/createitbusiness/slider_section.html:107
+#: webapp/templates/webapp/home/slider_section.html:113
+msgid "Register, Now!"
 msgstr ""
 
 #: webapp/templates/webapp/home/OurTeam_section.html:20
 msgid "We Are Stronger in IT Business"
 msgstr "Somos profesionales en TICs para negocios y organizaciones"
-
-#: webapp/templates/webapp/home/callacction_section.html:20
-#: webapp/templates/webapp/home/footer_section.html:43
-#: webapp/templates/webapp/home/slider_section.html:78
-#: webapp/templates/webapp/home/slider_section.html:95
-msgid "Contact Us"
-msgstr ""
 
 #: webapp/templates/webapp/home/callout.html:12
 msgid "IT Solutions"
@@ -121,127 +1252,117 @@ msgstr ""
 msgid "We improve you business"
 msgstr "Potenciamos tu negocio hacia la nube"
 
-#: webapp/templates/webapp/home/callout.html:32
-msgid "IT Business Analytics"
+#: webapp/templates/webapp/home/callout.html:33
+msgid "IT Cloud Business"
 msgstr ""
 
-#: webapp/templates/webapp/home/callout.html:34
-#: webapp/templates/webapp/home/callout.html:38
-#: webapp/templates/webapp/home/callout.html:42
-#: webapp/templates/webapp/home/slider_section.html:25
-msgid "Learn more"
-msgstr "Saber más"
-
-#: webapp/templates/webapp/home/callout.html:37
-msgid "IT cloud Business DevOps"
+#: webapp/templates/webapp/home/callout.html:40
+msgid "SmartQuail Technologies"
 msgstr ""
 
-#: webapp/templates/webapp/home/callout.html:41
-msgid " IT Business Media envelopment"
+#: webapp/templates/webapp/home/callout.html:45
+msgid "IT Cloud Busines News"
 msgstr ""
 
-#: webapp/templates/webapp/home/header.html:94
-msgid "Ingresar a su negocio  IT"
+#: webapp/templates/webapp/home/footer_section.html:17
+msgid ""
+"SmartQuail,Inc es una empresa líder en el desarrollo de soluciones de "
+"Tecnologías de la Información y Comunicación (TIC) en la nube, con el "
+"objetivo de democratizar el acceso a los sistemas de información a nivel "
+"global."
 msgstr ""
 
-#: webapp/templates/webapp/home/header.html:95
-msgid "Ingresa ahora, Y obtenga reportes"
+#: webapp/templates/webapp/home/footer_section.html:51
+msgid "We are Social"
 msgstr ""
 
-#: webapp/templates/webapp/home/header.html:96
-msgid "de su negocio IT en tiempo real."
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:102
-msgid "Registre su  negocio IT"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:103
-msgid "Registre ahora tu proyecto,"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:105
-msgid "Y descuentos y noticias relacionadas"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:106
-msgid " a tecnologias de información y"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:107
-msgid "comunicacion en la nube"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:131
-msgid "Products"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:177
-msgid "Solutions"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:215
-msgid "Training & Jobs"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:242
-msgid "Resources"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:288
-msgid "Partners"
-msgstr ""
-
-#: webapp/templates/webapp/home/header.html:315
-msgid "About"
-msgstr ""
-
-#: webapp/templates/webapp/home/slider_section.html:43
-msgid "Create your IT BusinessMedia"
-msgstr ""
-
-#: webapp/templates/webapp/home/slider_section.html:61
-msgid "Create your IT BusinessAnalytics"
-msgstr ""
-
-#: webapp/templates/webapp/home/slider_section.html:112
-msgid "Register, Now!"
+#: webapp/templates/webapp/home/header.html:79
+msgid "Media Customer Relationship Management Plataform (MCRM)."
 msgstr ""
 
 #: webapp/templates/webapp/info.html:46
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:46
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:46
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:46
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:46
 msgid "Author Name"
 msgstr ""
 
 #: webapp/templates/webapp/info.html:72
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:72
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:72
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:72
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:72
 msgid "Sci-Tech Exp"
 msgstr ""
 
 #: webapp/templates/webapp/info.html:72
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:72
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:72
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:72
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:72
 msgid "years"
 msgstr ""
 
 #: webapp/templates/webapp/info.html:73
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:73
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:73
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:73
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:73
 msgid "Updated"
 msgstr ""
 
 #: webapp/templates/webapp/info.html:131
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:131
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:131
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:131
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:131
 msgid "Start a Project"
 msgstr ""
 
 #: webapp/templates/webapp/info.html:164 webapp/templates/webapp/info.html:170
 #: webapp/templates/webapp/info.html:176 webapp/templates/webapp/info.html:182
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:164
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:170
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:176
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:182
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:164
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:170
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:176
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:182
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:170
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:176
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:182
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:188
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:194
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:164
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:170
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:176
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:182
 msgid "Learn More"
 msgstr ""
 
 #: webapp/templates/webapp/info.html:199
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:199
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:199
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:211
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:199
 msgid "Become Now! your business, a Smart IT Cloud Business "
 msgstr ""
 
 #: webapp/templates/webapp/info.html:200
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:200
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:200
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:212
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:200
 msgid "Lets create your Smart IT Cloud Business, together."
 msgstr ""
 
 #: webapp/templates/webapp/info.html:212
+#: webapp/templates/webapp/products/smartbusinessanalytics/info/info.html:212
+#: webapp/templates/webapp/products/smartbusinesslaw/info/info.html:212
+#: webapp/templates/webapp/products/smartbusinessmedia/info/info.html:224
+#: webapp/templates/webapp/products/smartbusinesstechnologies/info/info.html:212
 msgid "Register Now, and create  your IT Cloud Business"
 msgstr ""
 
@@ -259,47 +1380,6 @@ msgstr ""
 
 #: webapp/templates/webapp/joblistingopening.html:42
 msgid "Benefits"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/banner.html:21
-msgid "Order now"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:13
-msgid "Business Media Envelopment"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:22
-msgid "Business Story Telling"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:23
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:30
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:37
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:49
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:56
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:63
-msgid "See more"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:29
-msgid "SEM Strategy"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:36
-msgid "SEO Strategy"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:48
-msgid "Community Manager (RRSS)"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:55
-msgid "Web3.0 Development"
-msgstr ""
-
-#: webapp/templates/webapp/products/smartbusinessmedia/index/features.html:62
-msgid "Media Analytics"
 msgstr ""
 
 #: webapp/templates/webapp/resourceslisting.html:27
