@@ -95,7 +95,7 @@ RUN python3.11 -m venv /py && \
     
     #chmod -R u+x /scripts/gunicorn_run.sh &&\
     chmod -R u+x /scripts/uwsgi.sh &&\
-    chmod -R +x /scripts && \
+    chmod -R +x /scripts 
     #rm /py/lib/python3.11/site-packages/baton/static/baton/app/dist/baton.min.js && \
     #cp /${NODE_VERSION}/${NODE_APP_NAME}/${NODE_APP_NAME}/baton.min.js  /py/lib/python3.11/site-packages/baton/static/baton/app/dist/ 
 
