@@ -1,6 +1,6 @@
 {% load i18n wagtailcore_tags wagtailimages_tags %}
 {% load widget_tweaks %}
-{% load webapp_0_tags %}
+{% load webapp_tags %}
 {% load static %}
 {% load menu_tags %}
 
@@ -33,28 +33,35 @@
   ===-->
 
     <div class="container">
-      {% for language_code, language_name in LANGUAGES %}
-      {% get_language_info for language_code as lang %}
-      {% if language_code == LANGUAGE_CODE %}
       <div class="attr-nav">
         <ul>
-          <li class="dropdown"> 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >  {{ lang.code }}</a>
-            <ul class="dropdown-menu cart-list">
-              <li>
-                {% for language_code, language_name in LANGUAGES %}
+          {% for language_code, language_name in LANGUAGES %}
+            {% get_language_info for language_code as lang %}
+          
+              <li class="dropdown"> 
+                {% if language_code == LANGUAGE_CODE %}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {{ lang.name_local }}
+                </a>
+                <ul class="dropdown-menu cart-list">
+                  {% for language_code, language_name in LANGUAGES %}
                     {% get_language_info for language_code as lang %}
-                    <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
+                    <li>
+                      <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
                         {{ lang.name_local }}
-                    </a>
-                {% endfor %}
-            </li>
-            </ul>
-          </li>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+           
+          {% endfor %}
         </ul>
       </div>
-      {% endif %}
-      {% endfor %}
+      
+      
+     
       <!--=== End Atribute Navigation ===-->
 
       <!--=== Start Header Navigation ===-->

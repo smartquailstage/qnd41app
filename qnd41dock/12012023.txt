@@ -2,12 +2,13 @@
 django>=4.2,<5.0
 
 # Django Baton
-django-baton==2.6.2
+#django-baton==2.6.2
+django-unfold
 
 # Wagtail
-wagtail==5.0.1
+wagtail
 
-psycopg[binary]
+psycopg
 
 # Django Social Share
 django-social-share
@@ -22,7 +23,7 @@ XlsxWriter
 requests
 
 # Celery
-celery>=5.4.0
+celery>=5.2.7,<6.0  # Compatible with Django 4.2
 
 # uWSGI
 uWSGI==2.0.28
@@ -34,10 +35,7 @@ redis>=4.5.5
 django-dotenv
 
 # Psycopg2
-#psycopg2>=2.9.6
-
-# Psycopg2 Binary
-#psycopg2-binary
+psycopg2-binary>=2.9.6  # Removed comment, using binary version
 
 # Django Storages
 django-storages
@@ -155,3 +153,10 @@ weasyprint>=57.0
 
 # Wagtail Menus
 wagtailmenus>=1.5.1
+
+qrcode
+
+twilio 
+requests
+openai
+wagtail-ai

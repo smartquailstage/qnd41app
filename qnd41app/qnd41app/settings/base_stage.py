@@ -539,7 +539,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-Ec'
+LANGUAGE_CODE = 'es'  # Corrección: código de idioma en minúsculas
 TIME_ZONE = 'America/Guayaquil'
 
 

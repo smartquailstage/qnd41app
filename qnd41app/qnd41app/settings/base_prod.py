@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "unfold.contrib.import_export",  # optional, if django-import-export package is used
     "unfold.contrib.guardian",  # optional, if django-guardian package is used
     "unfold.contrib.simple_history",
+  # optional, if django-simple-history package is used
     #'usuarios',
     #'baton',
     #'editorial_literaria',
@@ -84,7 +85,7 @@ INSTALLED_APPS = [
     'wagtailmenus',
     #'wagtail.contrib.modeladmin',
     'django_social_share',
-   
+    'mailing',
     'taggit',
     #'proyectos',
    # 'students',
@@ -112,6 +113,13 @@ INSTALLED_APPS = [
     #'shop',
     #'cart',
 
+
+
+    'sbmshop',
+    'sbmorders',
+    'sbmcoupons',
+    'sbmpayments',
+
     'sblcart',
     'sblshop',
     'sblorders',
@@ -121,9 +129,7 @@ INSTALLED_APPS = [
     'sbtshop',
     'sbtorders',
 
-    'sbmcart',
-    'sbmshop',
-    'sbmorders',
+ 
 
     'sbacart',
     'sbashop',
@@ -145,183 +151,179 @@ INSTALLED_APPS = [
     'ckeditor',
    # 'js_blog_app',
     'wagtail.contrib.settings',
+    "wagtail_ai",
     
     "bootstrap_datepicker_plus",
+
     
     #'baton.autodiscover',
    
 ]
 
 
-BATON = {
-    'SITE_HEADER': '<a href="#"><img src="/static/img/m2.png" height="26px"></a>',
-    'SITE_TITLE': 'The Smartest IT Business Analytics',
-    'INDEX_TITLE': 'SmartBusinessAnalytics by SmartQuail',
-    'SUPPORT_HREF': '#',
-    'COPYRIGHT': '<a href="#"><img src="/static/img/m2.png" height="18px"></a>&nbsp;&nbsp; copyright © 2024', # noqa
-    'POWERED_BY': '<a href="#"><img src="/static/img/logo_smartquailgray.png" height="13px"</a>',
-    'CONFIRM_UNSAVED_CHANGES': True,
-    'SHOW_MULTIPART_UPLOADING': True,
-    'ENABLE_IMAGES_PREVIEW': True,
-    'CHANGELIST_FILTERS_IN_MODAL': True,
-    'CHANGELIST_FILTERS_ALWAYS_OPEN': False,
-    'CHANGELIST_FILTERS_FORM': True,
-    'MENU_ALWAYS_COLLAPSED': True,
-    'MENU_TITLE': 'Todo en Orden',
-    'MESSAGES_TOASTS': False,
-    'GRAVATAR_DEFAULT_IMG': 'retro',
-    'LOGIN_SPLASH': '/static/img/login_splash.jpg',
-   
-    'MENU': (
-       
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
+UNFOLD = {
+    "SITE_TITLE": "SmartBusinessAnalytics",
+    "SITE_HEADER": "SmartBusinessAnalytics",
+    "SITE_URL": "/",
+    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
+    "SITE_ICON": {
+        "light": lambda request: static("img/logo.png"),  # light mode
+        "dark": lambda request: static("img/logo.png"),  # dark mode
+    },
+    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
+    "SITE_LOGO": {
+        "light": lambda request: static("img/smartbusinessanalytics.png"),  # light mode
+        "dark": lambda request: static("img/smartbusinessanalytics.png"),  # dark mode
+    },
+    "SITE_SYMBOL": "speed",  # symbol from icon set
+    "SITE_FAVICONS": [
         {
-            'type': 'app',
-            'name': 'auth',
-            'label': 'Authentication',
-            'icon': 'fa fa-lock',
-            'models': (
-                {
-                    'name': 'user',
-                    'label': 'Users'
-                },
-                {
-                    'name': 'group',
-                    'label': 'Groups'
-                },
-            )
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/svg+xml",
+            "href": lambda request: static("img/logo.png"),
         },
-         { 'type': 'title', 'label': 'Dirección Espacio Público', 'apps': ('auth','todo_en_orden', ) },
-         {
-            'type': 'app',
-            'name': 'actividades_espacio_publico',
-            'label': 'Propuestas',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'subject',
-                    'label': 'Administración de eventos'
-                },
-                {
-                    'name': 'evento_30000',
-                    'label': 'Evento 30000'
-                },
-                 {
-                    'name': 'evento_20000',
-                    'label': 'Evento 20000'
-                },
-                {
-                    'name': 'evento_10000',
-                    'label': 'Evento 10000'
-                },
-                {
-                    'name': 'evento_5000',
-                    'label': 'Evento 5000'
-                },
-              
-            )
+    ],
+    "SHOW_HISTORY": True, # show/hide "History" button, default: True
+    "SHOW_VIEW_ON_SITE": True, # show/hide "View on site" button, default: True
+    "SHOW_BACK_BUTTON": True, # show/hide "Back" button on changeform in header, default: False
+    "ENVIRONMENT": "danger.environment_callback",
+    #"DASHBOARD_CALLBACK": "sbmshop.dashboard_callback",
+    "THEME": "light", # Force theme: "dark" or "light". Will disable theme switcher
+    "LOGIN": {
+        "image": lambda request: static("img/login_splash.jpg"),
+        #"redirect_after": lambda request: reverse_lazy("admin:APP_MODEL_changelist"),
+    },
+    "STYLES": [
+        lambda request: static("css/style.css"),
+    ],
+    "SCRIPTS": [
+        lambda request: static("js/script.js"),
+    ],
+    "BORDER_RADIUS": "3px",
+    "COLORS": {
+        "base": {
+            "50": "249 250 251",
+            "100": "243 244 246",
+            "200": "229 231 235",
+            "300": "209 213 219",
+            "400": "156 163 175",
+            "500": "107 114 128",
+            "600": "75 85 99",
+            "700": "55 65 81",
+            "800": "31 41 55",
+            "900": "17 24 39",
+            "950": "3 7 18",
         },
-         { 'type': 'title', 'label': 'Dirección Creatividad & Fomento', 'apps': ('auth','todo_en_orden', ) },
+        
+        "primary": {
+            "50": "250 245 255",
+            "100": "243 232 255",
+            "200": "233 213 255",
+            "300": "216 180 254",
+            "400": "192 132 252",
+            "500": "194 2 2",
+            "600": "254 2 2",
+            "700": "126 34 206",
+            "800": "107 33 168",
+            "900": "88 28 135",
+            "950": "59 7 100",
+        },
+        "font": {
+            "subtle-light": "var(--color-base-500)",  # text-base-500
+            "subtle-dark": "var(--color-base-400)",  # text-base-400
+            "default-light": "var(--color-base-600)",  # text-base-600
+            "default-dark": "var(--color-base-300)",  # text-base-300
+            "important-light": "var(--color-base-900)",  # text-base-900
+            "important-dark": "var(--color-base-100)",  # text-base-100
+        },
+    },
+    "EXTENSIONS": {
+        "modeltranslation": {
+            "flags": {
+                "en": "🇬🇧",
+                "fr": "🇫🇷",
+                "nl": "🇧🇪",
+            },
+        },
+    },
+
+    "SIDEBAR": {
+        "show_search": True,  # Search in applications and models names
+        "show_all_applications": True,  # Dropdown with all applications and models
+        "navigation": [
+            {
+                "title": _("Business Analytics"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:index"),
+                       # "badge": "sample_app.badge_callback",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Users"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("SmartBusinessMedia"),
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                    },
+                ],
+            },
+
+                        {
+                "title": _("Business Analytics"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:index"),
+                       # "badge": "sample_app.badge_callback",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Users"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("SmartBusinessMedia"),
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                    },
+                ],
+            },
+
+        ],
+    },
+
+    "TABS": [
         {
-            'type': 'app',
-            'name': 'editorial_literaria',
-            'label': 'Editorial & literario',
-            'icon': 'fa fa-user',
-            'models': (
+            "models": [
+                "sbmshop.category",
+            ],
+            "items": [
                 {
-                    'name': 'subject',
-                    'label': 'Categorías de convocatorias'
+                    "title": _("Categories"),
+                    "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                   # "permission": "sample_app.permission_callback",
                 },
-                {
-                    'name': 'course',
-                    'label': 'Convocatorias realizadas'
-                },
-                
-                {
-                    'name': 'module',
-                    'label': 'Bases técnicas inscriptas en convocatorias'
-                },
-              
-            )
+            ],
         },
-         {
-            'type': 'app',
-            'name': 'proyectos',
-            'label': 'Proyectos postulados',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'subject',
-                    'label': 'Volumenes editoriales'
-                },
-                {
-                    'name': 'project',
-                    'label': 'Proyectos editoriales '
-                },
-            )
-        },
+    ],
 
-         { 'type': 'title', 'label': 'Administración de perfiles', 'apps': ('auth','todo_en_orden', ) },
-              {
-            'type': 'app',
-            'name': 'usuarios',
-            'label': 'Administración de usuarios',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'profile',
-                    'label': 'Perfil de usuarios'
-                },
-                {
-                    'name': 'contacts',
-                    'label': 'Perfil de contactos'
-                },
-                {
-                    'name': 'legal',
-                    'label': 'Perfil de personería'
-                },
-                {
-                    'name': 'activity',
-                    'label': 'Perfil de actividad cultural'
-                },
-                {
-                    'name': 'declaracionveracidad',
-                    'label': 'declaratorias'
-                },
-            )
-        },
-         { 'type': 'title', 'label': 'Comunicación', 'apps': ('auth','todo_en_orden', ) },
-         {
-            'type': 'app',
-            'name': 'usuarios',
-            'label': 'Información y Normativas',
-            'icon': 'fa fa-user',
-            'models': (
-                {
-                    'name': 'dashboard',
-                    'label': 'Pagina de Inicio'
-                },
-                {
-                    'name': 'privacypolicy',
-                    'label': 'Políticas de privacidad Fomento editorial'
-                },
-                {
-                    'name': 'termsofuse',
-                    'label': 'Condiciones de uso Fomento editorial'
-                },
-
-                {
-                    'name': 'activityprivacypolicy',
-                    'label': 'Políticas de privacidad Espacio público'
-                },
-                 {
-                    'name': 'activitytermsofuse',
-                    'label': 'Condiciones de uso Espacio público'
-                },
-
-
-            )
-        },        
-    ),
 }
 
 
