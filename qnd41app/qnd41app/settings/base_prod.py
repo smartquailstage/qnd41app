@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Load environment variables from the .env_local file.
-ENV_FILE_PATH = BASE_DIR / ".env"
+ENV_FILE_PATH = BASE_DIR / ".env_pro"
 load_dotenv(dotenv_path=ENV_FILE_PATH)
 
 # Retrieve the Django secret key from environment variables.
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "unfold.contrib.import_export",  # optional, if django-import-export package is used
     "unfold.contrib.guardian",  # optional, if django-guardian package is used
     "unfold.contrib.simple_history",
+    'django.contrib.admin',
   # optional, if django-simple-history package is used
     #'usuarios',
     #'baton',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     #'cart',
    
     'django.contrib.contenttypes',
-    'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',

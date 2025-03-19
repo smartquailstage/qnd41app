@@ -161,8 +161,33 @@ INSTALLED_APPS = [
 ]
 
 
-from django.templatetags.static import static
+
+
+
+
+
+
+MIDDLEWARE = [
+    #'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    #'wagtail.core.middleware.site.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+]
+
+
+
 from django.urls import reverse_lazy
+from django.templatetags.static import static
 from django.utils.translation import gettext_lazy as _
 
 UNFOLD = {
@@ -176,8 +201,8 @@ UNFOLD = {
     },
     # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
     "SITE_LOGO": {
-        "light": lambda request: static("img/smartbusinessanalytics.png"),  # light mode
-        "dark": lambda request: static("img/smartbusinessanalytics.png"),  # dark mode
+        "light": lambda request: static("img/m2.png"),  # light mode
+        "dark": lambda request: static("img/m2.png"),  # dark mode
     },
     "SITE_SYMBOL": "speed",  # symbol from icon set
     "SITE_FAVICONS": [
@@ -188,12 +213,12 @@ UNFOLD = {
             "href": lambda request: static("img/logo.png"),
         },
     ],
-    "SHOW_HISTORY": True, # show/hide "History" button, default: True
-    "SHOW_VIEW_ON_SITE": True, # show/hide "View on site" button, default: True
-    "SHOW_BACK_BUTTON": True, # show/hide "Back" button on changeform in header, default: False
+    "SHOW_HISTORY": True,  # show/hide "History" button, default: True
+    "SHOW_VIEW_ON_SITE": True,  # show/hide "View on site" button, default: True
+    "SHOW_BACK_BUTTON": True,  # show/hide "Back" button on changeform in header, default: False
     "ENVIRONMENT": "danger.environment_callback",
-    #"DASHBOARD_CALLBACK": "sbmshop.dashboard_callback",
-    "THEME": "light", # Force theme: "dark" or "light". Will disable theme switcher
+    "DASHBOARD_CALLBACK": "sbmshop.dashboard_callback",
+    "THEME": "light",  # Force theme: "dark" or "light". Will disable theme switcher
     "LOGIN": {
         "image": lambda request: static("img/login_splash.jpg"),
         #"redirect_after": lambda request: reverse_lazy("admin:APP_MODEL_changelist"),
@@ -219,7 +244,6 @@ UNFOLD = {
             "900": "17 24 39",
             "950": "3 7 18",
         },
-        
         "primary": {
             "50": "250 245 255",
             "100": "243 232 255",
@@ -227,7 +251,7 @@ UNFOLD = {
             "300": "216 180 254",
             "400": "192 132 252",
             "500": "194 2 2",
-            "600": "254 2 2",
+            "600": "209 5 5",
             "700": "126 34 206",
             "800": "107 33 168",
             "900": "88 28 135",
@@ -251,27 +275,110 @@ UNFOLD = {
             },
         },
     },
-
     "SIDEBAR": {
         "show_search": True,  # Search in applications and models names
         "show_all_applications": True,  # Dropdown with all applications and models
         "navigation": [
             {
-                "title": _("Business Analytics"),
+                "title": _("E-Commerce Management"),
                 "separator": True,  # Top border
                 "collapsible": True,  # Collapsible group of links
                 "items": [
                     {
-                        "title": _("Dashboard"),
-                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("admin:index"),
-                       # "badge": "sample_app.badge_callback",
-                        "permission": lambda request: request.user.is_superuser,
+                        "title": _("Product Categories"),
+                        "icon": "category",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
                     },
+                    {
+                        "title": _("Products Details"),
+                        "icon": "check",
+                        "link": reverse_lazy("admin:sbmshop_sbmproduct_changelist"),
+                    },
+                    {
+                        "title": _("Orders Purchases"),
+                        "icon": "shopping_cart",
+                        "link": reverse_lazy("admin:sbmorders_order_changelist"),
+                    },
+                    {
+                        "title": _("Coupons"),
+                        "icon": "tag",
+                        "link": reverse_lazy("admin:sbmcoupons_coupon_changelist"),
+                    },
+                    {
+                        "title": _("Payment Bank Transfers"),
+                        "icon": "money",
+                        "link": reverse_lazy("admin:sbmorders_banktransfer_changelist"),
+                    },
+                    {
+                        "title": _("Product Manual"),
+                        "icon": "book",
+                        "link": reverse_lazy("admin:sbmshop_sbmproductmanual_changelist"),
+                    },
+                    {
+                        "title": _("Product Staff"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:sbmshop_sbmstaffitem_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("E-commerce Analytics"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Products vs Sales"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("Total product Sales"),
+                        "icon": "groups",
+                        "link": reverse_lazy("admin:auth_group_changelist"),
+                    },
+                    {
+                        "title": _("Total Sales"),
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("E-commerce Statistics"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Products vs Sales"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("Total product Sales"),
+                        "icon": "groups",
+                        "link": reverse_lazy("admin:auth_group_changelist"),
+                    },
+                    {
+                        "title": _("Total Sales"),
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Users and Groups Management"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
                     {
                         "title": _("Users"),
                         "icon": "people",
                         "link": reverse_lazy("admin:auth_user_changelist"),
+                    },
+                    {
+                        "title": _("Groups"),
+                        "icon": "groups",
+                        "link": reverse_lazy("admin:auth_group_changelist"),
                     },
                     {
                         "title": _("SmartBusinessMedia"),
@@ -280,51 +387,26 @@ UNFOLD = {
                     },
                 ],
             },
-
-                        {
-                "title": _("Business Analytics"),
-                "separator": True,  # Top border
-                "collapsible": True,  # Collapsible group of links
-                "items": [
-                    {
-                        "title": _("Dashboard"),
-                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("admin:index"),
-                       # "badge": "sample_app.badge_callback",
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Users"),
-                        "icon": "people",
-                        "link": reverse_lazy("admin:auth_user_changelist"),
-                    },
-                    {
-                        "title": _("SmartBusinessMedia"),
-                        "icon": "analytics",
-                        "link": reverse_lazy("admin:sbmshop_category_changelist"),
-                    },
-                ],
-            },
-
         ],
+
     },
 
+    # Aquí añadimos el nuevo TAB de productos
     "TABS": [
         {
             "models": [
-                "sbmshop.category",
+                "sbmshop.sbmproduct",
             ],
             "items": [
                 {
-                    "title": _("Categories"),
-                    "link": reverse_lazy("admin:sbmshop_category_changelist"),
-                   # "permission": "sample_app.permission_callback",
+                    "title": _("Products"),
+                    "link": reverse_lazy("admin:sbmshop_sbmproduct_changelist"),
                 },
             ],
         },
     ],
-
 }
+
 
 
 def dashboard_callback(request, context):
@@ -352,27 +434,7 @@ def badge_callback(request):
     return 3
 
 def permission_callback(request):
-    return request.user.has_perm("sample_app.change_model")
-
-
-
-
-MIDDLEWARE = [
-    #'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    #'wagtail.core.middleware.site.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-]
+    return request.user.has_perm("sbmshop.change_model")
 
 
 

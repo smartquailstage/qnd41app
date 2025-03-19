@@ -22,10 +22,10 @@ ALLOWED_HOSTS = ['*']
 #CSRF_COOKIE_DOMAIN=".www.smartquail.io"
 #CSRF_COOKIE_SECURE = True
 #CSRF_TRUSTED_ORIGINS = ['https://www.smartquail.io','https://146.190.164.22']
-#CORS_ALLOWED_ORIGINS = [
-#    'https://www.smartquail.io','https://146.190.164.22'
-#    # Otros orígenes permitidos si los hay
-#]
+CORS_ALLOWED_ORIGINS = [
+    'https://www.smartquail.io','https://134.199.185.24'
+    # Otros orígenes permitidos si los hay
+]
 
 
 
